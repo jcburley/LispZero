@@ -1,0 +1,25 @@
+2013-03-30 james@burleyarch.com
+
+Zero is an experiment trying out a simple approach to implementing
+McCarthy's original Lisp. I had been curious about how that might have
+been done.
+
+In particular, I've been wondering how simple a "core" Lisp system can
+be, while providing the building blocks necessary for the full power
+and expressiveness one expects from Common Lisp.
+
+Beyond Common Lisp, I hope to experiment with ways to provide more
+control over the environment, including macros (from lexing through
+parsing) and execution (more/full control over heap allocation,
+perhaps avoiding the requirement that garbage collection be available;
+more/full control over stack usage; and more/full control over
+processor usage).
+
+A key theme in this work is to invert the usual approach, that of
+assuming the existence of, and necessarily building, monolithic code
+analyzers (compilers and linkers, mainly) that figure out what needs
+to be done, and instead design a language that works "from the inside
+out" -- providing ways for the code itself to express what it needs,
+when it needs it -- such that a "narrow" reading of a macro or
+function answers many, if not all, of the necessary questions
+regarding its build-time and run-time needs.
