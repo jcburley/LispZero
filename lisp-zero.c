@@ -35,6 +35,8 @@
 typedef int bool;
 enum bool { false = 0, true = 1 };
 
+static bool quiet = false;
+
 #ifdef __GNUC__
 #define __UNUSED__ __attribute__((__unused__))
 #endif
@@ -53,8 +55,9 @@ enum bool { false = 0, true = 1 };
     {								\
       char *m = (MSG);						\
       if (m) fprintf(stderr, "%s\n", m);			\
-      fprintf(stderr, "allocations: %lld; total: %lld\n",	\
-	      allocations, allocations_total);			\
+      if (!quiet)                                               \
+        fprintf(stderr, "allocations: %lld; total: %lld\n",	\
+                allocations, allocations_total);                \
       exit((CODE));						\
     } while (0)
 
@@ -62,8 +65,9 @@ enum bool { false = 0, true = 1 };
   do								\
     {								\
       fprintf(stderr, ## F);					\
-      fprintf(stderr, "allocations: %lld; total: %lld\n",	\
-	      allocations, allocations_total);			\
+      if (!quiet)                                               \
+        fprintf(stderr, "allocations: %lld; total: %lld\n",	\
+                allocations, allocations_total);                \
       exit((CODE));						\
     } while (0)
 
@@ -884,17 +888,23 @@ void initialize()
 
 #define MAXTOKENSIZE 1000
 
-int main()
+int
+main(int argc, char **argv)
 {
+  if (argc > 1 && !strcmp(argv[1], "-q"))
+    quiet = true;
+
   buffer buf;
 
   initialize();
   buf = buffer_new(MAXTOKENSIZE);
   for (;;) {
     p_Object obj = object_read(stdin, buf);
-    object_write(stdout, eval(TRACE("stdin") obj, p_environment));
-    fprintf(stdout, "\n");
-    fflush(stdout);
+    if (!quiet) {
+      object_write(stdout, eval(TRACE("stdin") obj, p_environment));
+      fprintf(stdout, "\n");
+      fflush(stdout);
+    }
   }
   return 0;
 }
