@@ -26,14 +26,12 @@
 */
 
 #include <assert.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <string.h>
 #include <ctype.h>
-
-typedef int bool;
-enum bool { false = 0, true = 1 };
 
 static bool quiet = false;
 

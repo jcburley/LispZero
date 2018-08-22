@@ -5,7 +5,7 @@ RESULTFILES=zero-test.out
 all: lisp-zero zero-test
 
 lisp-zero: lisp-zero.c
-	gcc -g -O0 -Wall -W -o lisp-zero lisp-zero.c
+	gcc -g -O0 -Wall -W -I/usr/share/gnulib/lib -o lisp-zero lisp-zero.c
 
 zero-test: zero-test.gold zero-test.out
 	diff -u zero-test.gold zero-test.out
