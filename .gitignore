@@ -1,0 +1,4 @@
+lisp-zero
+*.o
+*~
+*.out
