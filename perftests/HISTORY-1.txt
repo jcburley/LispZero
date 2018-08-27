@@ -1,0 +1,1000 @@
+  866  sudo dropbox start -i
+  867  mv -iv Dropbox/ Dropbox.old
+  868  sudo apt-get remove --purge dropbox
+  869  sudo apt list
+  870  sudo apt list | grep -i dropbox
+  871  sudo apt-get remove --purge nautilus-dropbox
+  872  sudo apt-get remove --purge nautilus-dropbox/xenial
+  873  ll
+  874  top
+  875  sudo apt install software-properties-common
+  876  sudo add-apt-repository -y ppa:ethereum/ethereum
+  877  sudo apt update
+  878  apt list --upgradable
+  879  apt upgrade
+  880  sudo apt upgrade
+  881  apt list --upgradable
+  882  sudo apt install ethereum ethminer
+  883  sudo apt install libappindicator1 libindicator7
+  884  sudo dpkg -i Ethereum-Wallet-linux64-0-9-0.deb
+  885  top
+  886  uptime
+  887  top
+  888  ssh craig@dove
+  889  cd gitdove/mail-utils/
+  890  gitmast
+  891  gitdown
+  892  cd ~/github/UnixHome/
+  893  gitdown
+  894  man qmail-queue
+  895  man cat
+  896  ssh craig@dove
+  897  echo $MANPATH
+  898  man qmail-queue
+  899  man cat
+  900  dig
+  901  dig p25.llamail.com
+  902  dig p25-smtp.llamail.com
+  903  cat ~/.bash_profile
+  904  cat ~/.profile
+  905  cat ~/.bashrc
+  906  cat etc/bashrc
+  907  cat etc/bash_profile 
+  908  ssh craig@pony
+  909  ssh craig@bear
+  910  dirs
+  911  gitdown
+  912  pushd ~/gitdove/
+  913  ll
+  914  cd mail-utils/
+  915  gitdown
+  916  cd ..
+  917  git clone git@llamail.com:wan-utils.git
+  918  cd wan
+  919  cd wan-utils/
+  920  ll
+  921  cd bin
+  922  ll
+  923  cd ../..
+  924  cd mail-utils/
+  925  ll
+  926  emacs
+  927  bg
+  928  diff -u find-vermin-new find-vermin
+  929  rm find-vermin-new
+  930  diff -u tcpiplookup.sh.old tcpiplookup
+  931  git rm find-vermin-new
+  932  git rm tcpiplookup.sh.old
+  933  gitstat
+  934  make -k install
+  935  ll /var/qmail
+  936  mkdir /var/qmail/bin
+  937  ll /root/bin
+  938  sudo ll /root/bin
+  939  sudo ls -lo /root/bin
+  940  sudo ls -l /root/bin
+  941  sudo mkdir /root/bin
+  942  make -k install
+  943  make -k
+  944  gitstat
+  945  gitdiff
+  946  git commit -a
+  947  git push
+  948  gitdown
+  949  make -k
+  950  make -k install
+  951  sudo make -k install
+  952  ll /root/bin
+  953  sudo ll /root/bin
+  954  sudo ls -l /root/bin
+  955  sudo make -k install
+  956  sudo ls -l /root/bin
+  957  gitstat
+  958  sudo make -k install
+  959  sudo ls -l /root/bin
+  960  gitstat
+  961  gitdiff
+  962  git commit -a
+  963  gitstat
+  964  git push
+  965  git add .gitignore
+  966  git add -f .gitignore
+  967  git commit -m "Forgot to add .gitignore, because it was...ignored...."
+  968  git push
+  969  ping bear
+  970  genpw
+  971  ssh craig@dove
+  972  craig
+  973  sudo craig@dove
+  974  ssh craig@dove
+  975  SMTPLOGS
+  976  ssh craig@dove
+  977  sudo snap install slack --classic
+  978  top
+  979  while true; do :; done
+  980  while true; do :; done
+  981  while true; do :; done
+  982  while true; do :; done
+  983  ssh craig@dove
+  984  emacs &
+  985  genpw
+  986  fg %1
+  987  top
+  988  jobs
+  989  bg
+  990  top
+  991  ping bear
+  992  ssh craig@bear
+  993  fg
+  994  top
+  995  sudo shutdown now
+  996  shutdown now
+  997  sudo shutdown now
+  998  uptime
+  999  sudo shutdown now
+ 1000  uptime
+ 1001  sudo shutdown now
+ 1002  top
+ 1003  sudo shutdown now
+ 1004  cd Downloads/amdgpu-pro-18.20-606296/
+ 1005  ./amdgpu-pro-install -y
+ 1006  ./amdgpu-pro-install -y --opencl=pal
+ 1007  sudo reboot now
+ 1008  amdgpu-uninstall 
+ 1009  sudo reboot now
+ 1010  history | grep amd
+ 1011  top
+ 1012  man compiz
+ 1013  ll ~/.compiz
+ 1014  ll ~/.compiz/session/
+ 1015  lld ~/.compiz*
+ 1016  ll ~/.compiz-1
+ 1017  ll ~/.compiz-1/session/
+ 1018  lt ~/.compiz-1/session/
+ 1019  mv -iv ~/.compiz-1 ./compiz-1.BACKUP
+ 1020  ll .config
+ 1021  ll .config/compix-1
+ 1022  ll .config/compiz
+ 1023  ll .config/compiz-1/
+ 1024  ll .config/compiz-1/compizconfig/
+ 1025  xset -dpms
+ 1026  xrandr -q
+ 1027  xrandr
+ 1028  xset -q
+ 1029  xrandr --query
+ 1030  top
+ 1031  ssh craig@dove
+ 1032  sudo apt-get upgrade pulseaudio
+ 1033  sudo apt-get install alsa-tools-gui
+ 1034  hdajackretask
+ 1035  bg
+ 1036  ping p25.llamail.com
+ 1037  telnet p25.llamail.com 25
+ 1038  telnet p25.llamail.com 487
+ 1039  fg
+ 1040  ssh craig@dove
+ 1041  ssh craig@dove
+ 1042  top
+ 1043  ssh craig@dove
+ 1044  emacs &
+ 1045  sudo apt-get install glmark2
+ 1046  glmark2
+ 1047  cd Downloads/
+ 1048  lt | head
+ 1049  file Unigine_Heaven-4.0.run 
+ 1050  less Unigine_Heaven-4.0.run 
+ 1051  bash Unigine_Heaven-4.0.run 
+ 1052  heaven
+ 1053  lt | head
+ 1054  rehash -r
+ 1055  hash -r
+ 1056  heaven
+ 1057  less Unigine_Heaven-4.0.run 
+ 1058  ltd Uni*
+ 1059  cd Unigine_Heaven-4.0/
+ 1060  lt
+ 1061  ./heaven 
+ 1062  top
+ 1063  chown-wp-open burleyarch
+ 1064  sudo -i
+ 1065  ssh craig@dove
+ 1066  cd 
+ 1067  cd Downloads/
+ 1068  lt
+ 1069  sudo bash NVIDIA-Linux-x86_64-367.44.run 
+ 1070  lt
+ 1071  lt /var/log
+ 1072  shutdown now
+ 1073  cd Downloads/
+ 1074  sudo bash NVIDIA-Linux-x86_64-367.44.run 
+ 1075  lt
+ 1076  lt | hed
+ 1077  lt | head
+ 1078  cd NVI
+ 1079  sudo service lightdm stop
+ 1080  sudo lightdm stop
+ 1081  bg
+ 1082  sudo service lightdm stop
+ 1083  ps auxfwww | grep light
+ 1084  sudo init 3
+ 1085  cd Downloads/
+ 1086  sudo bash NVIDIA-Linux-x86_64-367.44.run 
+ 1087  cd /tmp
+ 1088  rm -rf .X0-lock 
+ 1089  sudo rm -rf .X0-lock 
+ 1090  popd
+ 1091  cd ~/Downloads/
+ 1092  sudo bash NVIDIA-Linux-x86_64-367.44.run 
+ 1093  sudo killall Xorg
+ 1094  sudo service lightxdm stop
+ 1095  sudo service lightdm stop
+ 1096  sudo killall Xorg
+ 1097  reboot now
+ 1098  sudo reboot now
+ 1099  cd
+ 1100  ssh craig@dove
+ 1101  date
+ 1102  ssh craig@dove
+ 1103  heaven
+ 1104  cd Downloads/
+ 1105  lt
+ 1106  cd Unigine_Heaven-4.0/
+ 1107  ll
+ 1108  ./heaven 
+ 1109  cd ../..
+ 1110  find . -name "Unigine_Heaven_Benchmark*"
+ 1111  mv -iv LAN/Unigine_Heaven_Benchmark_4.0_20180715_2029.html Dropbox/Meta/doe/
+ 1112  cd Dropbox/Meta/buck
+ 1113  lt
+ 1114  diff -u Unigine_Heaven_Benchmark_4.0_20180716_0848.html Unigine_Heaven_Benchmark_4.0_20180716_0849.html 
+ 1115  rm Unigine_Heaven_Benchmark_4.0_20180716_0849.html 
+ 1116  cd ~/LAN
+ 1117  lt
+ 1118  cd ~/Dropbox/Meta/
+ 1119  lt
+ 1120  cd doe
+ 1121  lt
+ 1122  open
+ 1123  man open
+ 1124  which open
+ 1125  man 2 open
+ 1126  man 3 open
+ 1127  man open
+ 1128  ssh craig@dove
+ 1129  heaven
+ 1130  cd Downloads/Unigine_Heaven-4.0/
+ 1131  ll
+ 1132  ./heaven 
+ 1133  ssh craig@dove
+ 1134  sudo apt-get install kolourpaint4
+ 1135  top
+ 1136  ssh craig@dove
+ 1137  genpw
+ 1138  ssh craig@dove
+ 1139  service iptables status
+ 1140  ssh craig@dove
+ 1141  cowsay
+ 1142  sudo apt install cowsay
+ 1143  cowsay Moo Mu
+ 1144  cd github/UnixHome/
+ 1145  gitdown
+ 1146  cd ..
+ 1147  ll
+ 1148  cd ../gitdove/
+ 1149  ll
+ 1150  cd mail-utils/
+ 1151  gitdown
+ 1152  cd ../wan-utils/
+ 1153  gitdown
+ 1154  ll
+ 1155  cd bin
+ 1156  ll
+ 1157  emacs &
+ 1158  top
+ 1159  cd ~/Downloads/
+ 1160  lt
+ 1161  ll trojita-0.7.tar.xz 
+ 1162  tar tvf trojita-0.7.tar.xz  | less
+ 1163  mkdir ../src
+ 1164  cd ../src
+ 1165  tar xvf ../Downloads/trojita-0.7.tar.xz 
+ 1166  cd trojita-0.7/
+ 1167  l
+ 1168  ll
+ 1169  cd cmake/
+ 1170  ll
+ 1171  cd ..
+ 1172  less README 
+ 1173  mkdir _build; cd _build
+ 1174  cmake ..
+ 1175  sudo apt install cmake
+ 1176  cmake ..
+ 1177  sudo apt install qt
+ 1178  sudo apt install t
+ 1179  sudo apt install Qt
+ 1180  sudo apt install Qt5Core
+ 1181  dirs
+ 1182  pushd ~/Downloads/
+ 1183  lt | head
+ 1184  head qt-unified-linux-x64-3.0.5-online.run 
+ 1185  file qt-unified-linux-x64-3.0.5-online.run 
+ 1186  ./qt-
+ 1187  chmod +x qt-unified-linux-x64-3.0.5-online.run 
+ 1188  ./qt-unified-linux-x64-3.0.5-online.run 
+ 1189  genpw
+ 1190  bg
+ 1191  popd
+ 1192  cmake ..
+ 1193  find /home/craig/Qt/ -name "*.cmake"
+ 1194  find /home/craig/Qt/ -name "Qt5Score.cmake"
+ 1195  cmake ..
+ 1196  find /home/craig/Qt/ -name "Qt5Core.cmake"
+ 1197  find /home/craig/Qt/ -name "Qt5CoreConfig.cmake"
+ 1198  find /home/craig/Qt/ -name "qt5core-config.cmake"
+ 1199  Qt5Core_DIR=~/Qt/5.11.1/gcc_64/lib/cmake/Qt5Core
+ 1200  cmake ..
+ 1201  export Qt5Core_DIR
+ 1202  echo $Qt5Core_DIR
+ 1203  cmake ..
+ 1204  find /home/craig/Qt/ -name "Qt5GuiConfig.cmake"
+ 1205  export Qt5Gui_DIR=~/Qt/5.11.1/gcc_64/lib/cmake/Qt5Gui
+ 1206  cmake ..
+ 1207  export Qt5Network_DIR=~/Qt/5.11.1/gcc_64/lib/cmake/Qt5Network
+ 1208  cmake ..
+ 1209  export Qt5Sql_DIR=~/Qt/5.11.1/gcc_64/lib/cmake/Qt5Sql
+ 1210  cmake ..
+ 1211  pushd
+ 1212  pushd ~/Qt
+ 1213  ll
+ 1214  cd 5.11.1
+ 1215  ll
+ 1216  cd gcc_64/
+ 1217  ll
+ 1218  cd bih
+ 1219  cd bin
+ 1220  ll
+ 1221  cat qt.conf
+ 1222  popd
+ 1223  cmake ..
+ 1224  export Qt5WebKitWidgets_DIR=~/Qt/5.11.1/gcc_64/lib/cmake/Qt5WebKitWidgets
+ 1225  cmake ..
+ 1226  find /home/craig/Qt/ -name "Qt5GuiConfig.cmake"
+ 1227  find /home/craig/Qt/ -name "FindQt5WebKitWidgets.cmake"
+ 1228  find /home/craig/Qt/ -name "Qt5WebKitWidgetsConfig.cmake"
+ 1229  find /home/craig/Qt/ -name "*WebKitWidgets*.cmake"
+ 1230  ll /usr/lib64/cmake
+ 1231  brew --prefix qt5
+ 1232  dirs
+ 1233  pushd ~/Downloads/
+ 1234  ll
+ 1235  lt | head
+ 1236  ./qt-unified-linux-x64-3.0.5-online.run 
+ 1237  cd ~/Qt
+ 1238  lt
+ 1239  file update.rcc 
+ 1240  pushd
+ 1241  sudo apt install qtwebkit
+ 1242  sudo apt install libqtwebkit-dev
+ 1243  cmake ..
+ 1244  find /home/craig/Qt/ -name "*WebKitWidgets*.cmake"
+ 1245  lt /usr/lib64 | head
+ 1246  lt /usr/lib64/ | head
+ 1247  lt /usr/lib64/Apkgconfig/ | head
+ 1248  date
+ 1249  lt /usr/lib/ | head
+ 1250  lt /usr/lib/x86_64-linux-gnu/ | head
+ 1251  lt /usr/lib/x86_64-linux-gnu/pkgconfig/ | head
+ 1252  cd ~
+ 1253  rm -fr Qt
+ 1254  sudo apt remove libqtwebkit-dev
+ 1255  dirs
+ 1256  popd
+ 1257  cd
+ 1258  dirs
+ 1259  pushd
+ 1260  popd
+ 1261  dirs
+ 1262  lt | head
+ 1263  cd src
+ 1264  ll
+ 1265  rm -fr trojita-0.7/
+ 1266  history | grep Web
+ 1267  cd ../Downloads/
+ 1268  lt | head
+ 1269  tar tvf balsa-2.5.6.tar.bz2 | less
+ 1270  cd ../src
+ 1271  tar xvf ../Downloads/balsa-2.5.6.tar.bz2 
+ 1272  cd balsa-2.5.6/
+ 1273  ll
+ 1274  cat README
+ 1275  lt
+ 1276  make -k
+ 1277  ./config
+ 1278  ./configure 
+ 1279  sudo apt install yelp-tools
+ 1280  sudo apt install intltool
+ 1281  ./configure 
+ 1282  sudo apt install gmime-2.6
+ 1283  ./configure 
+ 1284  sudo apt install webkit2gtk-4.0
+ 1285  ./configure 
+ 1286  sudo apt install libopenssl-dev
+ 1287  sudo apt install libopenssl-devel
+ 1288  sudo apt install openssl
+ 1289  sudo apt install libssl-devel
+ 1290  sudo apt install libssl-dev
+ 1291  ./configure 
+ 1292  sudo apt install libnotify
+ 1293  sudo apt install libnotify-dev
+ 1294  ./configure 
+ 1295  sudo apt install enchant
+ 1296  sudo apt install libenchant-dev
+ 1297  ./configure 
+ 1298  emacs &
+ 1299  ./balsa
+ 1300  lt
+ 1301  sudo make install
+ 1302  balsa
+ 1303  bg
+ 1304  history | grep apt
+ 1305  jobs
+ 1306  balsa &
+ 1307  lt | head
+ 1308  lt /tmp | head
+ 1309  lt /tmp/gnome-software-H006MZ/ | head
+ 1310  df
+ 1311  dirs
+ 1312  lld ~/.balsa
+ 1313  lld ~/mail
+ 1314  ll ~/mail
+ 1315  ls -ltR ~/mail | less
+ 1316  fg
+ 1317  bg
+ 1318  ssh craig@dove
+ 1319  lein
+ 1320  ssh craig@dove
+ 1321  ssh craig@bear
+ 1322  npm
+ 1323  sudo apt install npm
+ 1324  sudo npm install -g closh
+ 1325  node
+ 1326  sudo apt-get install -y nodejs
+ 1327  node -v
+ 1328  nodejs -v
+ 1329  lt | head
+ 1330  mkdir ~/tmp
+ 1331  mkdir ~/tmp/nodejs
+ 1332  pushd ~/tmp/nodejs
+ 1333  mv -iv ~/src/balsa-2.5.6/npm-debug.log .
+ 1334  ll
+ 1335  curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+ 1336  sudo apt install curl
+ 1337  curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+ 1338  curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+ 1339  sudo apt-get install -y nodejs
+ 1340  sudo apt-get install -y npm build-essential
+ 1341  sudo apt-get install -y build-essential
+ 1342  sudo apt autoremove
+ 1343  node -v
+ 1344  nodejs -v
+ 1345  sudo apt-get install -y build-essential
+ 1346  history | egrep '(sudo|curl)'
+ 1347  sudo apt install npm
+ 1348  sudo apt install npm nodejs
+ 1349  sudo apt install npm
+ 1350  npm -v
+ 1351  sudo npm install -g closh
+ 1352  sudo npm i -g dundalek/closh
+ 1353  lt | head
+ 1354  date
+ 1355  ll ~/.npm
+ 1356  ll ~/.npm/_cacache/
+ 1357  sudo npm i -g dundalek/closh
+ 1358  ll ~/.npm/_cacache/tmp/
+ 1359  lla ~/.npm/_cacache/tmp/
+ 1360  lld ~/.npm/_cacache/tmp/
+ 1361  npm i -g dundalek/closh
+ 1362  sudo npm i -g dundalek/closh
+ 1363  closh
+ 1364  cd ~/github
+ 1365  ll
+ 1366  cd ../src
+ 1367  ll
+ 1368  cd ../github
+ 1369  ll
+ 1370  git clone git@github.com:dundalek/closh.git
+ 1371  cd closh
+ 1372  npm install
+ 1373  npm start
+ 1374  npm rrun dev
+ 1375  npm run dev
+ 1376  lein test
+ 1377  sudo apt install lein
+ 1378  sudo apt install leiningen
+ 1379  java -v
+ 1380  java -c
+ 1381  java --version
+ 1382  java
+ 1383  man java
+ 1384  java -V
+ 1385  java -v
+ 1386  java hey
+ 1387  sudo npm install -g closh
+ 1388  closh
+ 1389  lld .
+ 1390  dirs
+ 1391  pushd ~/tmp
+ 1392  sudo npm install -g closh
+ 1393  sudo apt upgrade
+ 1394  sudo apt update
+ 1395  sudo apt upgrade
+ 1396  sudo apt install npm
+ 1397  sudo apt upgrade npm
+ 1398  npm -v
+ 1399  node -v
+ 1400  ll
+ 1401  pushd ~/gitdove
+ 1402  ll
+ 1403  cd wan-utils
+ 1404  emacs bin/backup.sh &
+ 1405  popd
+ 1406  curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+ 1407  curl -o- https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+ 1408  curl -o https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+ 1409  curl -O https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+ 1410  lt
+ 1411  less lein
+ 1412  chmod +x lein
+ 1413  ll
+ 1414  mv -iv lein ~/bin
+ 1415  lein -v
+ 1416  closh
+ 1417  ./closh
+ 1418  ll
+ 1419  ll nodejs
+ 1420  cd nodejs
+ 1421  npm install -g closh
+ 1422  sudo npm install -g closh
+ 1423  sudo -i
+ 1424  cd ~/github
+ 1425  ll
+ 1426  cd closh
+ 1427  ll
+ 1428  node -v
+ 1429  lumo -v
+ 1430  node -v
+ 1431  npm -v
+ 1432  npm install -g closh
+ 1433  sudo npm install -g closh
+ 1434  dirs
+ 1435  cd ~/tmp/
+ 1436  mkdir closh
+ 1437  ll
+ 1438  cd closh
+ 1439  ll
+ 1440  histor y20
+ 1441  history 20
+ 1442  node -v
+ 1443  npm -v
+ 1444  npm install -g closh
+ 1445  sudo npm install -g closh
+ 1446  sudo npm install -g lumo-cljs
+ 1447  npm install -g lumo-cljs
+ 1448  sudo npm install -g lumo-cljs
+ 1449  sudo npm install -g lumo-cljs --unsafe-perm
+ 1450  sudo npm install -g closh
+ 1451  sudo npm install -g closh --unsafe-perm
+ 1452  closh
+ 1453  which closh
+ 1454  closh -v
+ 1455  closh -V
+ 1456  closh --version
+ 1457  ll /bin/closh
+ 1458  ll /usr/bin/closh
+ 1459  pushd ~/play
+ 1460  chmod +x foo.closh
+ 1461  ./foo.closh 
+ 1462  history 50
+ 1463  lumo -v
+ 1464  lumo
+ 1465  apt status closh
+ 1466  apt
+ 1467  apt show closh
+ 1468  sudo apt show closh
+ 1469  npm
+ 1470  npm get -h
+ 1471  npm list -h
+ 1472  npm ls closh
+ 1473  sudo npm ls closh
+ 1474  npm version
+ 1475  npm version -g
+ 1476  dirs
+ 1477  pushd +2
+ 1478  ll
+ 1479  npm install -h
+ 1480  npm help install
+ 1481  dirs
+ 1482  pushd -1
+ 1483  dirs
+ 1484  pushd
+ 1485  ll
+ 1486  lla
+ 1487  npm i -g dundalek/closh
+ 1488  sudo npm i -g dundalek/closh
+ 1489  sudo npm i -g --unsafe-perm dundalek/closh
+ 1490  sudo apt-get install libpcap-dev
+ 1491  sudo npm i -g --unsafe-perm dundalek/closh
+ 1492  npm -v
+ 1493  node -v
+ 1494  sudo npm install npm@latest -g
+ 1495  sudo npm i -g --unsafe-perm dundalek/closh
+ 1496  closh -v
+ 1497  which closh
+ 1498  lt
+ 1499  lta
+ 1500  ll /usr/bin/closh
+ 1501  ll /usr/bin/closh/
+ 1502  ll /usr/lib/node_modules/closh/bin/closh.sh
+ 1503  date
+ 1504  less /usr/lib/node_modules/closh/bin/closh.sh
+ 1505  tail /usr/lib/node_modules/closh/bin/closh.sh
+ 1506  echo $LUMO_BIN
+ 1507  echo $NODE_PATH
+ 1508  ll /usr/lib/node_modules/lumo-cljs/bin/lumo
+ 1509  date
+ 1510  ll /usr/lib/node_modules/lumo-cljs/bin/
+ 1511  ll /usr/lib/node_modules/lumo-cljs/bin/lumo.js
+ 1512  history 50
+ 1513  npm -v
+ 1514  less /usr/lib/node_modules/lumo-cljs/bin/lumo.js
+ 1515  time echo hey
+ 1516  time sh -c 'echo hey'
+ 1517  time closh <<< 'echo hey; exit'
+ 1518  time closh <<< 'echo hey\nexit'
+ 1519  time closh <<< "echo hey\nexit"
+ 1520  time closh <<< "echo hey"
+ 1521  cat /etc/shells
+ 1522  echo /usr/bin/closh | sudo sh -c 'cat >> /etc/shells'
+ 1523  cat /etc/shells
+ 1524  history 50
+ 1525  dirs
+ 1526  pushd
+ 1527  ll
+ 1528  ll *.closh
+ 1529  ./foo.closh 
+ 1530  cat foo.closh
+ 1531  ll
+ 1532  ll foo.closh
+ 1533  cat foo.closh
+ 1534  history | grep time
+ 1535  time sh -c 'echo hey'
+ 1536  time closh <<< "echo hey"
+ 1537  time closh <<< 'echo hey'
+ 1538  time bash -c 'echo hey'
+ 1539  time bash 'echo hey'
+ 1540  time bash -c 'alias'
+ 1541  jobs
+ 1542  time bash -c 'env'
+ 1543  lumo
+ 1544  time lumo < /dev/null
+ 1545  cd ..
+ 1546  cd github
+ 1547  ll
+ 1548  git clone https://github.com/anmonteiro/lumo.git
+ 1549  closh
+ 1550  ll
+ 1551  git clone https://github.com/clojure/clojure.git
+ 1552  ll
+ 1553  cd clojure
+ 1554  emacs &
+ 1555  ant
+ 1556  java -v
+ 1557  ./antsetup.sh 
+ 1558  mvn
+ 1559  sudo apt install maven
+ 1560  history 20
+ 1561  ./antsetup.sh 
+ 1562  ant local
+ 1563  java -jar clojure.jar
+ 1564  time java -jar clojure.jar << (quit)
+ 1565  time java -jar clojure.jar <<< '(quit)'
+ 1566  time java -jar clojure.jar <<< '(exit)'
+ 1567  time java -jar clojure.jar < /dev/null
+ 1568  which clojure
+ 1569  ant install
+ 1570  maven install
+ 1571  mvn install
+ 1572  which clojure
+ 1573  lein
+ 1574  lein -v
+ 1575  time closh < /dev/null
+ 1576  closh <<< 'ls |> (count %)'
+ 1577  closh <<< 'ls |> (count)'
+ 1578  ls
+ 1579  time bash < /dev/null
+ 1580  pushd ~/gitdove
+ 1581  emacs &
+ 1582  popd
+ 1583  pushd ~/Dropbox/Household/TSRR/
+ 1584  cmp read\ bible\ \&\ SH\ at\ TSRR\ CROPPED\ CAPTIONED.jpg read\ bible\ \&\ SH\ at\ TSRR\ CROPPED\ CAPTIONED\ \(1\).jpg 
+ 1585  cmp PastedGraphic-2.tiff PastedGraphic-2\ \(1\).tiff 
+ 1586  genpw
+ 1587  sudo add-apt-repository ppa:pinta-maintainers/pinta-stable
+ 1588  sudo apt-get update
+ 1589  sudo apt-get pinta
+ 1590  sudo apt-get install pinta
+ 1591  cat > /dev/null
+ 1592  sudo apt-get install karbon
+ 1593  sudo apt-get install inkscape
+ 1594  ssh craig@dove
+ 1595  ping dove
+ 1596  ssh craig@dove
+ 1597  ping dove
+ 1598  ssh craig@dove
+ 1599  ping dove
+ 1600  ssh craig@dove
+ 1601  sudo apt-get update
+ 1602  sudo apt-get dist-upgrade
+ 1603  sudo apt-get upgrade
+ 1604  sudo apt-get autoremove
+ 1605  sudo apt-get autoclean
+ 1606  reboot now
+ 1607  sudo reboot now
+ 1608  sudo -i
+ 1609  cd /etc
+ 1610  ls -lt | less
+ 1611  cd X11
+ 1612  ls -lt | less
+ 1613  date
+ 1614  fg
+ 1615  cd Xsession.d/
+ 1616  lt
+ 1617  lt | less
+ 1618  ps auxfwww | grep -i x
+ 1619  ps auxfwww | grep -i x | less
+ 1620  lt | less
+ 1621  cd ..
+ 1622  lt | less
+ 1623  less xorg.conf
+ 1624  cd /var/log
+ 1625  lt | less
+ 1626  less Xorg.0.log
+ 1627  lt | less
+ 1628  less Xorg.0.log.old
+ 1629  less Xorg.1.log
+ 1630  lt Xo* | less
+ 1631  less Xorg.failsafe.log
+ 1632  lt Xo* | less
+ 1633  less kern.log
+ 1634  cd
+ 1635  cd Downloads/
+ 1636  lt
+ 1637  lt | less
+ 1638  cd
+ 1639  lt | less
+ 1640  cd src
+ 1641  lt
+ 1642  cd ../bin
+ 1643  lt
+ 1644  cd ..
+ 1645  lt | less
+ 1646  cd tmp
+ 1647  lt
+ 1648  cd ..
+ 1649  lt
+ 1650  lt | less
+ 1651  cd play
+ 1652  lt
+ 1653  cd ../Downloads/
+ 1654  lt | less
+ 1655  less NVIDIA-Linux-x86_64-367.44.run 
+ 1656  chmod +x NVIDIA-Linux-x86_64-367.44.run 
+ 1657  pushd
+ 1658  pushd /etc/X11
+ 1659  lt | less
+ 1660  cd /var/log
+ 1661  less Xorg.0.log
+ 1662  uname a
+ 1663  uname -a
+ 1664  pushd
+ 1665  ./NVIDIA-Linux-x86_64-367.44.run --upgrade
+ 1666  ./NVIDIA-Linux-x86_64-367.44.run --help
+ 1667  ./NVIDIA-Linux-x86_64-367.44.run --update
+ 1668  top
+ 1669  cd NVIDIA-Linux-x86_64-367.44/
+ 1670  lt | head
+ 1671  date
+ 1672  lt | less
+ 1673  cd kernel
+ 1674  lt
+ 1675  lt | less
+ 1676  ping www.gnu.org
+ 1677  cd nvidia
+ 1678  lt
+ 1679  cd ../..
+ 1680  cd ..
+ 1681  ftp download.nvidia.com
+ 1682  curl -o- http://download.nvidia.com/XFree86/Linux_x86_64/390.77/NVIDIA-Linux-x86-64-390.77.run
+ 1683  curl -O http://download.nvidia.com/XFree86/Linux_x86_64/390.77/NVIDIA-Linux-x86_64-390.77.run | less
+ 1684  lt
+ 1685  lt NV*
+ 1686  ltd NV*
+ 1687  chmod +x NVIDIA-Linux-x86_64-390.77.run 
+ 1688  curl -O http://download.nvidia.com/XFree86/Linux-x86_64/390.77/NVIDIA-Linux-x86_64-390.77.run
+ 1689  chmod +x NVIDIA-Linux-x86_64-390.77.run 
+ 1690  less NVIDIA-Linux-x86_64-390.77.run 
+ 1691  fg
+ 1692  bash
+ 1693  echo hey
+ 1694  clojure
+ 1695  cd /usr/local/src/proguard6.0.3/
+ 1696  cd examples/standalone/
+ 1697  ll
+ 1698  less proguard.pro 
+ 1699  dirs
+ 1700  pushd ~/play/echo/JS
+ 1701  npm
+ 1702  npm init
+ 1703  npm install -g npm
+ 1704  sudo npm install -g npm
+ 1705  lt
+ 1706  cat package.json 
+ 1707  npm install express --save
+ 1708  lt
+ 1709  cat > echo.js
+ 1710  node echo.js
+ 1711  test
+ 1712  
+ 1713  node echo.js
+ 1714  test
+ 1715  node echo.js
+ 1716  time node echo.js <<< 'hey'
+ 1717  time node echo.js
+ 1718  cd ..
+ 1719  ll
+ 1720  mkdir ClojureScript
+ 1721  cd ClojureScript
+ 1722  ll
+ 1723  lumo
+ 1724  time lumo <<< '(println "hey")'
+ 1725  file /usr/bin/lumo
+ 1726  file $(readlink /usr/bin/lumo)
+ 1727  file $(readlink -f /usr/bin/lumo)
+ 1728  less $(readlink -f /usr/bin/lumo)
+ 1729  $(readlink -f /usr/bin/lumo)
+ 1730  file /usr/lib/node_modules/lumo-cljs/bin/lumo
+ 1731  ll /usr/lib/node_modules/lumo-cljs/bin/lumo
+ 1732  cd ../c
+ 1733  ./echo 
+ 1734  time ./echo <<< "hey"
+ 1735  ./echo
+ 1736  cd ../cpp
+ 1737  ./echo 
+ 1738  top
+ 1739  tail 1M.txt
+ 1740  top
+ 1741  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 1000)' | bzip2 -9 -v -c > 1K.txt
+ 1742  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 1000)' > 1K.txt
+ 1743  lt
+ 1744  time ../lisp-zero -q < 1K.txt
+ 1745  time lumo -e '(load-file "1K.txt")'
+ 1746  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 10000)' > 10K.txt
+ 1747  time ../lisp-zero -q < 10K.txt
+ 1748  time lumo -e '(load-file "10K.txt")'
+ 1749  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 100000)' > 100K.txt
+ 1750  time ../lisp-zero -q < 100K.txt
+ 1751  time lumo -e '(load-file "100K.txt")'
+ 1752  time ../lisp-zero -q < 100K.txt
+ 1753  time ../lisp-zero -q < 100K.out
+ 1754  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 100000)' > 100K.out
+ 1755  time ../lisp-zero -q < 100K.out
+ 1756  time lumo -e '(load-file "100K.out")'
+ 1757  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 1000000)' > 1M.out
+ 1758  time ../lisp-zero -q < 1M.out
+ 1759  clojure
+ 1760  clojure -q
+ 1761  clojure --help
+ 1762  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 1)' > 1.out
+ 1763  time ../lisp-zero -q < 1.out
+ 1764  time lumo -e '(load-file "1.out")'
+ 1765  time clojure -e '(load-file "1.out")'
+ 1766  time clojure -e '(load-file "1.out")' > /dev/null
+ 1767  time clojure -e '(load-file "10K.out")' > /dev/null
+ 1768  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 2)' > 2.out
+ 1769  time ../lisp-zero -q < 2.out
+ 1770  time lumo -e '(load-file "2.out")'
+ 1771  time clojure -e '(load-file "2.out")'
+ 1772  time clojure -e '(load-file "100K.out")'
+ 1773  time clojure -e '(load-file "1M.out")'
+ 1774  guile
+ 1775  guile --help
+ 1776  guile -l 1.txt
+ 1777  guile -l 1.out
+ 1778  guile 1.out
+ 1779  lt
+ 1780  guile 2.out
+ 1781  guile 1.out
+ 1782  guile 2.out
+ 1783  lt
+ 1784  lta
+ 1785  guile --no-auto-compile 2.out
+ 1786  guile --fresh-auto-compilation
+ 1787  guile --fresh-auto-compile
+ 1788  ll ~/.cache
+ 1789  ll ~/.cache/guile
+ 1790  ll ~/.cache/guile/ccache
+ 1791  ll ~/.cache/guile/ccache/2.0-LE-8-2.0/
+ 1792  ll ~/.cache/guile/ccache/2.0-LE-8-2.0/home
+ 1793  ll ~/.cache/guile/ccache/2.0-LE-8-2.0/home/craig
+ 1794  ll ~/.cache/guile/ccache/2.0-LE-8-2.0/home/craig/github
+ 1795  ll ~/.cache/guile/ccache/2.0-LE-8-2.0/home/craig/github/LispZero/
+ 1796  ll ~/.cache/guile/ccache/2.0-LE-8-2.0/home/craig/github/LispZero/perftests/
+ 1797  rm -f ~/.cache/guile/ccache/2.0-LE-8-2.0/home/craig/github/LispZero/perftests/*
+ 1798  guile --no-auto-compile 2.out
+ 1799  ll ~/.cache/guile/ccache/2.0-LE-8-2.0/home/craig/github/LispZero/perftests/
+ 1800  time guile --no-auto-compile 100K.out
+ 1801  time guile --no-auto-compile 1M.out
+ 1802  gcl
+ 1803  gcl --help
+ 1804  man gcl
+ 1805  gcl -f 1.txt
+ 1806  gcl -f 1.out
+ 1807  gcl -f 2.out
+ 1808  time gcl -f 100K.out
+ 1809  time gcl -f M.out
+ 1810  time gcl -f 1M.out
+ 1811  man emacs
+ 1812  emacs -l 1.out
+ 1813  emacs --batch -l 1.out
+ 1814  emacs --batch -l 2.out
+ 1815  time emacs --batch -l 100K.out
+ 1816  time emacs --batch -l 1M.out
+ 1817  scheme --version
+ 1818  scheme --help
+ 1819  scheme
+ 1820  jobs
+ 1821  fg
+ 1822  scheme --load 1.out
+ 1823  scheme --load 1.out 2.out
+ 1824  man scheme
+ 1825  mit-scheme
+ 1826  mit-scheme --help
+ 1827  which mit-scheme
+ 1828  file $(which mit-scheme)
+ 1829  file $(readlink -f $(which mit-scheme))
+ 1830  ll $(readlink -f $(which mit-scheme))
+ 1831  info 'MIT/GNU Scheme User'
+ 1832  man scheme
+ 1833  info "MIT/GNU Scheme User"
+ 1834  which info
+ 1835  info
+ 1836  scheme --load 1.out 2.out < /dev/null
+ 1837  time scheme --load 100K.out < /dev/null
+ 1838  time scheme --load 1M.out < /dev/null
+ 1839  history > HISTORY.txt
+ 1840  git add HISTORY.txt 
+ 1841  ll
+ 1842  gitstat
+ 1843  git commit -a -m "Remember how some timings were done"
+ 1844  git push
+ 1845  which clojure
+ 1846  clojure --version
+ 1847  clojure -version
+ 1848  clojure -V
+ 1849  clojure --help
+ 1850  clojure
+ 1851  history | grep clojure
+ 1852  file /usr/bin/clojure
+ 1853  file $(readlink -f /usr/bin/clojure)
+ 1854  ll /usr/bin/clojure1.10
+ 1855  ll /etc/alternatives/clojure
+ 1856  ll /etc/alternatives/clojure*
+ 1857  ll /usr/share/man/man1/cloju*
+ 1858  file /usr/bin/clojure1.6
+ 1859  cat /usr/bin/clojure1.6
+ 1860  lt
+ 1861  tail HISTORY.txt 
+ 1862  history | tail
+ 1863  history | head
+ 1864  head HISTORY.txt 
+ 1865  history > HISTORY-1.txt 

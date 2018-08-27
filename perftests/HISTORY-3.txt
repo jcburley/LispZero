@@ -1,0 +1,1000 @@
+ 1065  time java -jar clojure.jar << (quit)
+ 1066  time java -jar clojure.jar <<< '(quit)'
+ 1067  time java -jar clojure.jar <<< '(exit)'
+ 1068  time java -jar clojure.jar < /dev/null
+ 1069  which clojure
+ 1070  ant install
+ 1071  maven install
+ 1072  mvn install
+ 1073  which clojure
+ 1074  lein
+ 1075  lein -v
+ 1076  time closh < /dev/null
+ 1077  closh <<< 'ls |> (count %)'
+ 1078  closh <<< 'ls |> (count)'
+ 1079  ls
+ 1080  time bash < /dev/null
+ 1081  pushd ~/gitdove
+ 1082  emacs &
+ 1083  popd
+ 1084  pushd ~/Dropbox/Household/TSRR/
+ 1085  cmp read\ bible\ \&\ SH\ at\ TSRR\ CROPPED\ CAPTIONED.jpg read\ bible\ \&\ SH\ at\ TSRR\ CROPPED\ CAPTIONED\ \(1\).jpg 
+ 1086  cmp PastedGraphic-2.tiff PastedGraphic-2\ \(1\).tiff 
+ 1087  genpw
+ 1088  sudo add-apt-repository ppa:pinta-maintainers/pinta-stable
+ 1089  sudo apt-get update
+ 1090  sudo apt-get pinta
+ 1091  sudo apt-get install pinta
+ 1092  cat > /dev/null
+ 1093  sudo apt-get install karbon
+ 1094  sudo apt-get install inkscape
+ 1095  ssh craig@dove
+ 1096  ping dove
+ 1097  ssh craig@dove
+ 1098  ping dove
+ 1099  ssh craig@dove
+ 1100  ping dove
+ 1101  ssh craig@dove
+ 1102  sudo apt-get update
+ 1103  sudo apt-get dist-upgrade
+ 1104  sudo apt-get upgrade
+ 1105  sudo apt-get autoremove
+ 1106  sudo apt-get autoclean
+ 1107  reboot now
+ 1108  sudo reboot now
+ 1109  sudo -i
+ 1110  cd /etc
+ 1111  ls -lt | less
+ 1112  cd X11
+ 1113  ls -lt | less
+ 1114  date
+ 1115  fg
+ 1116  cd Xsession.d/
+ 1117  lt
+ 1118  lt | less
+ 1119  ps auxfwww | grep -i x
+ 1120  ps auxfwww | grep -i x | less
+ 1121  lt | less
+ 1122  cd ..
+ 1123  lt | less
+ 1124  less xorg.conf
+ 1125  cd /var/log
+ 1126  lt | less
+ 1127  less Xorg.0.log
+ 1128  lt | less
+ 1129  less Xorg.0.log.old
+ 1130  less Xorg.1.log
+ 1131  lt Xo* | less
+ 1132  less Xorg.failsafe.log
+ 1133  lt Xo* | less
+ 1134  less kern.log
+ 1135  cd
+ 1136  cd Downloads/
+ 1137  lt
+ 1138  lt | less
+ 1139  cd
+ 1140  lt | less
+ 1141  cd src
+ 1142  lt
+ 1143  cd ../bin
+ 1144  lt
+ 1145  cd ..
+ 1146  lt | less
+ 1147  cd tmp
+ 1148  lt
+ 1149  cd ..
+ 1150  lt
+ 1151  lt | less
+ 1152  cd play
+ 1153  lt
+ 1154  cd ../Downloads/
+ 1155  lt | less
+ 1156  less NVIDIA-Linux-x86_64-367.44.run 
+ 1157  chmod +x NVIDIA-Linux-x86_64-367.44.run 
+ 1158  pushd
+ 1159  pushd /etc/X11
+ 1160  lt | less
+ 1161  cd /var/log
+ 1162  less Xorg.0.log
+ 1163  uname a
+ 1164  uname -a
+ 1165  pushd
+ 1166  ./NVIDIA-Linux-x86_64-367.44.run --upgrade
+ 1167  ./NVIDIA-Linux-x86_64-367.44.run --help
+ 1168  ./NVIDIA-Linux-x86_64-367.44.run --update
+ 1169  top
+ 1170  cd NVIDIA-Linux-x86_64-367.44/
+ 1171  lt | head
+ 1172  date
+ 1173  lt | less
+ 1174  cd kernel
+ 1175  lt
+ 1176  lt | less
+ 1177  ping www.gnu.org
+ 1178  cd nvidia
+ 1179  lt
+ 1180  cd ../..
+ 1181  cd ..
+ 1182  ftp download.nvidia.com
+ 1183  curl -o- http://download.nvidia.com/XFree86/Linux_x86_64/390.77/NVIDIA-Linux-x86-64-390.77.run
+ 1184  curl -O http://download.nvidia.com/XFree86/Linux_x86_64/390.77/NVIDIA-Linux-x86_64-390.77.run | less
+ 1185  lt
+ 1186  lt NV*
+ 1187  ltd NV*
+ 1188  chmod +x NVIDIA-Linux-x86_64-390.77.run 
+ 1189  curl -O http://download.nvidia.com/XFree86/Linux-x86_64/390.77/NVIDIA-Linux-x86_64-390.77.run
+ 1190  chmod +x NVIDIA-Linux-x86_64-390.77.run 
+ 1191  less NVIDIA-Linux-x86_64-390.77.run 
+ 1192  fg
+ 1193  bash
+ 1194  echo hey
+ 1195  clojure
+ 1196  cd /usr/local/src/proguard6.0.3/
+ 1197  cd examples/standalone/
+ 1198  ll
+ 1199  less proguard.pro 
+ 1200  dirs
+ 1201  pushd ~/play/echo/JS
+ 1202  npm
+ 1203  npm init
+ 1204  npm install -g npm
+ 1205  sudo npm install -g npm
+ 1206  lt
+ 1207  cat package.json 
+ 1208  npm install express --save
+ 1209  lt
+ 1210  cat > echo.js
+ 1211  node echo.js
+ 1212  test
+ 1213  
+ 1214  node echo.js
+ 1215  test
+ 1216  node echo.js
+ 1217  time node echo.js <<< 'hey'
+ 1218  time node echo.js
+ 1219  cd ..
+ 1220  ll
+ 1221  mkdir ClojureScript
+ 1222  cd ClojureScript
+ 1223  ll
+ 1224  lumo
+ 1225  time lumo <<< '(println "hey")'
+ 1226  file /usr/bin/lumo
+ 1227  file $(readlink /usr/bin/lumo)
+ 1228  file $(readlink -f /usr/bin/lumo)
+ 1229  less $(readlink -f /usr/bin/lumo)
+ 1230  $(readlink -f /usr/bin/lumo)
+ 1231  file /usr/lib/node_modules/lumo-cljs/bin/lumo
+ 1232  ll /usr/lib/node_modules/lumo-cljs/bin/lumo
+ 1233  cd ../c
+ 1234  ./echo 
+ 1235  time ./echo <<< "hey"
+ 1236  ./echo
+ 1237  cd ../cpp
+ 1238  ./echo 
+ 1239  top
+ 1240  tail 1M.txt
+ 1241  top
+ 1242  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 1000)' | bzip2 -9 -v -c > 1K.txt
+ 1243  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 1000)' > 1K.txt
+ 1244  lt
+ 1245  time ../lisp-zero -q < 1K.txt
+ 1246  time lumo -e '(load-file "1K.txt")'
+ 1247  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 10000)' > 10K.txt
+ 1248  time ../lisp-zero -q < 10K.txt
+ 1249  time lumo -e '(load-file "10K.txt")'
+ 1250  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 100000)' > 100K.txt
+ 1251  time ../lisp-zero -q < 100K.txt
+ 1252  time lumo -e '(load-file "100K.txt")'
+ 1253  time ../lisp-zero -q < 100K.txt
+ 1254  time ../lisp-zero -q < 100K.out
+ 1255  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 100000)' > 100K.out
+ 1256  time ../lisp-zero -q < 100K.out
+ 1257  time lumo -e '(load-file "100K.out")'
+ 1258  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 1000000)' > 1M.out
+ 1259  time ../lisp-zero -q < 1M.out
+ 1260  clojure
+ 1261  clojure -q
+ 1262  clojure --help
+ 1263  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 1)' > 1.out
+ 1264  time ../lisp-zero -q < 1.out
+ 1265  time lumo -e '(load-file "1.out")'
+ 1266  time clojure -e '(load-file "1.out")'
+ 1267  time clojure -e '(load-file "1.out")' > /dev/null
+ 1268  time clojure -e '(load-file "10K.out")' > /dev/null
+ 1269  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 2)' > 2.out
+ 1270  time ../lisp-zero -q < 2.out
+ 1271  time lumo -e '(load-file "2.out")'
+ 1272  time clojure -e '(load-file "2.out")'
+ 1273  time clojure -e '(load-file "100K.out")'
+ 1274  time clojure -e '(load-file "1M.out")'
+ 1275  guile
+ 1276  guile --help
+ 1277  guile -l 1.txt
+ 1278  guile -l 1.out
+ 1279  guile 1.out
+ 1280  lt
+ 1281  guile 2.out
+ 1282  guile 1.out
+ 1283  guile 2.out
+ 1284  lt
+ 1285  lta
+ 1286  guile --no-auto-compile 2.out
+ 1287  guile --fresh-auto-compilation
+ 1288  guile --fresh-auto-compile
+ 1289  ll ~/.cache
+ 1290  ll ~/.cache/guile
+ 1291  ll ~/.cache/guile/ccache
+ 1292  ll ~/.cache/guile/ccache/2.0-LE-8-2.0/
+ 1293  ll ~/.cache/guile/ccache/2.0-LE-8-2.0/home
+ 1294  ll ~/.cache/guile/ccache/2.0-LE-8-2.0/home/craig
+ 1295  ll ~/.cache/guile/ccache/2.0-LE-8-2.0/home/craig/github
+ 1296  ll ~/.cache/guile/ccache/2.0-LE-8-2.0/home/craig/github/LispZero/
+ 1297  ll ~/.cache/guile/ccache/2.0-LE-8-2.0/home/craig/github/LispZero/perftests/
+ 1298  rm -f ~/.cache/guile/ccache/2.0-LE-8-2.0/home/craig/github/LispZero/perftests/*
+ 1299  guile --no-auto-compile 2.out
+ 1300  ll ~/.cache/guile/ccache/2.0-LE-8-2.0/home/craig/github/LispZero/perftests/
+ 1301  time guile --no-auto-compile 100K.out
+ 1302  time guile --no-auto-compile 1M.out
+ 1303  gcl
+ 1304  gcl --help
+ 1305  man gcl
+ 1306  gcl -f 1.txt
+ 1307  gcl -f 1.out
+ 1308  gcl -f 2.out
+ 1309  time gcl -f 100K.out
+ 1310  time gcl -f M.out
+ 1311  time gcl -f 1M.out
+ 1312  man emacs
+ 1313  emacs -l 1.out
+ 1314  emacs --batch -l 1.out
+ 1315  emacs --batch -l 2.out
+ 1316  time emacs --batch -l 100K.out
+ 1317  time emacs --batch -l 1M.out
+ 1318  scheme --version
+ 1319  scheme --help
+ 1320  scheme
+ 1321  jobs
+ 1322  fg
+ 1323  scheme --load 1.out
+ 1324  scheme --load 1.out 2.out
+ 1325  man scheme
+ 1326  mit-scheme
+ 1327  mit-scheme --help
+ 1328  which mit-scheme
+ 1329  file $(which mit-scheme)
+ 1330  file $(readlink -f $(which mit-scheme))
+ 1331  ll $(readlink -f $(which mit-scheme))
+ 1332  info 'MIT/GNU Scheme User'
+ 1333  man scheme
+ 1334  info "MIT/GNU Scheme User"
+ 1335  which info
+ 1336  info
+ 1337  scheme --load 1.out 2.out < /dev/null
+ 1338  time scheme --load 100K.out < /dev/null
+ 1339  time scheme --load 1M.out < /dev/null
+ 1340  history > HISTORY.txt
+ 1341  git add HISTORY.txt 
+ 1342  ll
+ 1343  gitstat
+ 1344  git commit -a -m "Remember how some timings were done"
+ 1345  git push
+ 1346  which clojure
+ 1347  clojure --version
+ 1348  clojure -version
+ 1349  clojure -V
+ 1350  clojure --help
+ 1351  clojure
+ 1352  history | grep clojure
+ 1353  file /usr/bin/clojure
+ 1354  file $(readlink -f /usr/bin/clojure)
+ 1355  ll /usr/bin/clojure1.10
+ 1356  ll /etc/alternatives/clojure
+ 1357  ll /etc/alternatives/clojure*
+ 1358  ll /usr/share/man/man1/cloju*
+ 1359  file /usr/bin/clojure1.6
+ 1360  cat /usr/bin/clojure1.6
+ 1361  lt
+ 1362  tail HISTORY.txt 
+ 1363  history | tail
+ 1364  history | head
+ 1365  head HISTORY.txt 
+ 1366  history > HISTORY-1.txt 
+ 1367  ssh craig@dove
+ 1368  cd gitdove/mail-utils/
+ 1369  emacs &
+ 1370  gitdown
+ 1371  cd ../wan-utils
+ 1372  gitdown
+ 1373  cd ../mail-utils
+ 1374  fg
+ 1375  bg
+ 1376  dirs
+ 1377  gitdown
+ 1378  pushd ~/play/echo/java
+ 1379  javac echo.java 
+ 1380  mv -iv echo.java Echo.java
+ 1381  javac Echo.java 
+ 1382  java Echo 
+ 1383  time java Echo 
+ 1384  javac Echo.java 
+ 1385  java Echo 
+ 1386  lt
+ 1387  rm echo.java
+ 1388  javac Echo.java 
+ 1389  java Echo 
+ 1390  java Echo < /dev/null
+ 1391  javac Echo.java 
+ 1392  java Echo 
+ 1393  javac Echo.java 
+ 1394  java Echo 
+ 1395  javac Echo.java 
+ 1396  java -v
+ 1397  java --version
+ 1398  javac --version
+ 1399  javac -v
+ 1400  apt info java
+ 1401  apt list java
+ 1402  apt list | grep -i java
+ 1403  java -version
+ 1404  which javac
+ 1405  which java
+ 1406  javac -version
+ 1407  sudo add-apt-repository ppa:webupd8team/java
+ 1408  sudo add-apt-repository https://www.linuxuprising.com/2018/04/install-oracle-java-10-in-ubuntu-or.html
+ 1409  sudo apt-get update
+ 1410  sudo apt install oracle-java10-installer
+ 1411  sudo apt-get install openjdk-11-jdk
+ 1412  sudo add-apt-repository ppa:linuxuprising/java
+ 1413  sudo apt-get update
+ 1414  sudo apt-get install oracle-java10-installer
+ 1415  sudo apt install oracle-java10-set-default
+ 1416  java -version
+ 1417  javac -version
+ 1418  sudo apt-get autoremove
+ 1419  sudo apt-get autoclean
+ 1420  javac Echo.java 
+ 1421  java Echo.java
+ 1422  java Echo
+ 1423  java Echo &
+ 1424  cat /proc/16711/mem
+ 1425  cat /proc/16711/status
+ 1426  fg
+ 1427  time java Echo <<< "hey"
+ 1428  jobs
+ 1429  ps
+ 1430  grep VmPeak /proc/10232/status
+ 1431  java Echo &
+ 1432  grep VmPeak /proc/16990/status
+ 1433  time java Echo <<< "hey"
+ 1434  time bash 'echo hey'
+ 1435  time bash -c 'echo hey'
+ 1436  bash &
+ 1437  jobs
+ 1438  kill %2
+ 1439  grep VmPeak /proc/17236/status
+ 1440  fg
+ 1441  bash 
+ 1442  clojure
+ 1443  sudo apt install clojure1.6
+ 1444  cd ..
+ 1445  mkdir clojure
+ 1446  cd clojure
+ 1447  clojure -v
+ 1448  clojure -version
+ 1449  clojure
+ 1450  time clojure <<< '(println "hey")'
+ 1451  clojure &
+ 1452  ps
+ 1453  which clojure
+ 1454  file /usr/bin/clojure
+ 1455  file /etc/alternatives/clojure
+ 1456  file /usr/bin/clojure1.6
+ 1457  less /usr/bin/clojure1.6 
+ 1458  fg
+ 1459  jobs
+ 1460  ps
+ 1461  ps u
+ 1462  lt
+ 1463  file /usr/share/java/clojure-1.6.jar 
+ 1464  file /usr/share/java/clojure-1.6.0.jar 
+ 1465  pushd ~/Downloads/
+ 1466  lt | head
+ 1467  tar tfz proguard6.0.3.tar.gz 
+ 1468  pushd /usr/local/src
+ 1469  lt
+ 1470  ltd
+ 1471  tar xfz ~/Downloads/proguard6.0.3.tar.gz 
+ 1472  lt
+ 1473  cd proguard6.0.3/
+ 1474  lt
+ 1475  cat README 
+ 1476  dirs
+ 1477  pushd
+ 1478  pushd +2
+ 1479  ll
+ 1480  cd ../java
+ 1481  ll
+ 1482  /usr/local/src/proguard6.0.3/bin/proguard.sh @ Echo.java
+ 1483  /usr/local/src/proguard6.0.3/bin/proguard.sh @ Echo
+ 1484  /usr/local/src/proguard6.0.3/bin/proguard.sh @ Echo.class 
+ 1485  /usr/local/src/proguard6.0.3/bin/proguard.sh
+ 1486  /usr/local/src/proguard6.0.3/bin/proguard.sh -injars Echo.class 
+ 1487  cat > Echo.mf
+ 1488  jar cmf Echo.mf Echo.jar Echo.class Echo.java
+ 1489  lt
+ 1490  file Echo.jar
+ 1491  less Echo.
+ 1492  less Echo.ja
+ 1493  less Echo.jar
+ 1494  java -jar Echo.jar 
+ 1495  time java -jar Echo.jar <<< 'hey'
+ 1496  java tf Echo.ja
+ 1497  java tf Echo.jar
+ 1498  lt
+ 1499  jar tf Echo.jar
+ 1500  jar tf Echo.jar 
+ 1501  lt
+ 1502  strings Echo.jar
+ 1503  /usr/local/src/proguard6.0.3/bin/proguard.sh -injars Echo.jar
+ 1504  /usr/local/src/proguard6.0.3/bin/proguard.sh -dontwarn -injars Echo.jar
+ 1505  lt
+ 1506  date
+ 1507  /usr/local/src/proguard6.0.3/bin/proguard.sh -dontwarn -injars Echo.jar -outjars Echo-pro.jar
+ 1508  /usr/local/src/proguard6.0.3/bin/proguard.sh -dontwarn -keep -injars Echo.jar -outjars Echo-pro.jar
+ 1509  /usr/local/src/proguard6.0.3/bin/proguard.sh -dontwarn -injars Echo.jar -outjars Echo-pro.jar -keep
+ 1510  /usr/local/src/proguard6.0.3/bin/proguard.sh -dontwarn -injars Echo.jar -outjars Echo-pro.jar
+ 1511  env | grep -i java
+ 1512  ll /usr/lib/java*
+ 1513  find /usr/lib -name rt.jar
+ 1514  find /usr/local/lib -name rt.jar
+ 1515  find /lib -name rt.jar
+ 1516  which java
+ 1517  java -version
+ 1518  javac -version
+ 1519  whereis java
+ 1520  ll /usr/bin/java
+ 1521  ll /etc/alternatives/java
+ 1522  find /usr/lib/jvm/java-10-oracle -name "*.jar"
+ 1523  readlink
+ 1524  man readlink
+ 1525  readlink -f $(which java)
+ 1526  find /usr/lib/jvm/java-10-oracle -name "*rt*.jar"
+ 1527  cd ..
+ 1528  mkdir JS
+ 1529  cd JS
+ 1530  ll
+ 1531  ps
+ 1532  ps u
+ 1533  kill 8296
+ 1534  kill 8269
+ 1535  ps u
+ 1536  kill 8326
+ 1537  ps u
+ 1538  kill 8377
+ 1539  ps u
+ 1540  grep -i vmpeak /proc/8646/status
+ 1541  ps u
+ 1542  grep -i vmpeak /proc/8709/status
+ 1543  ps u
+ 1544  grep -i vmpeak /proc/9359/status
+ 1545  ps u
+ 1546  grep -i vmpeak /proc/9882/status
+ 1547  ps u
+ 1548  grep -i vmpeak /proc/10923/status
+ 1549  ps u
+ 1550  grep -i vmpeak /proc/12018/status
+ 1551  cd ..
+ 1552  history > HISTORY-2.txt 
+ 1553  cd ~/github
+ 1554  ll
+ 1555  cd lumo
+ 1556  git remote show origin
+ 1557  cd ..
+ 1558  git clone https://github.com/jcburley/LispZero.git
+ 1559  ll
+ 1560  cd LispZero/
+ 1561  ll
+ 1562  cat README 
+ 1563  make -k
+ 1564  ll
+ 1565  mkdir perftests
+ 1566  range
+ 1567  for i in 1..10; do echo $i; done
+ 1568  for i in 1 10; do echo $i; done
+ 1569  lumo
+ 1570  lumo --help
+ 1571  cd ..
+ 1572  git clone https://github.com/jcburley/clojure-tools.git
+ 1573  cd clojure-tools
+ 1574  ll
+ 1575  ll core
+ 1576  cd core
+ 1577  less collections.clj 
+ 1578  popd
+ 1579  pushd ~/github/LispZero/perftests/
+ 1580  cat redirection.clj 
+ 1581  lt
+ 1582  top
+ 1583  ../lisp-zero -q < 1M.txt
+ 1584  time ../lisp-zero -q < 1M.txt
+ 1585  ll
+ 1586  git add gen-big-list.clj
+ 1587  cd ..
+ 1588  ll
+ 1589  gitstat
+ 1590  gitdiff
+ 1591  gitdiff originm
+ 1592  alias gitdiff
+ 1593  gitdiff origin
+ 1594  git remote show origin
+ 1595  gitdown
+ 1596  git show --config --all
+ 1597  git config --all
+ 1598  git config --global --all
+ 1599  git config --global
+ 1600  git config --list --global
+ 1601  git push
+ 1602  cd ../tic-tac-toe/
+ 1603  gitdown
+ 1604  git push
+ 1605  cd ../UnixHome/
+ 1606  gitdown
+ 1607  git push
+ 1608  git config --list
+ 1609  git config --list --local
+ 1610  git config --list --system
+ 1611  git config --list --global
+ 1612  git -V
+ 1613  git --version
+ 1614  cd ../LispZero/
+ 1615  git push --set-upstream origin master
+ 1616  cd ../UnixHome/
+ 1617  git remote show origin
+ 1618  cd ../LispZero/
+ 1619  git remote set origin git@github.com:jcburley/LispZero.git
+ 1620  git remote add origin git@github.com:jcburley/LispZero.git
+ 1621  git remote remove origin
+ 1622  git remote add origin git@github.com:jcburley/LispZero.git
+ 1623  gitstat
+ 1624  gitdown
+ 1625  git push --set-upstream origin master
+ 1626  gitdown
+ 1627  gitup
+ 1628  git push
+ 1629  gitstat
+ 1630  git commit -m "Add performance test"
+ 1631  git push
+ 1632  cd ../tic-tac-toe/
+ 1633  git remote set-url origin git@github.com:jcburley/tic-tac-toe.git
+ 1634  gitdown
+ 1635  gitstat
+ 1636  git remote show origin
+ 1637  git push
+ 1638  cd ../LispZero/
+ 1639  gitstat
+ 1640  lt
+ 1641  cat .gitign
+ 1642  cat > .gitignore
+ 1643  gitstat
+ 1644  rm perftests/redirection.clj 
+ 1645  cd perftests/
+ 1646  rm *.bz2
+ 1647  ll
+ 1648  for i in *.txt; do mv -iv $i $(sed -e 's:txt:out:'); done
+ 1649  for i in *.txt; do mv -iv $i $(echo $i | sed -e 's:txt:out:'); done
+ 1650  lt
+ 1651  cd ..
+ 1652  gitstat
+ 1653  git commit -a -m "Ignore generated files"
+ 1654  cat .ign
+ 1655  cat .gitignore 
+ 1656  git add .gitignore
+ 1657  git commit -a -m "Ignore generated files"
+ 1658  git push
+ 1659  sudo apt-get install gnulib
+ 1660  find /usr/include -name hash.h
+ 1661  find /usr/share -name hash.h
+ 1662  pushd ~
+ 1663  mkdir gnu.org
+ 1664  cd gnu.org
+ 1665  mkdir savannah
+ 1666  cd savannah/
+ 1667  typedef int bool;
+ 1668  enum bool { false = 0, true = 1 };
+ 1669  typedef int bool;
+ 1670  enum bool { false = 0, true = 1 };
+ 1671  git clone git://git.savannah.gnu.org/gnulib.git
+ 1672  cd gnulib/
+ 1673  ll
+ 1674  ./gnulib-tool --help
+ 1675  which gnulib-tool
+ 1676  file $(which gnulib-tool)
+ 1677  file ($readlink -f $(which gnulib-tool))
+ 1678  file $(readlink -f $(which gnulib-tool))
+ 1679  less $(readlink -f $(which gnulib-tool))
+ 1680  cmp -u $(readlink -f $(which gnulib-tool)) gnulib-tool | less
+ 1681  diff -u $(readlink -f $(which gnulib-tool)) gnulib-tool | less
+ 1682  sudo ln -s $(pwd)/gnulib-tool /usr/local/bin/gnulib-tool-latest
+ 1683  which gnulib-tool
+ 1684  which gnulib-tool-latest
+ 1685  pushd
+ 1686  gnulib-tool --import hash
+ 1687  which autoconf
+ 1688  cat > configure.ac
+ 1689  gnulib-tool --import hash
+ 1690  touch NEWS AUTHORS ChangeLog
+ 1691  aclocal
+ 1692  autoconf
+ 1693  automake --add-missing
+ 1694  lt
+ 1695  ./configure 
+ 1696  lt
+ 1697  cat configure.in
+ 1698  mkdir src
+ 1699  git mv lisp-zero.c src
+ 1700  lt
+ 1701  mkdir tests
+ 1702  less zero.lisp
+ 1703  git mv zero.lisp zero-test.gold zero-test.lisp tests
+ 1704  cd tests
+ 1705  diff -u zero.lisp zero-test.lisp | less
+ 1706  cd ..
+ 1707  lt
+ 1708  less README 
+ 1709  gitstat
+ 1710  lt
+ 1711  gitstat
+ 1712  ll AUTHORS 
+ 1713  ll COPYING
+ 1714  head COPYING 
+ 1715  rm -f COPYING && cp $(readlink COPYING) .
+ 1716  ll COPYING
+ 1717  cp /usr/share/automake-1.15/COPYING .
+ 1718  ll ChangeLog 
+ 1719  git add ChangeLog 
+ 1720  git add COPYING 
+ 1721  git add AUTHORS 
+ 1722  ll INSTALL 
+ 1723  less INSTALL 
+ 1724  cp $(readlink INSTALL) .
+ 1725  cp -f $(readlink INSTALL) .
+ 1726  man cp
+ 1727  cp --remove-destination $(readlink INSTALL) .
+ 1728  ll NEWS
+ 1729  git add INSTALL NEWS
+ 1730  gitstat
+ 1731  ll missing
+ 1732  less missing 
+ 1733  git add src/lisp-zero.c
+ 1734  gitstat
+ 1735  lt
+ 1736  less install-sh
+ 1737  for i in install-sh missing ; do cp --remove-destination -v $(readlink $i) .; ; done
+ 1738  for i in install-sh missing ; do cp --remove-destination -v $(readlink $i) .; done
+ 1739  git add missing install-sh 
+ 1740  lt
+ 1741  gitstat
+ 1742  rm -fr aclocal.m4 autom4te.cache/ config.log config.status
+ 1743  ll lib
+ 1744  git add lib
+ 1745  ll m4
+ 1746  git add m4
+ 1747  less configure
+ 1748  rm configure
+ 1749  gitstat
+ 1750  less configure.ac
+ 1751  rm configure.ac
+ 1752  lt
+ 1753  gitstat
+ 1754  aclocal
+ 1755  lt
+ 1756  gitstat
+ 1757  rm -fr aclocal.m4 autom4te.cache/
+ 1758  cat .gitignore 
+ 1759  git mv configure.in configure.ac
+ 1760  cat configure.ac
+ 1761  aclocal
+ 1762  lt
+ 1763  less aclocal.m4 
+ 1764  lt
+ 1765  autoconf
+ 1766  lt
+ 1767  gitstat
+ 1768  rm configure
+ 1769  autoconf
+ 1770  autoheader
+ 1771  autoreconf --install
+ 1772  libtoolize
+ 1773  libtoolize --force
+ 1774  lt
+ 1775  less ltmain.sh 
+ 1776  lt
+ 1777  rm ltmain.sh
+ 1778  aclocal
+ 1779  lt
+ 1780  rm -fr autom4te.cache/ aclocal.m4 
+ 1781  gitstat
+ 1782  rm Makefile.in
+ 1783  rm-f configure src/Makefile.in
+ 1784  rm -f configure src/Makefile.in
+ 1785  lt
+ 1786  gitstat
+ 1787  git add Makefile.am
+ 1788  git add configure.ac src/Makefile.am missing
+ 1789  gitstat
+ 1790  rm Makefile.in
+ 1791  lt
+ 1792  gitstat
+ 1793  aclocal
+ 1794  lt
+ 1795  autoheader
+ 1796  lt
+ 1797  automake --force-missing --add-missing
+ 1798  lt
+ 1799  autoconf
+ 1800  ./configure
+ 1801  apt-get install inti
+ 1802  sudo apt-get install inti
+ 1803  sudo apt-get install inti-dev
+ 1804  gitstat
+ 1805  git add configure.ac
+ 1806  git add Makefile.old
+ 1807  git rm INSTALL install-sh
+ 1808  git rm -f INSTALL install-sh
+ 1809  gitstat
+ 1810  git clean -fxd
+ 1811  gitstat
+ 1812  git rm Makefile.am
+ 1813  git rm -f Makefile.am
+ 1814  git rm -f src/Makefile.am
+ 1815  git rm m4
+ 1816  git rm -r m4
+ 1817  git rm -fr m4
+ 1818  git rm configure.ac
+ 1819  git rm -f configure.ac
+ 1820  gitstat
+ 1821  ll
+ 1822  git rm -f AUTHORS ChangeLog NEWS
+ 1823  gitstat
+ 1824  git mv Makefile.old Makefile
+ 1825  ll lib
+ 1826  git rm -fr lib
+ 1827  ll
+ 1828  gitstat
+ 1829  git mv src/lisp-zero.c .
+ 1830  gitstat
+ 1831  git mv test/* .
+ 1832  git mv test/zero.lisp .
+ 1833  git mv tests/* .
+ 1834  gitstat
+ 1835  gitdiff
+ 1836  gitdiff origin
+ 1837  gitdiff origin master
+ 1838  gitdiff origin/master
+ 1839  gitstat
+ 1840  git commit -a -m "Add COPYING file and use stdbool.h"
+ 1841  git push
+ 1842  cd ..
+ 1843  git clone git@github.com:rxi/map.git
+ 1844  ll map
+ 1845  mkdir rxi
+ 1846  mv -iv map rxi
+ 1847  popd
+ 1848  pushd ~/github/LispZero/
+ 1849  ln ~/github/rxi/map/src/map.{h,c} .
+ 1850  gdb lisp-zero
+ 1851  history 50
+ 1852  gitstat
+ 1853  git add map.{c,h}
+ 1854  ll
+ 1855  rm map.c map.h
+ 1856  ln -sv ~/github/rxi/map/src/map.{h,c} .
+ 1857  gitstat
+ 1858  git add map.{c,h}
+ 1859  gitstat
+ 1860  gitdiff
+ 1861  fg
+ 1862  bg
+ 1863  gdb lisp-zero
+ 1864  gitstat
+ 1865  git add -a -m "Use proper hash for symbol name lookup; add (.symbol_dump)"
+ 1866  git commit -a -m "Use proper hash for symbol name lookup; add (.symbol_dump)"
+ 1867  gitstat
+ 1868  lt
+ 1869  gitdiff
+ 1870  git push
+ 1871  sudo apt-get install gcl
+ 1872  df
+ 1873  df -k .
+ 1874  sudo apt-get install mit-scheme
+ 1875  dirs
+ 1876  pushd ~/github/clojure
+ 1877  lt
+ 1878  ll
+ 1879  less readme.txt 
+ 1880  grep jar readme.txt 
+ 1881  java -jar clojure.jar
+ 1882  sudo mvn install
+ 1883  which clojure
+ 1884  clojure
+ 1885  less readme.txt
+ 1886  clojure-1.10
+ 1887  clojure1.10
+ 1888  ll /usr/bin/clojr*
+ 1889  ll /usr/bin/cloj*
+ 1890  clojurec
+ 1891  ll
+ 1892  ll test
+ 1893  rm ~/Downloads/linux-install-1.9.0.391\ \(1\).sh 
+ 1894  mv -iv ~/Downloads/linux-install-1.9.0.391.sh .
+ 1895  less linux-install-1.9.0.391.sh 
+ 1896  java -jar clojure.jar
+ 1897  lt
+ 1898  history > HISTORY.txt
+ 1899  fg
+ 1900  cd ../cpp
+ 1901  ./echo
+ 1902  time ./echo <<< "hey"
+ 1903  ./echo
+ 1904  emacs --batch --eval '(princ "hey\n")'
+ 1905  emacs --batch --eval '(princ "hey\n")' 2>/dev/null
+ 1906  emacs --batch --eval '(princ (read-string))' 2>/dev/null
+ 1907  emacs --batch --eval '(princ (read-string))'
+ 1908  emacs --batch --eval '(princ (read-string "> "))'
+ 1909  emacs --batch --eval '(princ (read-string "> ") "\n")'
+ 1910  emacs --batch --eval '(princ (read-string "> " "") "\n")'
+ 1911  emacs --batch --eval '(princ (ignore-errors (read-string "> " "")) "\n")'
+ 1912  emacs --batch --eval '(princ (ignore-errors (read-string "> " "")))'
+ 1913  emacs --batch --eval '(while (setq line (ignore-errors (read-string "> " "")) (princ (concat line "\n"))'
+ 1914  emacs --batch --eval '(while (setq line (ignore-errors (read-string "> " "")) (princ (concat line "\n")))'
+ 1915  emacs --batch --eval '(while (setq line (ignore-errors (read-string "> " "")) (princ (concat line "\n"))))'
+ 1916  emacs --batch --eval '(while (setq line (ignore-errors (read-string "> " ""))) (princ (concat line "\n")))'
+ 1917  emacs --batch --eval '(while (setq line (ignore-errors (read-string "> " ""))) (princ (concat line "\n"))) (princ "\n")'
+ 1918  emacs --batch --eval '(while (setq line (ignore-errors (read-string "> " ""))) (princ (concat line "\n"))) (princ "Done\n")'
+ 1919  emacs --batch --eval '(while (setq line (ignore-errors (read-string "> " ""))) (princ (concat line "\n")) (princ "Done\n"))'
+ 1920  emacs --batch --eval '(while (setq line (ignore-errors (read-string "> " ""))) (princ (concat line "\n")))'
+ 1921  timeemacs --batch --eval '(while (setq line (ignore-errors (read-string "> " ""))) (princ (concat line "\n")))' <<< 'hey'
+ 1922  time emacs --batch --eval '(while (setq line (ignore-errors (read-string "> " ""))) (princ (concat line "\n")))' <<< 'hey'
+ 1923  emacs --batch --eval '(while (setq line (ignore-errors (read-string "> " ""))) (princ (concat line "\n")))'
+ 1924  guile
+ 1925  sudo apt-get install guile-2.0
+ 1926  guile
+ 1927  rlwrap guile
+ 1928  guile -c '(use-modules (ice-9 rdelim)) (write-line (read-line))'
+ 1929  guile -c '(use-modules (ice-9 rdelim)) (write-line (read-line))' << 'hey'
+ 1930  guile -c '(use-modules (ice-9 rdelim)) (write-line (read-line))' <<< 'hey'
+ 1931  time guile -c '(use-modules (ice-9 rdelim)) (write-line (read-line))' <<< 'hey'
+ 1932  time guile -c '(use-modules (ice-9 rdelim)) (let lp ((line (read-line))) (if (string? line) (write-line line) (lp))' <<< 'hey'
+ 1933  time guile -c '(use-modules (ice-9 rdelim)) (let lp ((line (read-line))) (if (string? line) (write-line line) (lp)))' <<< 'hey'
+ 1934  time guile -c '(use-modules (ice-9 rdelim)) (let lp ((line (read-line))) (if (string? line) (write-line line) (lp)))'
+ 1935  time guile -c '(use-modules (ice-9 rdelim)) (let lp ((line (read-line))) (if (string? line) (begin (write-line line) (lp))))'
+ 1936  time guile -c '(use-modules (ice-9 rdelim)) (let lp ((line (read-line))) (if (string? line) (begin (write-line line) (lp nil))))'
+ 1937  time guile -c '(use-modules (ice-9 rdelim)) (let lp ((line (read-line))) (if (string? line) (begin (write-line line) (lp #f))))'
+ 1938  time guile -c '(use-modules (ice-9 rdelim)) (let lp ((line (read-line))) (if (string? line) (begin (write-line line) (lp #t))))'
+ 1939  time guile -c '(use-modules (ice-9 rdelim)) (let lp ((line (read-line))) (if (string? line) (begin (write-line line) (lp (read-line)))))'
+ 1940  time guile -c '(use-modules (ice-9 rdelim)) (let lp ((line (read-line))) (if (string? line) (begin (write-line line) (lp (read-line)))))' <<< 'hey'
+ 1941  cd ..
+ 1942  history > HISTORY.txt
+ 1943  ll
+ 1944  less HISTORY.txt 
+ 1945  dirs
+ 1946  cd ~/Dropbox/Career/Clojure/
+ 1947  ll
+ 1948  ll Slack/
+ 1949  ll HackerRank/
+ 1950  cd ..
+ 1951  ll
+ 1952  ll Containers/
+ 1953  ll BurleyArch/
+ 1954  cd ~/github/
+ 1955  git clone http://github.com/jcburley/tic-tac-toe.git
+ 1956  cd LispZero/perftests/
+ 1957  ll
+ 1958  lumo -q < gen-big-list.clj
+ 1959  lumo -q < gen-big-list.clj | less
+ 1960  lumo -q < gen-big-list.clj 2>&1 | less
+ 1961  lumo -q
+ 1962  ln -s ~/github/clojure-tools/bash/redirection.clj .
+ 1963  fg
+ 1964  lumo --help
+ 1965  lumo -e '(load-file "gen-big-list.clj")'
+ 1966  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 5)'
+ 1967  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 5)' > ONE.txt
+ 1968  ../lisp-zero < ONE.txt 
+ 1969  lt
+ 1970  ../lisp-zero < ONE.txt 
+ 1971  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 5)' > ONE.txt
+ 1972  cat ONE.txt 
+ 1973  ../lisp-zero < ONE.txt 
+ 1974  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 5)' > ONE.txt
+ 1975  cat ONE.txt 
+ 1976  ../lisp-zero < ONE.txt 
+ 1977  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 5)' > ONE.txt
+ 1978  cat ONE.txt 
+ 1979  ../lisp-zero < ONE.txt 
+ 1980  ../lisp-zero-q < ONE.txt 
+ 1981  ../lisp-zero -q < ONE.txt 
+ 1982  lumo -e '(load-file "ONE.txt")'
+ 1983  lumo -e '(println (load-file "ONE.txt"))'
+ 1984  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 1)' > ONE.txt
+ 1985  cat ONE.txt 
+ 1986  lumo -e '(println (load-file "ONE.txt"))'
+ 1987  lumo -e '(load-file "ONE.txt")'
+ 1988  cat > BAD.txt
+ 1989  lumo -e '(load-file "BAD.txt")'
+ 1990  lumo -e '(load-file "gen-big-list.clj") (gen-big-list 1000000)' | bzip2 -9 -v -c > 1M.txt
+ 1991  lt
+ 1992  cat ONE.txt | lumo -e '(load-file "-")'
+ 1993  mv -iv 1M.txt 1M.txt.bz2
+ 1994  bunzip2 -9 -v -c < 1M.txt.bz2 > 1M.txt
+ 1995  lt
+ 1996  time lumo -e '(load-file "1M.txt")'
+ 1997  lt
+ 1998  history > HISTORY-2.txt
+ 1999  fg
+ 2000  ssh craig@dove
+ 2001  top
+ 2002  ps u
+ 2003  grep -i vmpeak /proc/28971/stats
+ 2004  grep -i vmpeak /proc/28971/statuss
+ 2005  grep -i vmpeak /proc/28971/status
+ 2006  ps u
+ 2007  grep -i vmpeak /proc/29143/status
+ 2008  while true; do grep -i vmpeak /proc/29143/status; sleep 1; done
+ 2009  while grep -i vmpeak /proc/29143/status; do sleep 1; done
+ 2010  ps u
+ 2011  while grep -i vmpeak /proc/29425/status; do sleep 1; done
+ 2012  while LATEST=$(grep -i vmpeak /proc/29425/status); do sleep 1; done; echo $LATEST
+ 2013  sleep 20 &
+ 2014  ps u
+ 2015  while LATEST=$(grep -i vmpeak /proc/29552/status); do sleep 1; done; echo $LATEST
+ 2016  while NEW=$(grep -i vmpeak /proc/29552/status); do PREV="$NEW"; sleep 1; done; echo $PREV
+ 2017  sleep 20 &
+ 2018  ps u
+ 2019  while NEW=$(grep -i vmpeak /proc/29645/status); do PREV="$NEW"; sleep 1; done; echo $PREV
+ 2020  while NEW=$(grep -i vmpeak /proc/29425/status); do PREV="$NEW"; sleep 1; done; echo $PREV
+ 2021  lt
+ 2022  cat gen-big-list.clj 
+ 2023  grep lumo HISTORY.txt 
+ 2024  lumo -e 'People say we've "regressed" back to ancient Egypt because we worship cats and write on walls using pictograms.
+ 2025  But did Egyptians have GIFs??
+ 2026  lumo -e '(load-file "gen-big-list.clj") (println "(cond nil '(")) (gen-big-list 1) (println ")")'
+ 2027  lumo -e '(load-file "gen-big-list.clj") (println "(cond nil '(")) (gen-big-list 1) (println ")"'
+ 2028  lumo -e '(load-file "gen-big-list.clj") (println "(cond nil (")) (gen-big-list 1) (println ")")'
+ 2029  lumo -e '(load-file "gen-big-list.clj") (println "(cond nil '(")) (gen-big-list 1) (println ")")'
+ 2030  lumo -e '(load-file "gen-big-list.clj") (println "(cond nil (quote (")) (gen-big-list 1) (println ")")'
+ 2031  lumo -e '(load-file "gen-big-list.clj") (println "(cond nil (quote (") (gen-big-list 1) (println ")")'
+ 2032  lumo -e '(load-file "gen-big-list.clj") (println "(cond nil (quote (") (gen-big-list 2) (println ")")'
+ 2033  lumo -e '(load-file "gen-big-list.clj") (println "(cond nil (quote (") (gen-big-list 2) (println "))")'
+ 2034  lumo -e '(load-file "gen-big-list.clj") (println "(cond nil (quote (") (gen-big-list 2) (println ")))")'
+ 2035  lumo -e '(load-file "gen-big-list.clj") (println "(cond nil (quote (") (gen-big-list 2) (println ")))")' > D-1.out
+ 2036  clj -e '(load-file "D-1.out")'
+ 2037  time clj -e '(load-file "D-1.out")'
+ 2038  lumo -e '(load-file "gen-big-list.clj") (println "(cond nil (quote (") (gen-big-list 100000) (println ")))")' > D-100K.out
+ 2039  head D-100K.out
+ 2040  wc -l D-100K.out 
+ 2041  while NEW=$(grep -i vmpeak /proc/29425/status); do PREV="$NEW"; sleep 1; done; echo $PREV
+ 2042  ps u
+ 2043  lumo -e '(load-file "gen-big-list.clj") (println "(cond nil (quote (") (gen-big-list 1000000) (println ")))")' > D-1M.out
+ 2044  ps u
+ 2045  grep -i vmpeak /proc/29561/status
+ 2046  top
+ 2047  grep -i vm /proc/29561/status
+ 2048  ps u
+ 2049  while NEW=$(grep -i vmpeak /proc/30021/status); do PREV="$NEW"; sleep 1; done; echo $PREV
+ 2050  chmod +x MEM.sh 
+ 2051  ps u
+ 2052  ./MEM 30818
+ 2053  ./MEM.sh 30818
+ 2054  ps u
+ 2055  ./MEM.sh 30911
+ 2056  ps u
+ 2057  ./MEM.sh 31009
+ 2058  ps u
+ 2059  ./MEM.sh 31866
+ 2060  gitstat
+ 2061  git commit -m "Handy script to print final VMpeak stat for pid before it exits"
+ 2062  git add HISTORY-{1,2}.txt
+ 2063  history 100
+ 2064  history > HISTORY-3.txt
