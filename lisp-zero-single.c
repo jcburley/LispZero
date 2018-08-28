@@ -30,6 +30,7 @@
 */
 
 #include <assert.h>
+#include <limits.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -269,7 +270,7 @@ void map_remove_(map_base_t *m, const char *key) {
 
 map_iter_t map_iter_(void) {
   map_iter_t iter;
-  iter.bucketidx = -1;
+  iter.bucketidx = UINT_MAX;
   iter.node = NULL;
   return iter;
 }
