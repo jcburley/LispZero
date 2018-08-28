@@ -31,6 +31,7 @@
 
 #define __USE_XOPEN2K8 1
 #include <assert.h>
+#include <errno.h>
 #include <limits.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -1212,8 +1213,37 @@ void initialize()
 int
 main(int argc, char **argv)
 {
-  if (argc > 1 && !strcmp(argv[1], "-q"))
+  char const *filename;
+  FILE *in;
+
+  if (argc > 1 && !strcmp(argv[1], "-q")) {
     quiet = true;
+    --argc, argv++;
+  }
+
+  if (argc > 1 && argv[1][0] == '-') {
+    fprintf(stderr, "Unsupported option: %s\n", argv[1]);
+    return 99;
+  }
+
+  if (argc == 2) {
+    filename = argv[1];
+    in = fopen(filename, "r");
+    if (!in) {
+      fprintf(stderr, "Cannot open file %s (errno=%d)\n", filename, errno);
+      return 1;
+    }
+    --argc, argv++;
+  }
+  else {
+    filename = "<stdin>";
+    in = stdin;
+  }
+
+  if (argc > 1) {
+    fprintf(stderr, "Excess command-line arguments starting with: %s\n", argv[1]);
+    return 98;
+  }
 
   map_init(&map_sym);
 
@@ -1222,9 +1252,9 @@ main(int argc, char **argv)
   initialize();
   buf = buffer_new(MAXTOKENSIZE);
   for (;;) {
-    struct Object_s *obj = object_read(stdin, buf);
+    struct Object_s *obj = object_read(in, buf);
     if (!quiet) {
-      object_write(stdout, eval(TRACE("stdin") obj, p_environment));
+      object_write(stdout, eval(TRACE(filename) obj, p_environment));
       fprintf(stdout, "\n");
       fflush(stdout);
     }
