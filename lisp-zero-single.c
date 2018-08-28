@@ -276,11 +276,7 @@ map_iter_t map_iter_(void) {
 
 
 const char *map_next_(map_base_t *m, map_iter_t *iter) {
-  if (iter->node) {
-    iter->node = iter->node->next;
-    if (iter->node == NULL) goto nextBucket;
-  } else {
-    nextBucket:
+  if (!iter->node || !(iter->node = iter->node->next)) {
     do {
       if (++iter->bucketidx >= m->nbuckets) {
         return NULL;
@@ -348,7 +344,6 @@ char *string_duplicate(char const *str)
 /* Forward references. */
 
 typedef struct Symbol *p_Symbol;
-typedef struct Compiled *p_Compiled;
 typedef struct Object *p_Object;
 p_Object f_quote(TRACEPARAMS(char const *what) p_Object args, p_Object env);
 
