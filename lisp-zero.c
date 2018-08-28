@@ -326,7 +326,7 @@ p_Object binding_lookup(TRACEPARAMS(char const *what __UNUSED__) p_Symbol key, p
 static char *token_lookahead;
 static int lookahead_valid = 0;
 
-typedef struct {
+typedef struct buffer_s {
   size_t size;
   size_t used;
   char *contents;
