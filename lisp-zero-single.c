@@ -518,7 +518,7 @@ static map_sym_t map_sym;
 
 static struct Symbol_s *symbol_lookup(char const *name)
 {
-  struct Symbol_s **p_sym = map_get(&map_sym, name);
+  void **p_sym = (void **) map_get(&map_sym, name);
 
   return p_sym ? *p_sym : NULL;
 }
