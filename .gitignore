@@ -2,3 +2,6 @@ lisp-zero
 *.o
 *~
 *.out
+*.go
+*.ast
+lisp-zero-single
