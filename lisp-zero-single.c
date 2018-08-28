@@ -354,17 +354,17 @@ p_Object f_quote(TRACEPARAMS(char const *what) p_Object args, p_Object env);
 
 typedef p_Object (*compiled_fn)(TRACEPARAMS(char const *) p_Object, p_Object);
 
-typedef union Cdr_s {
+union Cdr_u {
   p_Object obj;
   p_Symbol sym;
   compiled_fn fn;
-} Cdr_t;
+};
 
 /* Objects (lists, atoms, etc.). */
 
 typedef struct Object_s {
   p_Object car;  /* Head item in this list, unless a BUILTIN_CAR node. */
-  Cdr_t cdr;  /* Tail list, unless car is a BUILTIN_CAR node. */
+  union Cdr_u cdr;  /* Tail list, unless car is a BUILTIN_CAR node. */
 } Object;
 
 #define BUILTIN_CAR(obj)			\
