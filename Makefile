@@ -27,6 +27,14 @@ zero-new-gold: zero-test.out
 	cp zero-test.out zero-test.gold
 	chmod a-w zero-test.gold
 
+go: lisp-zero-single.go
+
+lisp-zero-single.go: SINGLE-TEST-PASSED.stamp lisp-zero-single.c
+	c2go transpile lisp-zero-single.c
+
+SINGLE-TEST-PASSED.stamp: zero-single-test.out
+	touch SINGLE-TEST-PASSED.stamp
+
 snap:
 	$(MAKE) $(MAKEFILE) all || exit 0
 	mkdir -p builds
@@ -37,4 +45,4 @@ snap:
 clean:
 	rm -f lisp-zero lisp-zero-single zero-test.out zero-single-test.out
 
-.PHONY: all clean zero-test zero-single-test zero-new-gold snap
+.PHONY: all clean zero-test zero-single-test zero-new-gold snap go
