@@ -29,6 +29,7 @@
    build it from there.
 */
 
+#define __USE_XOPEN2K8 1
 #include <assert.h>
 #include <limits.h>
 #include <stdbool.h>
@@ -331,10 +332,13 @@ static long long int allocations_total = 0;
 
 char *string_duplicate(char const *str)
 {
-  char *dup = strdup(str);
+  size_t l = strlen(str) + 1;
+  char *dup = malloc(l);
 
   if (!dup)
     PRINT_ERROR_AND_EXIT("insufficient memory for duplicating a string", 998);
+
+  memcpy(dup, str, l);
 
   ++allocations;
   allocations_total += strlen(str);
