@@ -348,34 +348,36 @@ char *string_duplicate(char const *str)
 
 /* Forward references. */
 
-typedef struct Symbol_s *p_Symbol;
-typedef struct Object_s *p_Object;
-p_Object f_quote(TRACEPARAMS(char const *what) p_Object args, p_Object env);
+typedef struct Object_s *(*compiled_fn)(TRACEPARAMS(char const *) struct Object_s *, struct Object_s *);
 
-typedef p_Object (*compiled_fn)(TRACEPARAMS(char const *) p_Object, p_Object);
+struct Symbol_s {
+  char const *name;
+};
 
 union Cdr_u {
-  p_Object obj;
-  p_Symbol sym;
+  struct Object_s *obj;
+  struct Symbol_s *sym;
   compiled_fn fn;
 };
 
 /* Objects (lists, atoms, etc.). */
 
 typedef struct Object_s {
-  p_Object car;  /* Head item in this list, unless a BUILTIN_CAR node. */
+  struct Object_s *car;  /* Head item in this list, unless a BUILTIN_CAR node. */
   union Cdr_u cdr;  /* Tail list, unless car is a BUILTIN_CAR node. */
 } Object;
 
 #define BUILTIN_CAR(obj)			\
   static Object obj;				\
-  static p_Object p_##obj = &obj
+  static struct Object_s *p_##obj = &obj
 /* If CAR of an Object is not one of these, it is a List. */
-BUILTIN_CAR(atomic);  /* Object.cdr is a p_Symbol. */
+BUILTIN_CAR(atomic);  /* Object.cdr is a struct Symbol_s *. */
 BUILTIN_CAR(compiled);  /* Object.cdr is a compiled_fn. */
 #undef BUILTIN_CAR
 
-#define OBJECT(list) static p_Object p_##list = NULL
+struct Object_s *f_quote(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env);
+
+#define OBJECT(list) static struct Object_s *p_##list = NULL
 OBJECT(environment);  /* Current evaluation environment (list of bindings). */
 
 OBJECT(nil); /* Input/output as (). */
@@ -395,67 +397,67 @@ OBJECT(defglobal);
 OBJECT(dot_symbol_dump);
 #undef OBJECT
 
-bool nilp(p_Object list)
+bool nilp(struct Object_s *list)
 {
   return list == p_nil;
 }
 
 /* Whether object is an atom in the traditional Lisp sense */
-bool atomp(p_Object list)
+bool atomp(struct Object_s *list)
 {
   return nilp(list) || list->car == p_atomic;
 }
 
 /* Whether object is an atom in this implementation */
-bool atomicp(p_Object list)
+bool atomicp(struct Object_s *list)
 {
   return !nilp(list) && list->car == p_atomic;
 }
 
-bool compiledp(p_Object list)
+bool compiledp(struct Object_s *list)
 {
   return !atomp(list) && list->car == p_compiled;
 }
 
-bool listp(p_Object list)
+bool listp(struct Object_s *list)
 {
   return !atomp(list) && !compiledp(list);
 }
 
-bool finalp(p_Object list)
+bool finalp(struct Object_s *list)
 {
   return listp(list) && nilp(list->cdr.obj);
 }
 
-p_Object list_car(p_Object list)
+struct Object_s *list_car(struct Object_s *list)
 {
   assert (listp(list));
   return list->car;
 }
 
-p_Object list_cdr(p_Object list)
+struct Object_s *list_cdr(struct Object_s *list)
 {
   assert (listp(list));
   return list->cdr.obj;
 }
 
-p_Symbol object_symbol(p_Object atom)
+struct Symbol_s *object_symbol(struct Object_s *atom)
 {
   assert (atomicp(atom));
   return atom->cdr.sym;
 }
 
-compiled_fn object_compiled(p_Object compiled)
+compiled_fn object_compiled(struct Object_s *compiled)
 {
   assert (compiledp(compiled));
   return compiled->cdr.fn;
 }
 
-static p_Object object_new(p_Object car, p_Object cdr)
+static struct Object_s *object_new(struct Object_s *car, struct Object_s *cdr)
 {
-  p_Object obj;
+  struct Object_s *obj;
 
-  obj = (p_Object) malloc(sizeof(Object));
+  obj = (struct Object_s *) malloc(sizeof(Object));
   if (!obj)
     PRINT_ERROR_AND_EXIT("no more memory", 998);
 
@@ -468,29 +470,41 @@ static p_Object object_new(p_Object car, p_Object cdr)
   return obj;
 }
 
-#define object_new_atomic(SYM) object_new(p_atomic, (p_Object) (SYM))
+static struct Object_s *object_new_compiled(compiled_fn fn)
+{
+  struct Object_s *obj;
+
+  obj = (struct Object_s *) malloc(sizeof(Object));
+  if (!obj)
+    PRINT_ERROR_AND_EXIT("no more memory", 998);
+
+  ++allocations;
+  allocations_total += sizeof(Object);
+
+  obj->car = p_compiled;
+  obj->cdr.fn = fn;
+
+  return obj;
+}
+
+#define object_new_atomic(SYM) object_new(p_atomic, (struct Object_s *) (SYM))
 #define object_new_t() object_new_atomic(p_sym_t)
 #define object_new_quote() object_new_atomic(p_sym_quote)
-#define object_new_compiled(CODE) object_new(p_compiled, (p_Object) (CODE))
 
 /* Symbols. */
 
-typedef struct Symbol_s {
-  char const *name;
-} Symbol;
-
 #define symbol_name(SYMBOL) ((SYMBOL)->name)
 
-static p_Symbol symbol_new(char const *name)
+static struct Symbol_s *symbol_new(char const *name)
 {
-  p_Symbol sym;
+  struct Symbol_s *sym;
 
-  sym = (p_Symbol) malloc(sizeof(Symbol));
+  sym = (struct Symbol_s *) malloc(sizeof(struct Symbol_s));
   if (!sym)
     PRINT_ERROR_AND_EXIT("no more memory", 998);
 
   ++allocations;
-  allocations_total += sizeof(Symbol);
+  allocations_total += sizeof(struct Symbol_s);
 
   sym->name = name;
 
@@ -499,28 +513,28 @@ static p_Symbol symbol_new(char const *name)
 
 /* Map of symbols (keys) to values. */
 
-typedef map_t(p_Symbol) map_sym_t;
+typedef map_t(struct Symbol_s *) map_sym_t;
 static map_sym_t map_sym;
 
-static p_Symbol symbol_lookup(char const *name)
+static struct Symbol_s *symbol_lookup(char const *name)
 {
-  p_Symbol *p_sym = map_get(&map_sym, name);
+  struct Symbol_s **p_sym = map_get(&map_sym, name);
 
   return p_sym ? *p_sym : NULL;
 }
 
 bool symbol_strdup = true;
 
-static p_Symbol symbol_sym(char const *name)
+static struct Symbol_s *symbol_sym(char const *name)
 {
-  p_Symbol sym = symbol_lookup(name);
+  struct Symbol_s *sym = symbol_lookup(name);
 
   if (sym)
     return sym;
 
   sym = symbol_new(symbol_strdup ? string_duplicate(name) : name);
 
-  map_set(&map_sym, name, (p_Symbol) sym);
+  map_set(&map_sym, name, (struct Symbol_s *) sym);
 
   return sym;
 }
@@ -536,12 +550,12 @@ symbol_dump(void)
   }
 }
 
-static p_Symbol p_sym_t = NULL;
-static p_Symbol p_sym_quote = NULL;
+static struct Symbol_s *p_sym_t = NULL;
+static struct Symbol_s *p_sym_quote = NULL;
 
 /* Environment (bindings). */
 
-static p_Object binding_new(p_Object sym, p_Object val)
+static struct Object_s *binding_new(struct Object_s *sym, struct Object_s *val)
 {
   assert (atomicp(sym));
 
@@ -554,7 +568,7 @@ static p_Object binding_new(p_Object sym, p_Object val)
    explicitly unbound) or a key/value cons (the symbol is in the car,
    its binding is in the cdr). */
 
-p_Object binding_lookup(TRACEPARAMS(char const *what __UNUSED__) p_Symbol key, p_Object bindings)
+struct Object_s *binding_lookup(TRACEPARAMS(char const *what __UNUSED__) struct Symbol_s *key, struct Object_s *bindings)
 {
   if (nilp(bindings))
     return p_nil;
@@ -567,13 +581,13 @@ p_Object binding_lookup(TRACEPARAMS(char const *what __UNUSED__) p_Symbol key, p
   */
   for (; !nilp(bindings); bindings = list_cdr(bindings))
   {
-    p_Object binding = list_car(bindings);
+    struct Object_s *binding = list_car(bindings);
 
     if (atomicp(binding) && object_symbol(binding) == key)
       return p_nil;
 
     {
-      p_Object symbol = list_car(binding);
+      struct Object_s *symbol = list_car(binding);
 
       if (atomicp(symbol) && object_symbol(symbol) == key)
 	return binding;
@@ -670,8 +684,8 @@ static char *token_get(FILE *input, buffer buf) {
   }
 }
 
-p_Object list_read(FILE *input, buffer buf);
-p_Object object_read(FILE *input, buffer buf)
+struct Object_s *list_read(FILE *input, buffer buf);
+struct Object_s *object_read(FILE *input, buffer buf)
 {
   char *token;
 
@@ -682,7 +696,7 @@ p_Object object_read(FILE *input, buffer buf)
 
   if (!strcmp(token, "\'"))
     {
-      p_Object tmp = object_read(input, buf);
+      struct Object_s *tmp = object_read(input, buf);
 
       return object_new(object_new_atomic(p_sym_quote),
 			object_new(tmp, p_nil));
@@ -694,9 +708,9 @@ p_Object object_read(FILE *input, buffer buf)
   return object_new_atomic(symbol_sym(token));
 }
 
-p_Object list_read(FILE *input, buffer buf) {
+struct Object_s *list_read(FILE *input, buffer buf) {
   char *token = token_get(input, buf);
-  p_Object tmp;
+  struct Object_s *tmp;
 
   if (!strcmp(token, ")"))
     return p_nil;
@@ -719,19 +733,19 @@ p_Object list_read(FILE *input, buffer buf) {
 
 /* true if object is (quote arg) */
 /* TODO: Decide whether this look up quote in the current env to do the check */
-static bool quotep(p_Object obj)
+static bool quotep(struct Object_s *obj)
 {
   if (!listp(obj) || !finalp(list_cdr(obj)))
     return false;
 
   {
-    p_Object car = list_car(obj);
+    struct Object_s *car = list_car(obj);
 
     return compiledp(car) && object_compiled(car) == f_quote;
   }
 }
 
-void object_write(FILE *output, p_Object obj)
+void object_write(FILE *output, struct Object_s *obj)
 {
   if (nilp(obj))
     {
@@ -785,9 +799,9 @@ void object_write(FILE *output, p_Object obj)
 
 /* Evaluation */
 
-p_Object binding_for(TRACEPARAMS(char const *what) p_Symbol sym, p_Object env)
+struct Object_s *binding_for(TRACEPARAMS(char const *what) struct Symbol_s *sym, struct Object_s *env)
 {
-  p_Object tmp;
+  struct Object_s *tmp;
 
   tmp = binding_lookup(TRACE(what) sym, env);
   if (nilp(tmp))
@@ -800,11 +814,11 @@ p_Object binding_for(TRACEPARAMS(char const *what) p_Symbol sym, p_Object env)
   return list_cdr(tmp);
 }
 
-p_Object apply(TRACEPARAMS(char const *what) p_Object func, p_Object me, p_Object forms, p_Object env);
+struct Object_s *apply(TRACEPARAMS(char const *what) struct Object_s *func, struct Object_s *me, struct Object_s *forms, struct Object_s *env);
 
 /* Does not support traditional lambdas or labels; just the built-ins and
    our "unique" apply.  */
-p_Object eval(TRACEPARAMS(char const *what) p_Object exp, p_Object env)
+struct Object_s *eval(TRACEPARAMS(char const *what) struct Object_s *exp, struct Object_s *env)
 {
   if (nilp(exp) || compiledp(exp))
     return exp;
@@ -815,8 +829,8 @@ p_Object eval(TRACEPARAMS(char const *what) p_Object exp, p_Object env)
   assert (listp(exp));
 
   {
-    p_Object func = eval(TRACE(what) list_car(exp), env);
-    p_Object forms = list_cdr(exp);
+    struct Object_s *func = eval(TRACE(what) list_car(exp), env);
+    struct Object_s *forms = list_cdr(exp);
 
 #if TRACING
     if (atomp(list_car(exp)))
@@ -866,7 +880,7 @@ p_Object eval(TRACEPARAMS(char const *what) p_Object exp, p_Object env)
    argument.
 */
 
-void assert_zedbap(p_Object zedba)
+void assert_zedbap(struct Object_s *zedba)
 {
   assert (listp(zedba));
 
@@ -892,17 +906,17 @@ void assert_zedbap(p_Object zedba)
    case this proves useful (e.g. a limit on the # of recursive
    invocations could be implemented this way), so this is allowed.  */
 
-p_Object apply(TRACEPARAMS(char const *what) p_Object func, p_Object me, p_Object forms, p_Object env)
+struct Object_s *apply(TRACEPARAMS(char const *what) struct Object_s *func, struct Object_s *me, struct Object_s *forms, struct Object_s *env)
 {
-  p_Object meparamname;
-  p_Object formlistparamname;
-  p_Object envparamname;
+  struct Object_s *meparamname;
+  struct Object_s *formlistparamname;
+  struct Object_s *envparamname;
 
   assert_zedbap(func);
   assert_zedbap(me);
 
   {
-    p_Object params = list_car(func);
+    struct Object_s *params = list_car(func);
 
     assert (listp(params));
 
@@ -925,7 +939,7 @@ p_Object apply(TRACEPARAMS(char const *what) p_Object func, p_Object me, p_Objec
 }
 
 /* (quote form) => form */
-p_Object f_quote(TRACEPARAMS(char const *what __UNUSED__) p_Object args, p_Object env __UNUSED__)
+struct Object_s *f_quote(TRACEPARAMS(char const *what __UNUSED__) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
   assert (finalp(args));
 
@@ -933,26 +947,26 @@ p_Object f_quote(TRACEPARAMS(char const *what __UNUSED__) p_Object args, p_Objec
 }
 
 /* (atom atom) => t if atom is an atom (including nil), nil otherwise */
-p_Object f_atom(TRACEPARAMS(char const *what) p_Object args, p_Object env)
+struct Object_s *f_atom(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
   assert (finalp(args));
 
   {
-    p_Object arg = eval(TRACE(what) list_car(args), env);
+    struct Object_s *arg = eval(TRACE(what) list_car(args), env);
 
     return atomp(arg) ? object_new_t() : p_nil;
   }
 }
 
 /* (eq left-atom right-atom) => t if args are equal, nil otherwise */
-p_Object f_eq(TRACEPARAMS(char const *what) p_Object args, p_Object env)
+struct Object_s *f_eq(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
   assert (listp(args));
   assert (finalp(list_cdr(args)));
 
   {
-    p_Object left = eval(TRACE(what) list_car(args), env);
-    p_Object right = eval(TRACE(what) list_car(list_cdr(args)), env);
+    struct Object_s *left = eval(TRACE(what) list_car(args), env);
+    struct Object_s *right = eval(TRACE(what) list_car(list_cdr(args)), env);
 
     assert (atomp(left));
     assert (atomp(right));
@@ -968,26 +982,26 @@ p_Object f_eq(TRACEPARAMS(char const *what) p_Object args, p_Object env)
 }
 
 /* (cons car-arg cdr-arg) => (car-arg cdr-arg) */
-p_Object f_cons(TRACEPARAMS(char const *what) p_Object args, p_Object env)
+struct Object_s *f_cons(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
   assert (listp(args));
   assert (finalp(list_cdr(args)));
 
   {
-    p_Object car = eval(TRACE(what) list_car(args), env);
-    p_Object cdr = eval(TRACE(what) list_car(list_cdr(args)), env);
+    struct Object_s *car = eval(TRACE(what) list_car(args), env);
+    struct Object_s *cdr = eval(TRACE(what) list_car(list_cdr(args)), env);
 
     return object_new(car, cdr);
   }
 }
 
 /* (car cons-arg) : cons-arg is a list => car of cons-arg */
-p_Object f_car(TRACEPARAMS(char const *what) p_Object args, p_Object env __UNUSED__)
+struct Object_s *f_car(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
   assert (finalp(args));
 
   {
-    p_Object arg = eval(TRACE(what) list_car(args), env);
+    struct Object_s *arg = eval(TRACE(what) list_car(args), env);
 
     assert (listp(arg));
 
@@ -996,12 +1010,12 @@ p_Object f_car(TRACEPARAMS(char const *what) p_Object args, p_Object env __UNUSE
 }
 
 /* (cdr cons-arg) : cons-arg is a list => cdr of cons-arg */
-p_Object f_cdr(TRACEPARAMS(char const *what) p_Object args, p_Object env __UNUSED__)
+struct Object_s *f_cdr(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
   assert (finalp(args));
 
   {
-    p_Object arg = eval(TRACE(what) list_car(args), env);
+    struct Object_s *arg = eval(TRACE(what) list_car(args), env);
 
     assert (listp(arg));
 
@@ -1013,7 +1027,7 @@ p_Object f_cdr(TRACEPARAMS(char const *what) p_Object args, p_Object env __UNUSE
    ifthen-pair is a list of form (if-arg then-form) => eval(then-form)
    for the first if-arg in the list that is not nil (true), otherwise
    nil. */
-p_Object f_cond(TRACEPARAMS(char const *what) p_Object args, p_Object env __UNUSED__)
+struct Object_s *f_cond(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
   if (nilp(args))
     return p_nil;
@@ -1021,14 +1035,14 @@ p_Object f_cond(TRACEPARAMS(char const *what) p_Object args, p_Object env __UNUS
   assert (listp(args));
 
   {
-    p_Object pair = list_car(args);
+    struct Object_s *pair = list_car(args);
 
     assert (listp(pair));
     assert (finalp(list_cdr(pair)));
 
     {
-      p_Object if_arg = list_car(pair);
-      p_Object then_form = list_car(list_cdr(pair));
+      struct Object_s *if_arg = list_car(pair);
+      struct Object_s *then_form = list_car(list_cdr(pair));
 
       if (!nilp(eval(TRACE(what) if_arg, env)))
 	return eval(TRACE(what) then_form, env);
@@ -1043,7 +1057,7 @@ p_Object f_cond(TRACEPARAMS(char const *what) p_Object args, p_Object env __UNUS
    (defglobal key value) => '() with new global environment prepended (via cons)
    			    with (key . value) (SIDE EFFECT)
  */
-p_Object f_defglobal(TRACEPARAMS(char const *what) p_Object args, p_Object env __UNUSED__)
+struct Object_s *f_defglobal(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
   if (nilp(args))
     return p_environment;
@@ -1059,8 +1073,8 @@ p_Object f_defglobal(TRACEPARAMS(char const *what) p_Object args, p_Object env _
       assert (finalp(list_cdr(args)));
 
       {
-	p_Object sym = eval(TRACE(what) list_car(args), env);
-	p_Object form = eval(TRACE(what) list_car(list_cdr(args)), env);
+	struct Object_s *sym = eval(TRACE(what) list_car(args), env);
+	struct Object_s *form = eval(TRACE(what) list_car(list_cdr(args)), env);
 
 	assert (atomicp(sym));
 
@@ -1074,7 +1088,7 @@ p_Object f_defglobal(TRACEPARAMS(char const *what) p_Object args, p_Object env _
 }
 
 /* (eval arg [env]) => arg evaluated with respect to environment env (default is current env) */
-p_Object f_eval(TRACEPARAMS(char const *what) p_Object args, p_Object env)
+struct Object_s *f_eval(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
   assert (listp(args));
   assert (nilp(list_cdr(args)) || finalp(list_cdr(args)));
@@ -1086,13 +1100,13 @@ p_Object f_eval(TRACEPARAMS(char const *what) p_Object args, p_Object env)
 /* (apply zedba me forms [env]) => zedba invoked with reference to
    (presumably) itself, forms to be bound to zedba's arguments, and
    environment for such bindings (default is current env) */
-p_Object f_apply(TRACEPARAMS(char const *what) p_Object args, p_Object env)
+struct Object_s *f_apply(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
   assert (listp(args));
 
   {
-    p_Object func = eval(TRACE(what) list_car(args), env);
-    p_Object rest = list_cdr(args);
+    struct Object_s *func = eval(TRACE(what) list_car(args), env);
+    struct Object_s *rest = list_cdr(args);
 
 #if TRACING
     if (atomp(list_car(args)))
@@ -1102,15 +1116,15 @@ p_Object f_apply(TRACEPARAMS(char const *what) p_Object args, p_Object env)
     assert (listp(rest));
 
     {
-      p_Object me = eval(TRACE(what) list_car(rest), env);
-      p_Object new_rest = list_cdr(rest);
+      struct Object_s *me = eval(TRACE(what) list_car(rest), env);
+      struct Object_s *new_rest = list_cdr(rest);
 
       rest = new_rest;
       assert (listp(rest));
 
       {
-	p_Object forms = eval(TRACE(what) list_car(rest), env);
-	p_Object new_rest = list_cdr(rest);
+	struct Object_s *forms = eval(TRACE(what) list_car(rest), env);
+	struct Object_s *new_rest = list_cdr(rest);
 
 	rest = new_rest;
 	assert (nilp(rest) || finalp(rest));
@@ -1121,8 +1135,8 @@ p_Object f_apply(TRACEPARAMS(char const *what) p_Object args, p_Object env)
   }
 }
 
-/* (.symbol_dump) : dump symbol names along with their p_Symbol objects */
-p_Object f_dot_symbol_dump(TRACEPARAMS(char const *what __UNUSED__) p_Object args, p_Object env __UNUSED__)
+/* (.symbol_dump) : dump symbol names along with their struct Symbol_s * objects */
+struct Object_s *f_dot_symbol_dump(TRACEPARAMS(char const *what __UNUSED__) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
   assert (!args);
 
@@ -1131,9 +1145,9 @@ p_Object f_dot_symbol_dump(TRACEPARAMS(char const *what __UNUSED__) p_Object arg
   return p_nil;
 }
 
-static p_Object initialize_builtin(char const *sym, compiled_fn fn)
+static struct Object_s *initialize_builtin(char const *sym, compiled_fn fn)
 {
-  p_Object tmp;
+  struct Object_s *tmp;
 
   p_environment = environment_new(object_new_atomic(symbol_sym(sym)),
 				  (tmp = object_new_compiled(fn)),
@@ -1183,7 +1197,7 @@ main(int argc, char **argv)
   initialize();
   buf = buffer_new(MAXTOKENSIZE);
   for (;;) {
-    p_Object obj = object_read(stdin, buf);
+    struct Object_s *obj = object_read(stdin, buf);
     if (!quiet) {
       object_write(stdout, eval(TRACE("stdin") obj, p_environment));
       fprintf(stdout, "\n");
@@ -1193,7 +1207,7 @@ main(int argc, char **argv)
   return 0;
 }
 
-void debug_output(p_Object obj)
+void debug_output(struct Object_s *obj)
 {
   object_write(stdout, obj);
   fprintf(stdout, "\n");
