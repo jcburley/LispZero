@@ -46,15 +46,15 @@
 
 #define MAP_VERSION "0.1.0"
 
-struct map_node_t;
-typedef struct map_node_t map_node_t;
+struct map_node_s;
+typedef struct map_node_s map_node_t;
 
-typedef struct {
+typedef struct map_base_s {
   map_node_t **buckets;
   unsigned nbuckets, nnodes;
 } map_base_t;
 
-typedef struct {
+typedef struct map_iter_s {
   unsigned bucketidx;
   map_node_t *node;
 } map_iter_t;
@@ -108,7 +108,7 @@ typedef map_t(char) map_char_t;
 typedef map_t(float) map_float_t;
 typedef map_t(double) map_double_t;
 
-struct map_node_t {
+struct map_node_s {
   unsigned hash;
   void *value;
   map_node_t *next;
