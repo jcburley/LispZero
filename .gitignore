@@ -5,3 +5,4 @@ lisp-zero
 *.go
 *.ast
 lisp-zero-single
+*.stamp
