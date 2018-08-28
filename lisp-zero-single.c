@@ -645,6 +645,31 @@ static void token_putback(char *token)
   lookahead_valid = 1;
 }
 
+static int my_getc_next;
+static FILE *my_getc_file;
+
+static int
+my_getc(FILE *input)
+{
+  if (my_getc_file == input) {
+    my_getc_file = NULL;
+    return my_getc_next;
+  }
+
+  assert(!my_getc_file || ("No support for un-getting on two streams at the same time" == NULL));
+
+  return getc(input);
+}
+
+static void
+my_ungetc(int ch, FILE *input)
+{
+  assert(!my_getc_file || ("No support for un-getting on two streams at the same time" == NULL));
+
+  my_getc_file = input;
+  my_getc_next = ch;
+}
+
 static char *token_get(FILE *input, struct buffer_s *buf) {
   int ch;
 
@@ -658,10 +683,10 @@ static char *token_get(FILE *input, struct buffer_s *buf) {
 
   do
     {
-      if ((ch = getc(input)) == EOF)
+      if ((ch = my_getc(input)) == EOF)
 	PRINT_ERROR_AND_EXIT(NULL, 0);
       if (ch == ';')
-	while ((ch = getc(input)) != EOF && ch != '\n')
+	while ((ch = my_getc(input)) != EOF && ch != '\n')
 	  ;
     } while(isspace(ch));
 
@@ -671,12 +696,12 @@ static char *token_get(FILE *input, struct buffer_s *buf) {
     return buffer_tostring(buf);
 
   for (;;) {
-    if ((ch = getc(input)) == EOF)
+    if ((ch = my_getc(input)) == EOF)
       PRINT_ERROR_AND_EXIT(NULL, 0);
     
     if (strchr("()\'", ch) || isspace(ch))
       {
-	ungetc(ch, input);
+	my_ungetc(ch, input);
 	return buffer_tostring(buf);
       }
 
