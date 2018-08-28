@@ -348,18 +348,24 @@ char *string_duplicate(char const *str)
 
 /* Forward references. */
 
-typedef struct Symbol *p_Symbol;
-typedef struct Object *p_Object;
+typedef struct Symbol_s *p_Symbol;
+typedef struct Object_s *p_Object;
 p_Object f_quote(TRACEPARAMS(char const *what) p_Object args, p_Object env);
+
+typedef p_Object (*compiled_fn)(TRACEPARAMS(char const *) p_Object, p_Object);
+
+typedef union Cdr_s {
+  p_Object obj;
+  p_Symbol sym;
+  compiled_fn fn;
+} Cdr_t;
 
 /* Objects (lists, atoms, etc.). */
 
-typedef struct Object {
+typedef struct Object_s {
   p_Object car;  /* Head item in this list, unless a BUILTIN_CAR node. */
-  p_Object cdr;  /* Tail list, unless car is a BUILTIN_CAR node. */
+  Cdr_t cdr;  /* Tail list, unless car is a BUILTIN_CAR node. */
 } Object;
-
-typedef p_Object (*compiled_fn)(TRACEPARAMS(char const *) p_Object, p_Object);
 
 #define BUILTIN_CAR(obj)			\
   static Object obj;				\
@@ -418,7 +424,7 @@ bool listp(p_Object list)
 
 bool finalp(p_Object list)
 {
-  return listp(list) && nilp(list->cdr);
+  return listp(list) && nilp(list->cdr.obj);
 }
 
 p_Object list_car(p_Object list)
@@ -430,19 +436,19 @@ p_Object list_car(p_Object list)
 p_Object list_cdr(p_Object list)
 {
   assert (listp(list));
-  return list->cdr;
+  return list->cdr.obj;
 }
 
 p_Symbol object_symbol(p_Object atom)
 {
   assert (atomicp(atom));
-  return (p_Symbol) atom->cdr;
+  return atom->cdr.sym;
 }
 
 compiled_fn object_compiled(p_Object compiled)
 {
   assert (compiledp(compiled));
-  return (compiled_fn) compiled->cdr;
+  return compiled->cdr.fn;
 }
 
 static p_Object object_new(p_Object car, p_Object cdr)
@@ -457,7 +463,7 @@ static p_Object object_new(p_Object car, p_Object cdr)
   allocations_total += sizeof(Object);
 
   obj->car = car;
-  obj->cdr = cdr;
+  obj->cdr.obj = cdr;
 
   return obj;
 }
@@ -469,7 +475,7 @@ static p_Object object_new(p_Object car, p_Object cdr)
 
 /* Symbols. */
 
-typedef struct Symbol {
+typedef struct Symbol_s {
   char const *name;
 } Symbol;
 
