@@ -602,15 +602,15 @@ struct Object_s *binding_lookup(TRACEPARAMS(char const *what __UNUSED__) struct 
 static char *token_lookahead;
 static int lookahead_valid = 0;
 
-typedef struct buffer_s {
+struct buffer_s {
   size_t size;
   size_t used;
   char *contents;
-} *buffer;
+};
 
-static buffer buffer_new(size_t initial_size)
+static struct buffer_s *buffer_new(size_t initial_size)
 {
-  buffer buf = (buffer ) malloc(sizeof(*buf));
+  struct buffer_s *buf = (struct buffer_s *) malloc(sizeof(*buf));
   char *contents = (char *) malloc(initial_size);
 
   if (!buf || !contents)
@@ -623,14 +623,14 @@ static buffer buffer_new(size_t initial_size)
   return buf;
 }
 
-static void buffer_append(buffer buf, char ch)
+static void buffer_append(struct buffer_s *buf, char ch)
 {
   if (buf->used >= buf->size)
     PRINT_ERROR_AND_EXIT("lexeme too long for this build", 997);  /* TODO: realloc() */
   buf->contents[buf->used++] = ch;
 }
 
-static char *buffer_tostring(buffer buf)
+static char *buffer_tostring(struct buffer_s *buf)
 {
   buffer_append(buf, '\0');
   return buf->contents;
@@ -645,7 +645,7 @@ static void token_putback(char *token)
   lookahead_valid = 1;
 }
 
-static char *token_get(FILE *input, buffer buf) {
+static char *token_get(FILE *input, struct buffer_s *buf) {
   int ch;
 
   buffer_clear(buf);
@@ -684,8 +684,8 @@ static char *token_get(FILE *input, buffer buf) {
   }
 }
 
-struct Object_s *list_read(FILE *input, buffer buf);
-struct Object_s *object_read(FILE *input, buffer buf)
+struct Object_s *list_read(FILE *input, struct buffer_s *buf);
+struct Object_s *object_read(FILE *input, struct buffer_s *buf)
 {
   char *token;
 
@@ -708,7 +708,7 @@ struct Object_s *object_read(FILE *input, buffer buf)
   return object_new_atomic(symbol_sym(token));
 }
 
-struct Object_s *list_read(FILE *input, buffer buf) {
+struct Object_s *list_read(FILE *input, struct buffer_s *buf) {
   char *token = token_get(input, buf);
   struct Object_s *tmp;
 
@@ -1192,7 +1192,7 @@ main(int argc, char **argv)
 
   map_init(&map_sym);
 
-  buffer buf;
+  struct buffer_s *buf;
 
   initialize();
   buf = buffer_new(MAXTOKENSIZE);
