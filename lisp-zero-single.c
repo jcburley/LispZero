@@ -32,6 +32,7 @@
 #define __USE_XOPEN2K8 1
 #include <assert.h>
 #include <errno.h>
+#include <inttypes.h>
 #include <limits.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -300,6 +301,7 @@ static bool quiet = false;
 #if TRACING
 #define TRACE(where...) where,
 #define TRACEPARAMS(params...) params,
+static bool tracing = false;
 #else
 #define TRACE(where...)
 #define TRACEPARAMS(params...)
@@ -311,7 +313,7 @@ static bool quiet = false;
       char *m = (MSG);						\
       if (m) fprintf(stderr, "%s\n", m);			\
       if (!quiet)                                               \
-        fprintf(stderr, "allocations: %lld; total: %lld\n",	\
+        fprintf(stderr, "allocations: %" PRIu64 "; total: %" PRIu64 "\n",	\
                 allocations, allocations_total);                \
       exit((CODE));						\
     } while (0)
@@ -328,8 +330,8 @@ static bool quiet = false;
 
 /* Heap. */
 
-static long long int allocations = 0;
-static long long int allocations_total = 0;
+static uint64_t allocations = 0;
+static uint64_t allocations_total = 0;
 
 char *string_duplicate(char const *str)
 {
@@ -430,27 +432,50 @@ bool finalp(struct Object_s *list)
   return listp(list) && nilp(list->cdr.obj);
 }
 
+/* Forward-declare this to support assert_or_dump(): */
+static void object_write(FILE *output, struct Object_s *obj);
+
+static char const *filename;
+static unsigned lineno = 1;
+static int max_object_write = -1;
+
+static void
+assert_or_dump_(int srcline, bool ok, struct Object_s *obj, char const *what)
+{
+  if (ok || max_object_write != -1)
+    return;
+
+  fprintf(stderr, "ERROR at %d: %s, but got:\n", lineno, what);
+  max_object_write = 10;
+  object_write(stderr, obj);
+  fprintf(stderr, "\n" __FILE__ ":%d: aborting\n", srcline);
+
+  assert(what == NULL);
+}
+
+#define assert_or_dump(ok, obj, what) assert_or_dump_(__LINE__, (ok), (obj), (what))
+
 struct Object_s *list_car(struct Object_s *list)
 {
-  assert (listp(list));
+  assert_or_dump(listp(list), list, "expected list");
   return list->car;
 }
 
 struct Object_s *list_cdr(struct Object_s *list)
 {
-  assert (listp(list));
+  assert_or_dump(listp(list), list, "expected list");
   return list->cdr.obj;
 }
 
 struct Symbol_s *object_symbol(struct Object_s *atom)
 {
-  assert (atomicp(atom));
+  assert_or_dump(atomicp(atom), atom, "expected implementation atom");
   return atom->cdr.sym;
 }
 
 compiled_fn object_compiled(struct Object_s *compiled)
 {
-  assert (compiledp(compiled));
+  assert_or_dump(compiledp(compiled), compiled, "expected compiled function");
   return compiled->cdr.fn;
 }
 
@@ -558,7 +583,7 @@ static struct Symbol_s *p_sym_quote = NULL;
 
 static struct Object_s *binding_new(struct Object_s *sym, struct Object_s *val)
 {
-  assert (atomicp(sym));
+  assert_or_dump(atomicp(sym), sym, "expected implementation atom");
 
   return object_new(sym, val);
 }
@@ -574,7 +599,14 @@ struct Object_s *binding_lookup(TRACEPARAMS(char const *what __UNUSED__) struct 
   if (nilp(bindings))
     return p_nil;
 
-  assert (listp(bindings));
+#if TRACING
+  if (tracing) {
+    fprintf(stderr, "%s:%d: " __FILE__ ":%d: Searching for `%s' in:\n",
+            filename, lineno, __LINE__, key->name);
+    object_write(stderr, bindings);
+    fputs("\n\n", stderr);
+  }
+#endif
 
   /* Originally this used a recursive algorithm, but tail-recursion
      optimization wasn't being done by gcc -g -O0, and it was annoying
@@ -582,6 +614,8 @@ struct Object_s *binding_lookup(TRACEPARAMS(char const *what __UNUSED__) struct 
   */
   for (; !nilp(bindings); bindings = list_cdr(bindings))
   {
+    assert_or_dump(listp(bindings), bindings, "expected list");
+
     struct Object_s *binding = list_car(bindings);
 
     if (atomicp(binding) && object_symbol(binding) == key)
@@ -689,6 +723,8 @@ static char *token_get(FILE *input, struct buffer_s *buf) {
       if (ch == ';')
 	while ((ch = my_getc(input)) != EOF && ch != '\n')
 	  ;
+      if (ch == '\n')
+        ++lineno;
     } while(isspace(ch));
 
   buffer_append(buf, ch);
@@ -771,7 +807,8 @@ static bool quotep(struct Object_s *obj)
   }
 }
 
-void object_write(FILE *output, struct Object_s *obj)
+static void
+object_write(FILE *output, struct Object_s *obj)
 {
   if (nilp(obj))
     {
@@ -797,6 +834,15 @@ void object_write(FILE *output, struct Object_s *obj)
       object_write(output, list_car(list_cdr(obj)));
       return;
     }
+
+  if (max_object_write == 0)
+    {
+      fprintf(output, "(...)");
+      return;
+    }
+
+  if (max_object_write > 0)
+    --max_object_write;
 
   fprintf(output, "(");
   for (;;)
@@ -834,7 +880,7 @@ struct Object_s *binding_for(TRACEPARAMS(char const *what) struct Symbol_s *sym,
     {
       /* TODO: Throw an exception etc. */
       fprintf(stderr, "Unbound symbol \"%s\"\n", symbol_name(sym));
-      assert ("unbound symbol" == NULL);
+      assert("unbound symbol" == NULL);
     }
 
   return list_cdr(tmp);
@@ -852,7 +898,7 @@ struct Object_s *eval(TRACEPARAMS(char const *what) struct Object_s *exp, struct
   if (atomicp(exp))
     return binding_for(TRACE(what) object_symbol(exp), env);
 
-  assert (listp(exp));
+  assert_or_dump(listp(exp), exp, "expected list");
 
   {
     struct Object_s *func = eval(TRACE(what) list_car(exp), env);
@@ -908,15 +954,15 @@ struct Object_s *eval(TRACEPARAMS(char const *what) struct Object_s *exp, struct
 
 void assert_zedbap(struct Object_s *zedba)
 {
-  assert (listp(zedba));
+  assert_or_dump(listp(zedba), zedba, "expected list");
 
-  assert (listp(list_car(zedba)));
-  assert (atomicp(list_car(list_car(zedba))));  /* mename */
-  assert (atomicp(list_car(list_cdr(list_car(zedba)))));  /* formlistparamname */
-  assert (atomicp(list_car(list_cdr(list_cdr(list_car(zedba))))));  /* envparamname */
-  assert (finalp(list_cdr(list_cdr(list_car(zedba)))));  /* envparamname */
+  assert_or_dump(listp(list_car(zedba)), zedba, "expected list with car being arglist");
+  assert_or_dump(atomicp(list_car(list_car(zedba))), zedba, "expected zedba with 1st arg being mename");
+  assert_or_dump(atomicp(list_car(list_cdr(list_car(zedba)))), zedba, "expected zedba with 2nd arg being formlistparamname");
+  assert_or_dump(atomicp(list_car(list_cdr(list_cdr(list_car(zedba))))), zedba, "expected zedba with 3rd arg being envparamname");
+  assert_or_dump(finalp(list_cdr(list_cdr(list_car(zedba)))), zedba, "expected zedba with only 3 args");
 
-  assert (finalp(list_cdr(zedba)));  /* body */
+  assert_or_dump(finalp(list_cdr(zedba)), zedba, "expected zedba body to be last element of zedba as list");
 }
 
 /* Apply a zedba, which is an self/arglist/env macro version of the
@@ -944,15 +990,15 @@ struct Object_s *apply(TRACEPARAMS(char const *what) struct Object_s *func, stru
   {
     struct Object_s *params = list_car(func);
 
-    assert (listp(params));
+    assert_or_dump(listp(params), params, "expected list");
 
     meparamname = list_car(params);
 
-    assert (listp(list_cdr(params)));
+    assert_or_dump(listp(list_cdr(params)), params, "expected 2-element list");
 
     formlistparamname = list_car(list_cdr(params));
 
-    assert (finalp(list_cdr(list_cdr(params))));
+    assert_or_dump(finalp(list_cdr(list_cdr(params))), params, "expected 2-element list");
 
     envparamname = list_car(list_cdr(list_cdr(params)));
   }
@@ -967,7 +1013,7 @@ struct Object_s *apply(TRACEPARAMS(char const *what) struct Object_s *func, stru
 /* (quote form) => form */
 struct Object_s *f_quote(TRACEPARAMS(char const *what __UNUSED__) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
-  assert (finalp(args));
+  assert_or_dump(finalp(args), args, "expected 1-element list");
 
   return list_car(args);
 }
@@ -975,7 +1021,7 @@ struct Object_s *f_quote(TRACEPARAMS(char const *what __UNUSED__) struct Object_
 /* (atom atom) => t if atom is an atom (including nil), nil otherwise */
 struct Object_s *f_atom(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
-  assert (finalp(args));
+  assert_or_dump(finalp(args), args, "expected 1-element list");
 
   {
     struct Object_s *arg = eval(TRACE(what) list_car(args), env);
@@ -987,15 +1033,15 @@ struct Object_s *f_atom(TRACEPARAMS(char const *what) struct Object_s *args, str
 /* (eq left-atom right-atom) => t if args are equal, nil otherwise */
 struct Object_s *f_eq(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
-  assert (listp(args));
-  assert (finalp(list_cdr(args)));
+  assert_or_dump(listp(args), args, "expected 1-element list");
+  assert_or_dump(finalp(list_cdr(args)), args, "expected 1-element list");
 
   {
     struct Object_s *left = eval(TRACE(what) list_car(args), env);
     struct Object_s *right = eval(TRACE(what) list_car(list_cdr(args)), env);
 
-    assert (atomp(left));
-    assert (atomp(right));
+    assert_or_dump(atomp(left), left, "expected Lisp atom");
+    assert_or_dump(atomp(right), right, "expected Lisp atom");
 
     if (left == right)  /* All nils are equal to each other in this implementation */
       return object_new_t();
@@ -1010,8 +1056,8 @@ struct Object_s *f_eq(TRACEPARAMS(char const *what) struct Object_s *args, struc
 /* (cons car-arg cdr-arg) => (car-arg cdr-arg) */
 struct Object_s *f_cons(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
-  assert (listp(args));
-  assert (finalp(list_cdr(args)));
+  assert_or_dump(listp(args), args, "expected WHAT??");
+  assert_or_dump(finalp(list_cdr(args)), args, "expected WHAT??");
 
   {
     struct Object_s *car = eval(TRACE(what) list_car(args), env);
@@ -1024,12 +1070,12 @@ struct Object_s *f_cons(TRACEPARAMS(char const *what) struct Object_s *args, str
 /* (car cons-arg) : cons-arg is a list => car of cons-arg */
 struct Object_s *f_car(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
-  assert (finalp(args));
+  assert_or_dump(finalp(args), args, "expected WHAT??");
 
   {
     struct Object_s *arg = eval(TRACE(what) list_car(args), env);
 
-    assert (listp(arg));
+    assert_or_dump(listp(arg), arg, "expected WHAT??");
 
     return list_car(arg);
   }
@@ -1038,12 +1084,12 @@ struct Object_s *f_car(TRACEPARAMS(char const *what) struct Object_s *args, stru
 /* (cdr cons-arg) : cons-arg is a list => cdr of cons-arg */
 struct Object_s *f_cdr(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
-  assert (finalp(args));
+  assert_or_dump(finalp(args), args, "expected WHAT??");
 
   {
     struct Object_s *arg = eval(TRACE(what) list_car(args), env);
 
-    assert (listp(arg));
+    assert_or_dump(listp(arg), arg, "expected WHAT??");
 
     return list_cdr(arg);
   }
@@ -1058,13 +1104,13 @@ struct Object_s *f_cond(TRACEPARAMS(char const *what) struct Object_s *args, str
   if (nilp(args))
     return p_nil;
 
-  assert (listp(args));
+  assert_or_dump(listp(args), args, "expected WHAT??");
 
   {
     struct Object_s *pair = list_car(args);
 
-    assert (listp(pair));
-    assert (finalp(list_cdr(pair)));
+    assert_or_dump(listp(pair), pair, "expected WHAT??");
+    assert_or_dump(finalp(list_cdr(pair)), pair, "expected WHAT??");
 
     {
       struct Object_s *if_arg = list_car(pair);
@@ -1088,7 +1134,7 @@ struct Object_s *f_defglobal(TRACEPARAMS(char const *what) struct Object_s *args
   if (nilp(args))
     return p_environment;
 
-  assert (listp(args));
+  assert_or_dump(listp(args), args, "expected WHAT??");
 
   /* This form allows direct replacement of global environment.
      E.g. (defglobal (cdr (defglobal))) pops off the top binding. */  
@@ -1096,13 +1142,13 @@ struct Object_s *f_defglobal(TRACEPARAMS(char const *what) struct Object_s *args
     p_environment = eval(TRACE(what) list_car(args), env);
   else
     {
-      assert (finalp(list_cdr(args)));
+      assert_or_dump(finalp(list_cdr(args)), args, "expected WHAT??");
 
       {
 	struct Object_s *sym = eval(TRACE(what) list_car(args), env);
 	struct Object_s *form = eval(TRACE(what) list_car(list_cdr(args)), env);
 
-	assert (atomicp(sym));
+	assert_or_dump(atomicp(sym), sym, "expected WHAT??");
 
 	p_environment = environment_new(object_new_atomic(object_symbol(sym)),
 					form,
@@ -1116,8 +1162,8 @@ struct Object_s *f_defglobal(TRACEPARAMS(char const *what) struct Object_s *args
 /* (eval arg [env]) => arg evaluated with respect to environment env (default is current env) */
 struct Object_s *f_eval(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
-  assert (listp(args));
-  assert (nilp(list_cdr(args)) || finalp(list_cdr(args)));
+  assert_or_dump(listp(args), args, "expected WHAT??");
+  assert_or_dump(nilp(list_cdr(args)) || finalp(list_cdr(args)), args, "expected WHAT??");
 
   return eval(TRACE(what) eval(TRACE(what) list_car(args), env),
 	      nilp(list_cdr(args)) ? env : eval(TRACE(what) list_car(list_cdr(args)), env));
@@ -1128,7 +1174,7 @@ struct Object_s *f_eval(TRACEPARAMS(char const *what) struct Object_s *args, str
    environment for such bindings (default is current env) */
 struct Object_s *f_apply(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
-  assert (listp(args));
+  assert_or_dump(listp(args), args, "expected WHAT??");
 
   {
     struct Object_s *func = eval(TRACE(what) list_car(args), env);
@@ -1139,21 +1185,21 @@ struct Object_s *f_apply(TRACEPARAMS(char const *what) struct Object_s *args, st
       what = symbol_name(object_symbol(list_car(args)));
 #endif
 
-    assert (listp(rest));
+    assert_or_dump(listp(rest), rest, "expected WHAT??");
 
     {
       struct Object_s *me = eval(TRACE(what) list_car(rest), env);
       struct Object_s *new_rest = list_cdr(rest);
 
       rest = new_rest;
-      assert (listp(rest));
+      assert_or_dump(listp(rest), rest, "expected WHAT??");
 
       {
 	struct Object_s *forms = eval(TRACE(what) list_car(rest), env);
 	struct Object_s *new_rest = list_cdr(rest);
 
 	rest = new_rest;
-	assert (nilp(rest) || finalp(rest));
+	assert_or_dump(nilp(rest) || finalp(rest), rest, "expected WHAT??");
 
 	return apply(TRACE(what) func, me, forms, nilp(rest) ? p_nil : eval(TRACE(what) list_car(rest), env));
       }
@@ -1164,7 +1210,7 @@ struct Object_s *f_apply(TRACEPARAMS(char const *what) struct Object_s *args, st
 /* (.symbol_dump) : dump symbol names along with their struct Symbol_s * objects */
 struct Object_s *f_dot_symbol_dump(TRACEPARAMS(char const *what __UNUSED__) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
-  assert (!args);
+  assert_or_dump(!args, args, "expected WHAT??");
 
   symbol_dump();
 
@@ -1213,12 +1259,17 @@ void initialize()
 int
 main(int argc, char **argv)
 {
-  char const *filename;
   FILE *in;
 
-  if (argc > 1 && !strcmp(argv[1], "-q")) {
-    quiet = true;
-    --argc, argv++;
+  if (argc > 1) {
+    if (!strcmp(argv[1], "-q")) {
+      quiet = true;
+      --argc, argv++;
+    }
+    else if (!strcmp(argv[1], "-t")) {
+      tracing = true;
+      --argc, argv++;
+    }
   }
 
   if (argc > 1 && argv[1][0] == '-') {
