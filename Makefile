@@ -2,7 +2,7 @@ SOURCEFILES=lisp-zero.c zero.lisp zero-test.lisp zero-test.gold
 BUILDFILES=Makefile .gdbinit
 RESULTFILES=zero-test.out
 
-all: lisp-zero lisp-zero-single zero-test
+all: lisp-zero lisp-zero-single zero-test zero-single-test
 
 lisp-zero: lisp-zero.c map.c
 	gcc -g -O0 -Wall -W -I/usr/share/gnulib/lib -o lisp-zero lisp-zero.c map.c
