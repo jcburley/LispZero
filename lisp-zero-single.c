@@ -175,8 +175,9 @@ static int map_resize(map_base_t *m, int nbuckets) {
     }
   }
   /* Reset buckets */
-  buckets = realloc(m->buckets, sizeof(*m->buckets) * nbuckets);
+  buckets = malloc(sizeof(*m->buckets) * nbuckets);
   if (buckets != NULL) {
+    free(m->buckets);
     m->buckets = buckets;
     m->nbuckets = nbuckets;
   }
@@ -190,7 +191,7 @@ static int map_resize(map_base_t *m, int nbuckets) {
       node = next;
     }
   }
-  /* Return error code if realloc() failed */
+  /* Return error code if malloc() failed */
   return (buckets == NULL) ? -1 : 0;
 }
 
