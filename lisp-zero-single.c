@@ -50,23 +50,29 @@
 
 #define MAP_VERSION "0.1.0"
 
-struct map_node_s;
 typedef struct map_node_s map_node_t;
 
-typedef struct map_base_s {
+struct map_node_s {
+  unsigned hash;
+  void *value;
+  map_node_t *next;
+  /* char key[]; */
+  /* char value[]; */
+};
+
+struct map_base_s {
   map_node_t **buckets;
   unsigned nbuckets, nnodes;
-} map_base_t;
+};
 
-typedef struct map_iter_s {
+struct map_iter_s {
   unsigned bucketidx;
   map_node_t *node;
-} map_iter_t;
+};
 
 
-#define map_t(T)\
-  struct { map_base_t base; T *ref; T tmp; }
-
+#define map_t(N,T)                                              \
+  struct N ## _MAP { struct map_base_s base; T *ref; T tmp; }
 
 #define map_init(m)\
   memset(m, 0, sizeof(*(m)))
@@ -97,29 +103,20 @@ typedef struct map_iter_s {
   map_next_(&(m)->base, iter)
 
 
-void map_deinit_(map_base_t *m);
-void *map_get_(map_base_t *m, const char *key);
-int map_set_(map_base_t *m, const char *key, void *value, int vsize);
-void map_remove_(map_base_t *m, const char *key);
-map_iter_t map_iter_(void);
-const char *map_next_(map_base_t *m, map_iter_t *iter);
+void map_deinit_(struct map_base_s *m);
+void *map_get_(struct map_base_s *m, const char *key);
+int map_set_(struct map_base_s *m, const char *key, void *value, int vsize);
+void map_remove_(struct map_base_s *m, const char *key);
+struct map_iter_s map_iter_(void);
+const char *map_next_(struct map_base_s *m, struct map_iter_s *iter);
 
 
-typedef map_t(void*) map_void_t;
-typedef map_t(char*) map_str_t;
-typedef map_t(int) map_int_t;
-typedef map_t(char) map_char_t;
-typedef map_t(float) map_float_t;
-typedef map_t(double) map_double_t;
-
-struct map_node_s {
-  unsigned hash;
-  void *value;
-  map_node_t *next;
-  /* char key[]; */
-  /* char value[]; */
-};
-
+typedef map_t(voidp,void*) map_void_t;
+typedef map_t(charp,char*) map_str_t;
+typedef map_t(int,int) map_int_t;
+typedef map_t(char,char) map_char_t;
+typedef map_t(float,float) map_float_t;
+typedef map_t(double,double) map_double_t;
 
 static unsigned map_hash(const char *str) {
   unsigned hash = 5381;
@@ -144,21 +141,21 @@ static map_node_t *map_newnode(const char *key, void *value, int vsize) {
 }
 
 
-static int map_bucketidx(map_base_t *m, unsigned hash) {
+static int map_bucketidx(struct map_base_s *m, unsigned hash) {
   /* If the implementation is changed to allow a non-power-of-2 bucket count,
    * the line below should be changed to use mod instead of AND */
   return hash & (m->nbuckets - 1);
 }
 
 
-static void map_addnode(map_base_t *m, map_node_t *node) {
+static void map_addnode(struct map_base_s *m, map_node_t *node) {
   int n = map_bucketidx(m, node->hash);
   node->next = m->buckets[n];
   m->buckets[n] = node;
 }
 
 
-static int map_resize(map_base_t *m, int nbuckets) {
+static int map_resize(struct map_base_s *m, int nbuckets) {
   map_node_t *nodes, *node, *next;
   map_node_t **buckets;
   int i; 
@@ -196,7 +193,7 @@ static int map_resize(map_base_t *m, int nbuckets) {
 }
 
 
-static map_node_t **map_getref(map_base_t *m, const char *key) {
+static map_node_t **map_getref(struct map_base_s *m, const char *key) {
   unsigned hash = map_hash(key);
   map_node_t **next;
   if (m->nbuckets > 0) {
@@ -212,7 +209,7 @@ static map_node_t **map_getref(map_base_t *m, const char *key) {
 }
 
 
-void map_deinit_(map_base_t *m) {
+void map_deinit_(struct map_base_s *m) {
   map_node_t *next, *node;
   int i;
   i = m->nbuckets;
@@ -228,13 +225,13 @@ void map_deinit_(map_base_t *m) {
 }
 
 
-void *map_get_(map_base_t *m, const char *key) {
+void *map_get_(struct map_base_s *m, const char *key) {
   map_node_t **next = map_getref(m, key);
   return next ? (*next)->value : NULL;
 }
 
 
-int map_set_(map_base_t *m, const char *key, void *value, int vsize) {
+int map_set_(struct map_base_s *m, const char *key, void *value, int vsize) {
   int n, err;
   map_node_t **next, *node;
   /* Find & replace existing node */
@@ -260,7 +257,7 @@ int map_set_(map_base_t *m, const char *key, void *value, int vsize) {
 }
 
 
-void map_remove_(map_base_t *m, const char *key) {
+void map_remove_(struct map_base_s *m, const char *key) {
   map_node_t *node;
   map_node_t **next = map_getref(m, key);
   if (next) {
@@ -272,15 +269,15 @@ void map_remove_(map_base_t *m, const char *key) {
 }
 
 
-map_iter_t map_iter_(void) {
-  map_iter_t iter;
+struct map_iter_s map_iter_(void) {
+  struct map_iter_s iter;
   iter.bucketidx = UINT_MAX;
   iter.node = NULL;
   return iter;
 }
 
 
-const char *map_next_(map_base_t *m, map_iter_t *iter) {
+const char *map_next_(struct map_base_s *m, struct map_iter_s *iter) {
   if (!iter->node || !(iter->node = iter->node->next)) {
     do {
       if (++iter->bucketidx >= m->nbuckets) {
@@ -540,8 +537,7 @@ static struct Symbol_s *symbol_new(char const *name)
 
 /* Map of symbols (keys) to values. */
 
-typedef map_t(struct Symbol_s *) map_sym_t;
-static map_sym_t map_sym;
+static map_t(Symbol,struct Symbol_s *) map_sym;
 
 static struct Symbol_s *symbol_lookup(char const *name)
 {
@@ -569,7 +565,7 @@ static struct Symbol_s *symbol_sym(char const *name)
 static void
 symbol_dump(void)
 {
-  map_iter_t iter = map_iter(&map_sym);
+  struct map_iter_s iter = map_iter(&map_sym);
 
   const char *key;
   while ((key = map_next(&map_sym, &iter))) {
