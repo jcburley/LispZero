@@ -1176,8 +1176,12 @@ struct Object_s *f_eval(TRACEPARAMS(char const *what) struct Object_s *args, str
   assert_or_dump(listp(args), args, "expected WHAT??");
   assert_or_dump(nilp(list_cdr(args)) || finalp(list_cdr(args)), args, "expected WHAT??");
 
-  return eval(TRACE(what) eval(TRACE(what) list_car(args), env),
-	      nilp(list_cdr(args)) ? env : eval(TRACE(what) list_car(list_cdr(args)), env));
+  /* Eval this early, rather than in the final eval() below, so .c
+     version .go compilers don't choose different order of evaluations
+     and so mess up the tracefiles. */
+  struct Object_s *n_env = nilp(list_cdr(args)) ? env : eval(TRACE(what) list_car(list_cdr(args)), env);
+  
+  return eval(TRACE(what) eval(TRACE(what) list_car(args), env), n_env);
 }
 
 /* (apply zedba me forms [env]) => zedba invoked with reference to
