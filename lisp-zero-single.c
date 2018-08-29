@@ -313,7 +313,7 @@ static bool tracing = false;
       char *m = (MSG);						\
       if (m) fprintf(stderr, "%s\n", m);			\
       if (!quiet)                                               \
-        fprintf(stderr, "allocations: %" PRIu64 "; total: %" PRIu64 "\n",	\
+        fprintf(stderr, "allocations: %" PRId64 "; total: %" PRId64 "\n",	\
                 allocations, allocations_total);                \
       exit((CODE));						\
     } while (0)
@@ -440,7 +440,7 @@ static unsigned lineno = 1;
 static int max_object_write = -1;
 
 static void
-assert_or_dump_(int srcline, bool ok, struct Object_s *obj, char const *what)
+assert_or_dump_(unsigned srcline, bool ok, struct Object_s *obj, char const *what)
 {
   if (ok || max_object_write != -1)
     return;
@@ -601,9 +601,11 @@ struct Object_s *binding_lookup(TRACEPARAMS(char const *what __UNUSED__) struct 
 
 #if TRACING
   if (tracing) {
-    fprintf(stderr, "%s:%d: " __FILE__ ":%d: Searching for `%s' in:\n",
-            filename, lineno, __LINE__, key->name);
+    fprintf(stderr, "%s:%d: Searching for `%s' in:\n",
+            filename, lineno, key->name);
+    max_object_write = 10;
     object_write(stderr, bindings);
+    max_object_write = -1;
     fputs("\n\n", stderr);
   }
 #endif
@@ -746,6 +748,8 @@ static char *token_get(FILE *input, struct buffer_s *buf) {
   }
 }
 
+static unsigned latest_lineno;
+
 struct Object_s *list_read(FILE *input, struct buffer_s *buf);
 struct Object_s *object_read(FILE *input, struct buffer_s *buf)
 {
@@ -766,6 +770,13 @@ struct Object_s *object_read(FILE *input, struct buffer_s *buf)
 
   if (!strcmp(token, ")"))
     PRINT_ERROR_AND_EXIT("unbalanced close paren", 1);
+
+#if TRACING
+  if (tracing && lineno != latest_lineno) {
+    latest_lineno = lineno;
+    fprintf(stderr, "%s:%d: Seen `%s'.\n", filename, lineno, token);
+  }
+#endif
 
   return object_new_atomic(symbol_sym(token));
 }
