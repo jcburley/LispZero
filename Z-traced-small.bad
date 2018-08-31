@@ -1,0 +1,540 @@
+Z.lisp:10: Seen `defglobal'.
+Z.lisp:11: Seen `me'.
+Z.lisp:12: Seen `eval'.
+Z.lisp:13: Seen `eval'.
+Z.lisp:14: Seen `cons'.
+Z.lisp:15: Seen `cons'.
+Z.lisp:16: Seen `eval'.
+Z.lisp:17: Seen `eval'.
+Z.lisp:18: Seen `env'.
+Z.lisp:19: Searching for `defglobal' in:
+((.symbol_dump . *COMPILED*) (defglobal . *COMPILED*) (apply . *COMPILED*) (eval . *COMPILED*) (cond . *COMPILED*) (cdr . *COMPILED*) (car . *COMPILED*) (cons . *COMPILED*) (eq . *COMPILED*) (...) (...))
+
+Z.lisp:19: Searching for `quote' in:
+((.symbol_dump . *COMPILED*) (defglobal . *COMPILED*) (apply . *COMPILED*) (eval . *COMPILED*) (cond . *COMPILED*) (cdr . *COMPILED*) (car . *COMPILED*) (cons . *COMPILED*) (eq . *COMPILED*) (...) (...))
+
+Z.lisp:19: Searching for `quote' in:
+((.symbol_dump . *COMPILED*) (defglobal . *COMPILED*) (apply . *COMPILED*) (eval . *COMPILED*) (cond . *COMPILED*) (cdr . *COMPILED*) (car . *COMPILED*) (cons . *COMPILED*) (eq . *COMPILED*) (...) (...))
+
+()
+Z.lisp:21: Seen `defglobal'.
+Z.lisp:22: Seen `me'.
+Z.lisp:23: Seen `onelet'.
+Z.lisp:24: Seen `cond'.
+Z.lisp:25: Seen `t'.
+Z.lisp:25: Searching for `defglobal' in:
+((onelet (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:25: Searching for `quote' in:
+((onelet (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:25: Searching for `quote' in:
+((onelet (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+()
+Z.lisp:28: Seen `defglobal'.
+Z.lisp:29: Seen `me'.
+Z.lisp:30: Seen `cond'.
+Z.lisp:31: Seen `t'.
+Z.lisp:32: Seen `apply'.
+Z.lisp:32: Searching for `defglobal' in:
+((null (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:32: Searching for `quote' in:
+((null (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:32: Searching for `quote' in:
+((null (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+()
+Z.lisp:36: Seen `defglobal'.
+Z.lisp:37: Seen `me'.
+Z.lisp:38: Seen `onelet'.
+Z.lisp:39: Seen `onelet'.
+Z.lisp:40: Seen `onelet'.
+Z.lisp:41: Seen `onelet'.
+Z.lisp:42: Seen `cond'.
+Z.lisp:43: Seen `t'.
+Z.lisp:44: Seen `list'.
+Z.lisp:45: Seen `car'.
+Z.lisp:46: Seen `list'.
+Z.lisp:47: Seen `list'.
+Z.lisp:48: Seen `argsname'.
+Z.lisp:49: Seen `envname'.
+Z.lisp:50: Seen `list'.
+Z.lisp:51: Seen `applied'.
+Z.lisp:52: Seen `list'.
+Z.lisp:53: Seen `argsname'.
+Z.lisp:54: Seen `envname'.
+Z.lisp:55: Seen `body'.
+Z.lisp:55: Searching for `defglobal' in:
+((list (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:55: Searching for `quote' in:
+((list (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:55: Searching for `quote' in:
+((list (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+()
+Z.lisp:58: Seen `defglobal'.
+Z.lisp:59: Seen `me'.
+Z.lisp:60: Seen `defglobal'.
+Z.lisp:61: Seen `car'.
+Z.lisp:62: Seen `list'.
+Z.lisp:63: Seen `applied'.
+Z.lisp:64: Seen `formlist'.
+Z.lisp:65: Seen `env'.
+Z.lisp:66: Seen `car'.
+Z.lisp:66: Searching for `defglobal' in:
+((applied (me formlist env) (onelet (((quote params) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:66: Searching for `quote' in:
+((applied (me formlist env) (onelet (((quote params) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:66: Searching for `quote' in:
+((applied (me formlist env) (onelet (((quote params) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+()
+Z.lisp:68: Seen `defun'.
+Z.lisp:69: Seen `car'.
+Z.lisp:69: Searching for `defun' in:
+((defun (me formlist env) (defglobal (car formlist) (list (quote (me formlist env)) (applied (car (...)) (...) (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `defglobal' in:
+((me (me formlist env) (defglobal (car formlist) (list (quote (me formlist env)) (applied (car (...)) (...) (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (defglobal (car formlist) (list (quote (me formlist env)) (applied (car (...)) (...) (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `formlist' in:
+((me (me formlist env) (defglobal (car formlist) (list (quote (me formlist env)) (applied (car (...)) (...) (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `list' in:
+((me (me formlist env) (defglobal (car formlist) (list (quote (me formlist env)) (applied (car (...)) (...) (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cond' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `null' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `onelet' in:
+((me (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `eval' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cons' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cons' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `eval' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `env' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `formlist' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `quote' in:
+((me (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `eval' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `env' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cdr' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `formlist' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `eval' in:
+((me (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `env' in:
+((me (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `formlist' in:
+((me (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `formlist' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `env' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `eval' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `env' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cdr' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `formlist' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `quote' in:
+((me (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cond' in:
+((arg (quote (me formlist env)) (applied (car (cdr formlist)) (quote formlist) (quote env) (car (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `atom' in:
+((arg (quote (me formlist env)) (applied (car (cdr formlist)) (quote formlist) (quote env) (car (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `arg' in:
+((arg (quote (me formlist env)) (applied (car (cdr formlist)) (quote formlist) (quote env) (car (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `quote' in:
+((arg (quote (me formlist env)) (applied (car (cdr formlist)) (quote formlist) (quote env) (car (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `quote' in:
+((arg (quote (me formlist env)) (applied (car (cdr formlist)) (quote formlist) (quote env) (car (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `quote' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cons' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `eval' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `env' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `formlist' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `quote' in:
+((me (me formlist env) (defglobal (car formlist) (list (quote (me formlist env)) (applied (car (...)) (...) (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `apply' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `me' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `me' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cdr' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `formlist' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `env' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cond' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `null' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `onelet' in:
+((me (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `eval' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cons' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cons' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `eval' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `env' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `formlist' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `quote' in:
+((me (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `eval' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `env' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cdr' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `formlist' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `eval' in:
+((me (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `env' in:
+((me (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `formlist' in:
+((me (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `formlist' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `env' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `eval' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `env' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cdr' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `formlist' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `quote' in:
+((me (me formlist env) (onelet (((quote arg) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cond' in:
+((arg (applied (car (cdr formlist)) (quote formlist) (quote env) (car (cdr (cdr formlist))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `atom' in:
+((arg (applied (car (cdr formlist)) (quote formlist) (quote env) (car (cdr (cdr formlist))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `arg' in:
+((arg (applied (car (cdr formlist)) (quote formlist) (quote env) (car (cdr (cdr formlist))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `quote' in:
+((arg (applied (car (cdr formlist)) (quote formlist) (quote env) (car (cdr (cdr formlist))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `quote' in:
+((arg (applied (car (cdr formlist)) (quote formlist) (quote env) (car (cdr (cdr formlist))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `quote' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cons' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `eval' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `env' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `formlist' in:
+((me (me formlist env) (cond ((null formlist) (quote ())) ((quote t) (cons (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `applied' in:
+((me (me formlist env) (defglobal (car formlist) (list (quote (me formlist env)) (applied (car (...)) (...) (...) (...))))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `onelet' in:
+((me (me formlist env) (onelet (((quote params) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `eval' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cons' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `cons' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `eval' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `env' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `formlist' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `quote' in:
+((me (me formlist env) (onelet (((quote params) (eval (car formlist) env))) (quote (...)))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `eval' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `env' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...))
+
+Z.lisp:69: Searching for `car' in:
+((me (me formlist env) (eval (eval (car (cdr formlist)) env) (cons (cons (eval (...) env) (...)) env))) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) (...) unexpected fault address 0x0
+fatal error: fault
+[signal SIGSEGV: segmentation violation code=0x80 addr=0x0 pc=0x4a5134]
+
+goroutine 1 [running]:
+runtime.throw(0x4ee0e4, 0x5)
+	/usr/local/go/src/runtime/panic.go:616 +0x81 fp=0xc42014afb0 sp=0xc42014af90 pc=0x427c11
+runtime.sigpanic()
+	/usr/local/go/src/runtime/signal_unix.go:395 +0x211 fp=0xc42014b000 sp=0xc42014afb0 pc=0x43a251
+main.atomp(...)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1155
+main.listp(0x6465746365707865, 0x4d8dc0)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1172 +0x384 fp=0xc42014b170 sp=0xc42014b000 pc=0x4a5134
+main.finalp(0x6465746365707865, 0x6465746365707865)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1177 +0x5e fp=0xc42014b280 sp=0xc42014b170 pc=0x4a51be
+main.quotep(0xc4200aa7f0, 0xc42014b500)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1688 +0x80 fp=0xc42014b330 sp=0xc42014b280 pc=0x4a91d0
+main.object_write(0xc42009c2e0, 0xc4200aa7f0)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1714 +0x562 fp=0xc42014b610 sp=0xc42014b330 pc=0x4a98d2
+main.object_write(0xc42009c2e0, 0xc4200aa810)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1728 +0x642 fp=0xc42014b8f0 sp=0xc42014b610 pc=0x4a99b2
+main.binding_lookup(0xc4200aa988, 0xc4200aa828, 0xc42040f6b0, 0x0)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1394 +0xa34 fp=0xc42014bc60 sp=0xc42014b8f0 pc=0x4a78d4
+main.binding_for(0xc4200aa988, 0xc4200aa828, 0xc42040f6b0, 0xc42014be0c)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1750 +0x5a fp=0xc42014bd48 sp=0xc42014bc60 pc=0x4a9d5a
+main.eval(0xc4200aa988, 0xc4200ab560, 0xc42040f6b0, 0xc420016ee0)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1772 +0x882 fp=0xc42014bfd0 sp=0xc42014bd48 pc=0x4aa7d2
+main.eval(0xc4200aa988, 0xc4200ab770, 0xc42040f6b0, 0xc42040e820)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1776 +0x4d3 fp=0xc42014c258 sp=0xc42014bfd0 pc=0x4aa423
+main.f_eval(0xc4200aa988, 0xc4200ab7e0, 0xc42040f6b0, 0xc42014c404)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:2030 +0x467 fp=0xc42014c3b0 sp=0xc42014c258 pc=0x4ae3d7
+main.eval(0xc4200aa988, 0xc4200ab800, 0xc42040f6b0, 0xc420144130)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1784 +0x793 fp=0xc42014c638 sp=0xc42014c3b0 pc=0x4aa6e3
+main.f_cons(0xc4200aa7a8, 0xc4200ab830, 0xc42040f6b0, 0xc42014c70c)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1927 +0x253 fp=0xc42014c6b8 sp=0xc42014c638 pc=0x4acb43
+main.eval(0xc4200aa7a8, 0xc4200ab850, 0xc42040f6b0, 0xc420428460)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1784 +0x793 fp=0xc42014c940 sp=0xc42014c6b8 pc=0x4aa6e3
+main.f_cons(0xc4200aa7a8, 0xc4200ab8d0, 0xc42040f6b0, 0xc42014ca14)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1926 +0x20c fp=0xc42014c9c0 sp=0xc42014c940 pc=0x4acafc
+main.eval(0xc4200aa7a8, 0xc4200ab8e0, 0xc42040f6b0, 0xc42014cc80)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1784 +0x793 fp=0xc42014cc48 sp=0xc42014c9c0 pc=0x4aa6e3
+main.f_eval.func1(0xc4200ab920, 0xc42040f6b0, 0xc4200aa988, 0xc42014cd34)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:2027 +0x190 fp=0xc42014cce8 sp=0xc42014cc48 pc=0x4b1960
+main.f_eval(0xc4200aa988, 0xc4200ab920, 0xc42040f6b0, 0xc42014ce94)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:2029 +0x42b fp=0xc42014ce40 sp=0xc42014cce8 pc=0x4ae39b
+main.eval(0xc4200aa988, 0xc4200ab930, 0xc42040f6b0, 0xc420415900)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1784 +0x793 fp=0xc42014d0c8 sp=0xc42014ce40 pc=0x4aa6e3
+main.apply(0xc4200aac76, 0xc4200ab970, 0xc4200ab970, 0xc42015e2f0, 0xc42040e820, 0x10)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1861 +0x485 fp=0xc42014d190 sp=0xc42014d0c8 pc=0x4aba85
+main.eval(0xc4200aac76, 0xc42015e310, 0xc42040e820, 0xc42040d620)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1786 +0x7ed fp=0xc42014d418 sp=0xc42014d190 pc=0x4aa73d
+main.apply(0xc420137ea0, 0xc42015e340, 0xc42015e340, 0xc42016cdc0, 0xc42017bd10, 0x10)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1861 +0x485 fp=0xc42014d4e0 sp=0xc42014d418 pc=0x4aba85
+main.eval(0xc420137ea0, 0xc42016cdd0, 0xc42017bd10, 0xc42016cdd0)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1786 +0x7ed fp=0xc42014d768 sp=0xc42014d4e0 pc=0x4aa73d
+main.f_eval(0xc4200aa988, 0xc42012bd50, 0xc4202d9b00, 0xc42014d914)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:2030 +0x48f fp=0xc42014d8c0 sp=0xc42014d768 pc=0x4ae3ff
+main.eval(0xc4200aa988, 0xc42012bd60, 0xc4202d9b00, 0xc4203f5060)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1784 +0x793 fp=0xc42014db48 sp=0xc42014d8c0 pc=0x4aa6e3
+main.f_cons(0xc4200aa7a8, 0xc420136010, 0xc4202d9b00, 0xc42014dc1c)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1926 +0x20c fp=0xc42014dbc8 sp=0xc42014db48 pc=0x4acafc
+main.eval(0xc4200aa7a8, 0xc420136020, 0xc4202d9b00, 0xc42014de98)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1784 +0x793 fp=0xc42014de50 sp=0xc42014dbc8 pc=0x4aa6e3
+main.f_cond(0xc4200aa910, 0xc420136080, 0xc4202d9b00, 0xc42014e014)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1978 +0x5b8 fp=0xc42014dfc8 sp=0xc42014de50 pc=0x4ad5c8
+main.f_cond(0xc4200aa910, 0xc420136090, 0xc4202d9b00, 0xc42014e194)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1980 +0x604 fp=0xc42014e140 sp=0xc42014dfc8 pc=0x4ad614
+main.eval(0xc4200aa910, 0xc4201360b0, 0xc4202d9b00, 0xc4202e31a0)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1784 +0x793 fp=0xc42014e3c8 sp=0xc42014e140 pc=0x4aa6e3
+main.apply(0xc4200aad2a, 0xc4201360e0, 0xc4201360e0, 0xc42016cdf0, 0xc42017bd10, 0x10)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1861 +0x485 fp=0xc42014e490 sp=0xc42014e3c8 pc=0x4aba85
+main.f_apply(0xc4200aad2a, 0xc42012bfc0, 0xc420196d30, 0xc42014e774)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:2057 +0x975 fp=0xc42014e720 sp=0xc42014e490 pc=0x4aede5
+main.eval(0xc4200aaa00, 0xc42012bfd0, 0xc420196d30, 0xc42016c810)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1784 +0x793 fp=0xc42014e9a8 sp=0xc42014e720 pc=0x4aa6e3
+main.f_cons(0xc4200aa7a8, 0xc420136010, 0xc420196d30, 0xc42014ea7c)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1927 +0x253 fp=0xc42014ea28 sp=0xc42014e9a8 pc=0x4acb43
+main.eval(0xc4200aa7a8, 0xc420136020, 0xc420196d30, 0xc42014ecf8)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1784 +0x793 fp=0xc42014ecb0 sp=0xc42014ea28 pc=0x4aa6e3
+main.f_cond(0xc4200aa910, 0xc420136080, 0xc420196d30, 0xc42014ee74)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1978 +0x5b8 fp=0xc42014ee28 sp=0xc42014ecb0 pc=0x4ad5c8
+main.f_cond(0xc4200aa910, 0xc420136090, 0xc420196d30, 0xc42014eff4)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1980 +0x604 fp=0xc42014efa0 sp=0xc42014ee28 pc=0x4ad614
+main.eval(0xc4200aa910, 0xc4201360b0, 0xc420196d30, 0xc420199880)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1784 +0x793 fp=0xc42014f228 sp=0xc42014efa0 pc=0x4aa6e3
+main.apply(0xc42012b710, 0xc4201360e0, 0xc4201360e0, 0xc42016ce10, 0xc42017bd10, 0x10)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1861 +0x485 fp=0xc42014f2f0 sp=0xc42014f228 pc=0x4aba85
+main.eval(0xc42012b710, 0xc42016ce20, 0xc42017bd10, 0xc42017af30)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1786 +0x7ed fp=0xc42014f578 sp=0xc42014f2f0 pc=0x4aa73d
+main.f_defglobal(0xc4200aaa80, 0xc42016ce60, 0xc42017bd10, 0xc42014f814)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:2006 +0x536 fp=0xc42014f7c0 sp=0xc42014f578 pc=0x4adba6
+main.eval(0xc4200aaa80, 0xc42016ce70, 0xc42017bd10, 0xc4201847e0)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1784 +0x793 fp=0xc42014fa48 sp=0xc42014f7c0 pc=0x4aa6e3
+main.apply(0xc42016c310, 0xc42016ceb0, 0xc42016ceb0, 0xc42017b110, 0xc42017ae60, 0x10)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1861 +0x485 fp=0xc42014fb10 sp=0xc42014fa48 pc=0x4aba85
+main.eval(0xc42016c310, 0xc42017b120, 0xc42017ae60, 0x0)
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:1786 +0x7ed fp=0xc42014fd98 sp=0xc42014fb10 pc=0x4aa73d
+main.main()
+	/home/craig/.go/src/github.com/jcburley/lisp-zero-go/lisp-zero-single.go:2162 +0x480 fp=0xc42014ff88 sp=0xc42014fd98 pc=0x4afce0
+runtime.main()
+	/usr/local/go/src/runtime/proc.go:198 +0x212 fp=0xc42014ffe0 sp=0xc42014ff88 pc=0x429482
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_amd64.s:2361 +0x1 fp=0xc42014ffe8 sp=0xc42014ffe0 pc=0x450851
