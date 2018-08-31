@@ -6,3 +6,4 @@ lisp-zero
 *.ast
 lisp-zero-single
 *.stamp
+*.prof
