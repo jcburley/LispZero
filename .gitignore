@@ -7,3 +7,4 @@ lisp-zero
 lisp-zero-single
 *.stamp
 *.prof
+*.dSYM
