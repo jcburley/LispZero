@@ -1,0 +1,3 @@
+#!/usr/local/bin/joker
+
+(load-file "gen-big-list.clj") (gen-big-list 1000000)
