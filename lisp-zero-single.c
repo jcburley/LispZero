@@ -748,7 +748,9 @@ static char *token_get(FILE *input, struct buffer_s *buf) {
 static unsigned latest_lineno;
 
 struct Object_s *list_read(FILE *input, struct buffer_s *buf);
-struct Object_s *object_read(FILE *input, struct buffer_s *buf)
+
+struct Object_s *
+object_read(FILE *input, struct buffer_s *buf)
 {
   char *token;
 
@@ -778,25 +780,39 @@ struct Object_s *object_read(FILE *input, struct buffer_s *buf)
   return object_new_atomic(symbol_sym(token));
 }
 
-struct Object_s *list_read(FILE *input, struct buffer_s *buf) {
-  char *token = token_get(input, buf);
-  struct Object_s *tmp;
+struct Object_s *
+list_read(FILE *input, struct buffer_s *buf)
+{
+  struct Object_s *first = p_nil;
+  struct Object_s **next = &first;
+  
+  struct Object_s *tmp = NULL;
+  do {
+    char *token = token_get(input, buf);
 
-  if (!strcmp(token, ")"))
-    return p_nil;
+    if (!strcmp(token, ")")) {
+      tmp = p_nil;
+      break;
+    }
 
-  if (!strcmp(token, "."))
-    {
+    if (!strcmp(token, ".")) {
       tmp = object_read(input, buf);
       if (strcmp(token_get(input, buf), ")"))
 	PRINT_ERROR_AND_EXIT("missing close parenthese for simple list", 3);
-      return tmp;
-  }
-  token_putback(token);
+      break;
+    }
 
-  /* Make sure we first read the object before going on to read the rest of the list. */ 
-  tmp = object_read(input, buf);
-  return object_new(tmp, list_read(input, buf));
+    token_putback(token);
+
+    /* Make sure we first read the object before going on to read the rest of the list. */
+    tmp = object_new(object_read(input, buf), NULL);
+    *next = tmp;
+    next = &tmp->cdr.obj;
+  } while(true);
+
+  *next = tmp;
+
+  return first;
 }
 
 /* Output. */
