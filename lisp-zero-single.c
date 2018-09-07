@@ -810,8 +810,6 @@ list_read(FILE *input, struct buffer_s *buf)
     next = &tmp->cdr.obj;
   } while(true);
 
-  *next = tmp;
-
   return first;
 }
 
