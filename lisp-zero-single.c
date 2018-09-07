@@ -898,11 +898,14 @@ struct Object_s *binding_for(TRACEPARAMS(char const *what) struct Symbol_s *sym,
   struct Object_s *tmp;
 
   tmp = binding_lookup(TRACE(what) sym, env);
+
   if (nilp(tmp))
     {
       /* TODO: Throw an exception etc. */
-      fprintf(stderr, "Unbound symbol \"%s\"\n", symbol_name(sym));
-      assert("unbound symbol" == NULL);
+      char const *name = symbol_name(sym);
+      char buf[20 + strlen(name)];
+      sprintf(buf, "unbound symbol `%s'", name);
+      assert_or_dump(!nilp(tmp), env, buf);
     }
 
   return list_cdr(tmp);
