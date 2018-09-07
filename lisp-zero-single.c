@@ -1135,7 +1135,7 @@ struct Object_s *f_cond(TRACEPARAMS(char const *what) struct Object_s *args, str
     struct Object_s *pair = list_car(args);
 
     assert_or_dump(listp(pair), pair, "expected a list for the first argument of cond");
-    assert_or_dump(finalp(list_cdr(pair)), pair, "expected 2 arguments for cond");
+    assert_or_dump(finalp(list_cdr(pair)), pair, "expected a 2-item list for each item in cond arglist");
 
     {
       struct Object_s *if_arg = list_car(pair);
