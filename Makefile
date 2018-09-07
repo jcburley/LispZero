@@ -14,13 +14,13 @@ zero-test: zero-test.gold zero-test.out
 	diff -u zero-test.gold zero-test.out
 
 zero-test.out: lisp-zero zero-test.lisp
-	./lisp-zero < zero-test.lisp > zero-test.out
+	./lisp-zero zero-test.lisp > zero-test.out
 
 zero-single-test: zero-test.gold zero-single-test.out
 	diff -u zero-test.gold zero-single-test.out
 
 zero-single-test.out: lisp-zero-single zero-test.lisp
-	./lisp-zero-single < zero-test.lisp > zero-single-test.out
+	./lisp-zero-single zero-test.lisp > zero-single-test.out
 
 zero-new-gold: zero-test.out
 	rm -f zero-test.gold
