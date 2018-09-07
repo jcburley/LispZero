@@ -786,17 +786,17 @@ list_read(FILE *input, struct buffer_s *buf)
   struct Object_s *first = p_nil;
   struct Object_s **next = &first;
   
-  struct Object_s *tmp = NULL;
+  struct Object_s *cur = NULL;
   do {
     char *token = token_get(input, buf);
 
     if (!strcmp(token, ")")) {
-      tmp = p_nil;
+      cur = p_nil;
       break;
     }
 
     if (!strcmp(token, ".")) {
-      tmp = object_read(input, buf);
+      cur = object_read(input, buf);
       if (strcmp(token_get(input, buf), ")"))
 	PRINT_ERROR_AND_EXIT("missing close parenthese for simple list", 3);
       break;
@@ -805,9 +805,9 @@ list_read(FILE *input, struct buffer_s *buf)
     token_putback(token);
 
     /* Make sure we first read the object before going on to read the rest of the list. */
-    tmp = object_new(object_read(input, buf), NULL);
-    *next = tmp;
-    next = &tmp->cdr.obj;
+    cur = object_new(object_read(input, buf), NULL);
+    *next = cur;
+    next = &cur->cdr.obj;
   } while(true);
 
   return first;
