@@ -1332,9 +1332,9 @@ main(int argc, char **argv)
   initialize();
   buf = buffer_new(MAXTOKENSIZE);
   for (;;) {
-    struct Object_s *obj = object_read(in, buf);
+    struct Object_s *obj = eval(TRACE(filename) object_read(in, buf), p_environment);
     if (!quiet) {
-      object_write(stdout, eval(TRACE(filename) obj, p_environment));
+      object_write(stdout, obj);
       fprintf(stdout, "\n");
       fflush(stdout);
     }
