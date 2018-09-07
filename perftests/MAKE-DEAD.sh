@@ -19,7 +19,7 @@ then
 fi
 
 cat > $2 <<EOF
-(cond nil (quote (
+(cond (() '(
 EOF
 
 cat $1 - >> $2 <<EOF
