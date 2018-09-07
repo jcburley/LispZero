@@ -1081,8 +1081,8 @@ struct Object_s *f_eq(TRACEPARAMS(char const *what) struct Object_s *args, struc
 /* (cons car-arg cdr-arg) => (car-arg cdr-arg) */
 struct Object_s *f_cons(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
-  assert_or_dump(listp(args), args, "expected WHAT??");
-  assert_or_dump(finalp(list_cdr(args)), args, "expected WHAT??");
+  assert_or_dump(listp(args), args, "expected arglist for cons");
+  assert_or_dump(finalp(list_cdr(args)), args, "expected 2 arguments for cons");
 
   {
     struct Object_s *car = eval(TRACE(what) list_car(args), env);
@@ -1095,12 +1095,12 @@ struct Object_s *f_cons(TRACEPARAMS(char const *what) struct Object_s *args, str
 /* (car cons-arg) : cons-arg is a list => car of cons-arg */
 struct Object_s *f_car(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
-  assert_or_dump(finalp(args), args, "expected WHAT??");
+  assert_or_dump(finalp(args), args, "expected a single argument for car");
 
   {
     struct Object_s *arg = eval(TRACE(what) list_car(args), env);
 
-    assert_or_dump(listp(arg), arg, "expected WHAT??");
+    assert_or_dump(listp(arg), arg, "expected a list for car");
 
     return list_car(arg);
   }
@@ -1109,12 +1109,12 @@ struct Object_s *f_car(TRACEPARAMS(char const *what) struct Object_s *args, stru
 /* (cdr cons-arg) : cons-arg is a list => cdr of cons-arg */
 struct Object_s *f_cdr(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
-  assert_or_dump(finalp(args), args, "expected WHAT??");
+  assert_or_dump(finalp(args), args, "expected a single argument for cdr");
 
   {
     struct Object_s *arg = eval(TRACE(what) list_car(args), env);
 
-    assert_or_dump(listp(arg), arg, "expected WHAT??");
+    assert_or_dump(listp(arg), arg, "expected a list for cdr");
 
     return list_cdr(arg);
   }
@@ -1129,13 +1129,13 @@ struct Object_s *f_cond(TRACEPARAMS(char const *what) struct Object_s *args, str
   if (nilp(args))
     return p_nil;
 
-  assert_or_dump(listp(args), args, "expected WHAT??");
+  assert_or_dump(listp(args), args, "expected arglist for cond");
 
   {
     struct Object_s *pair = list_car(args);
 
-    assert_or_dump(listp(pair), pair, "expected WHAT??");
-    assert_or_dump(finalp(list_cdr(pair)), pair, "expected WHAT??");
+    assert_or_dump(listp(pair), pair, "expected a list for the first argument of cond");
+    assert_or_dump(finalp(list_cdr(pair)), pair, "expected 2 arguments for cond");
 
     {
       struct Object_s *if_arg = list_car(pair);
