@@ -1244,8 +1244,8 @@ f_defglobal(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s
 struct Object_s *
 f_eval(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
-  assert_or_dump(listp(args), args, "expected WHAT??");
-  assert_or_dump(nilp(list_cdr(args)) || finalp(list_cdr(args)), args, "expected WHAT??");
+  assert_or_dump(listp(args), args, "expected arglist for eval");
+  assert_or_dump(nilp(list_cdr(args)) || finalp(list_cdr(args)), args, "expected no more than two arguments for eval");
 
   /* Eval this early, rather than in the final eval() below, so .c
      version .go compilers don't choose different order of evaluations
@@ -1298,7 +1298,7 @@ f_apply(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *en
 struct Object_s *
 f_dot_symbol_dump(TRACEPARAMS(char const *what __UNUSED__) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
-  assert_or_dump(!args, args, "expected WHAT??");
+  assert_or_dump(!args, args, "expected no arguments to .symbol_dump");
 
   symbol_dump();
 
