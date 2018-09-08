@@ -118,7 +118,9 @@ typedef map_t(char,char) map_char_t;
 typedef map_t(float,float) map_float_t;
 typedef map_t(double,double) map_double_t;
 
-static unsigned map_hash(const char *str) {
+static unsigned
+map_hash(const char *str)
+{
   unsigned hash = 5381;
   while (*str) {
     hash = ((hash << 5) + hash) ^ *str++;
@@ -127,7 +129,9 @@ static unsigned map_hash(const char *str) {
 }
 
 
-static map_node_t *map_newnode(const char *key, void *value, int vsize) {
+static map_node_t *
+map_newnode(const char *key, void *value, int vsize)
+{
   map_node_t *node;
   int ksize = strlen(key) + 1;
   int voffset = ksize + ((sizeof(void*) - ksize) % sizeof(void*));
@@ -141,21 +145,27 @@ static map_node_t *map_newnode(const char *key, void *value, int vsize) {
 }
 
 
-static int map_bucketidx(struct map_base_s *m, unsigned hash) {
+static int
+map_bucketidx(struct map_base_s *m, unsigned hash)
+{
   /* If the implementation is changed to allow a non-power-of-2 bucket count,
    * the line below should be changed to use mod instead of AND */
   return hash & (m->nbuckets - 1);
 }
 
 
-static void map_addnode(struct map_base_s *m, map_node_t *node) {
+static void
+map_addnode(struct map_base_s *m, map_node_t *node)
+{
   int n = map_bucketidx(m, node->hash);
   node->next = m->buckets[n];
   m->buckets[n] = node;
 }
 
 
-static int map_resize(struct map_base_s *m, int nbuckets) {
+static int
+map_resize(struct map_base_s *m, int nbuckets)
+{
   map_node_t *nodes, *node, *next;
   map_node_t **buckets;
   int i; 
@@ -225,13 +235,17 @@ void map_deinit_(struct map_base_s *m) {
 }
 
 
-void *map_get_(struct map_base_s *m, const char *key) {
+void *
+map_get_(struct map_base_s *m, const char *key)
+{
   map_node_t **next = map_getref(m, key);
   return next ? (*next)->value : NULL;
 }
 
 
-int map_set_(struct map_base_s *m, const char *key, void *value, int vsize) {
+int
+map_set_(struct map_base_s *m, const char *key, void *value, int vsize)
+{
   int n, err;
   map_node_t **next, *node;
   /* Find & replace existing node */
@@ -257,7 +271,9 @@ int map_set_(struct map_base_s *m, const char *key, void *value, int vsize) {
 }
 
 
-void map_remove_(struct map_base_s *m, const char *key) {
+void
+map_remove_(struct map_base_s *m, const char *key)
+{
   map_node_t *node;
   map_node_t **next = map_getref(m, key);
   if (next) {
@@ -269,7 +285,9 @@ void map_remove_(struct map_base_s *m, const char *key) {
 }
 
 
-struct map_iter_s map_iter_(void) {
+struct map_iter_s
+map_iter_(void)
+{
   struct map_iter_s iter;
   iter.bucketidx = UINT_MAX;
   iter.node = NULL;
@@ -277,7 +295,9 @@ struct map_iter_s map_iter_(void) {
 }
 
 
-const char *map_next_(struct map_base_s *m, struct map_iter_s *iter) {
+const char *
+map_next_(struct map_base_s *m, struct map_iter_s *iter)
+{
   if (!iter->node || !(iter->node = iter->node->next)) {
     do {
       if (++iter->bucketidx >= m->nbuckets) {
@@ -331,7 +351,8 @@ static bool tracing = false;
 static uint64_t allocations = 0;
 static uint64_t allocations_total = 0;
 
-char *string_duplicate(char const *str)
+char *
+string_duplicate(char const *str)
 {
   size_t l = strlen(str) + 1;
   char *dup = malloc(l);
@@ -398,34 +419,40 @@ OBJECT(defglobal);
 OBJECT(dot_symbol_dump);
 #undef OBJECT
 
-bool nilp(struct Object_s *list)
+bool
+nilp(struct Object_s *list)
 {
   return list == p_nil;
 }
 
 /* Whether object is an atom in the traditional Lisp sense */
-bool atomp(struct Object_s *list)
+bool
+atomp(struct Object_s *list)
 {
   return nilp(list) || list->car == p_atomic;
 }
 
 /* Whether object is an atom in this implementation */
-bool atomicp(struct Object_s *list)
+bool
+atomicp(struct Object_s *list)
 {
   return !nilp(list) && list->car == p_atomic;
 }
 
-bool compiledp(struct Object_s *list)
+bool
+compiledp(struct Object_s *list)
 {
   return !atomp(list) && list->car == p_compiled;
 }
 
-bool listp(struct Object_s *list)
+bool
+listp(struct Object_s *list)
 {
   return !atomp(list) && !compiledp(list);
 }
 
-bool finalp(struct Object_s *list)
+bool
+finalp(struct Object_s *list)
 {
   return listp(list) && nilp(list->cdr.obj);
 }
@@ -453,31 +480,36 @@ assert_or_dump_(unsigned srcline, bool ok, struct Object_s *obj, char const *wha
 
 #define assert_or_dump(ok, obj, what) assert_or_dump_(__LINE__, (ok), (obj), (what))
 
-struct Object_s *list_car(struct Object_s *list)
+struct Object_s *
+list_car(struct Object_s *list)
 {
   assert_or_dump(listp(list), list, "expected list");
   return list->car;
 }
 
-struct Object_s *list_cdr(struct Object_s *list)
+struct Object_s *
+list_cdr(struct Object_s *list)
 {
   assert_or_dump(listp(list), list, "expected list");
   return list->cdr.obj;
 }
 
-struct Symbol_s *object_symbol(struct Object_s *atom)
+struct Symbol_s *
+object_symbol(struct Object_s *atom)
 {
   assert_or_dump(atomicp(atom), atom, "expected implementation atom");
   return atom->cdr.sym;
 }
 
-compiled_fn object_compiled(struct Object_s *compiled)
+compiled_fn
+object_compiled(struct Object_s *compiled)
 {
   assert_or_dump(compiledp(compiled), compiled, "expected compiled function");
   return compiled->cdr.fn;
 }
 
-static struct Object_s *object_new(struct Object_s *car, struct Object_s *cdr)
+static struct Object_s *
+object_new(struct Object_s *car, struct Object_s *cdr)
 {
   struct Object_s *obj;
 
@@ -494,7 +526,8 @@ static struct Object_s *object_new(struct Object_s *car, struct Object_s *cdr)
   return obj;
 }
 
-static struct Object_s *object_new_compiled(compiled_fn fn)
+static struct Object_s *
+object_new_compiled(compiled_fn fn)
 {
   struct Object_s *obj;
 
@@ -519,7 +552,8 @@ static struct Object_s *object_new_compiled(compiled_fn fn)
 
 #define symbol_name(SYMBOL) ((SYMBOL)->name)
 
-static struct Symbol_s *symbol_new(char const *name)
+static struct Symbol_s *
+symbol_new(char const *name)
 {
   struct Symbol_s *sym;
 
@@ -539,7 +573,8 @@ static struct Symbol_s *symbol_new(char const *name)
 
 static map_t(Symbol,struct Symbol_s *) map_sym;
 
-static struct Symbol_s *symbol_lookup(char const *name)
+static struct Symbol_s *
+symbol_lookup(char const *name)
 {
   void **p_sym = (void **) map_get(&map_sym, name);
 
@@ -548,7 +583,8 @@ static struct Symbol_s *symbol_lookup(char const *name)
 
 bool symbol_strdup = true;
 
-static struct Symbol_s *symbol_sym(char const *name)
+static struct Symbol_s *
+symbol_sym(char const *name)
 {
   struct Symbol_s *sym = symbol_lookup(name);
 
@@ -578,7 +614,8 @@ static struct Symbol_s *p_sym_quote = NULL;
 
 /* Environment (bindings). */
 
-static struct Object_s *binding_new(struct Object_s *sym, struct Object_s *val)
+static struct Object_s *
+binding_new(struct Object_s *sym, struct Object_s *val)
 {
   assert_or_dump(atomicp(sym), sym, "expected implementation atom");
 
@@ -591,7 +628,8 @@ static struct Object_s *binding_new(struct Object_s *sym, struct Object_s *val)
    explicitly unbound) or a key/value cons (the symbol is in the car,
    its binding is in the cdr). */
 
-struct Object_s *binding_lookup(TRACEPARAMS(char const *what __UNUSED__) struct Symbol_s *key, struct Object_s *bindings)
+struct Object_s *
+binding_lookup(TRACEPARAMS(char const *what __UNUSED__) struct Symbol_s *key, struct Object_s *bindings)
 {
   if (nilp(bindings))
     return p_nil;
@@ -642,7 +680,8 @@ struct buffer_s {
   char *contents;
 };
 
-static struct buffer_s *buffer_new(size_t initial_size)
+static struct buffer_s *
+buffer_new(size_t initial_size)
 {
   struct buffer_s *buf = (struct buffer_s *) malloc(sizeof(*buf));
   char *contents = (char *) malloc(initial_size);
@@ -657,14 +696,16 @@ static struct buffer_s *buffer_new(size_t initial_size)
   return buf;
 }
 
-static void buffer_append(struct buffer_s *buf, char ch)
+static void
+buffer_append(struct buffer_s *buf, char ch)
 {
   if (buf->used >= buf->size)
     PRINT_ERROR_AND_EXIT("lexeme too long for this build", 997);  /* TODO: realloc() */
   buf->contents[buf->used++] = ch;
 }
 
-static char *buffer_tostring(struct buffer_s *buf)
+static char *
+buffer_tostring(struct buffer_s *buf)
 {
   buffer_append(buf, '\0');
   return buf->contents;
@@ -672,7 +713,8 @@ static char *buffer_tostring(struct buffer_s *buf)
 
 #define buffer_clear(buf) ((buf)->used = 0)
 
-static void token_putback(char *token)
+static void
+token_putback(char *token)
 {
   assert (lookahead_valid == 0);
   token_lookahead = token;
@@ -704,7 +746,8 @@ my_ungetc(int ch, FILE *input)
   my_getc_next = ch;
 }
 
-static char *token_get(FILE *input, struct buffer_s *buf) {
+static char *
+token_get(FILE *input, struct buffer_s *buf) {
   int ch;
 
   buffer_clear(buf);
@@ -817,7 +860,8 @@ list_read(FILE *input, struct buffer_s *buf)
 
 /* true if object is (quote arg) */
 /* TODO: Decide whether this look up quote in the current env to do the check */
-static bool quotep(struct Object_s *obj)
+static bool
+quotep(struct Object_s *obj)
 {
   if (!listp(obj) || !finalp(list_cdr(obj)))
     return false;
@@ -893,7 +937,8 @@ object_write(FILE *output, struct Object_s *obj)
 
 /* Evaluation */
 
-struct Object_s *binding_for(TRACEPARAMS(char const *what) struct Symbol_s *sym, struct Object_s *env)
+struct Object_s *
+binding_for(TRACEPARAMS(char const *what) struct Symbol_s *sym, struct Object_s *env)
 {
   struct Object_s *tmp;
 
@@ -915,7 +960,8 @@ struct Object_s *apply(TRACEPARAMS(char const *what) struct Object_s *func, stru
 
 /* Does not support traditional lambdas or labels; just the built-ins and
    our "unique" apply.  */
-struct Object_s *eval(TRACEPARAMS(char const *what) struct Object_s *exp, struct Object_s *env)
+struct Object_s *
+eval(TRACEPARAMS(char const *what) struct Object_s *exp, struct Object_s *env)
 {
   if (nilp(exp) || compiledp(exp))
     return exp;
@@ -977,7 +1023,8 @@ struct Object_s *eval(TRACEPARAMS(char const *what) struct Object_s *exp, struct
    argument.
 */
 
-void assert_zedbap(struct Object_s *zedba)
+void
+assert_zedbap(struct Object_s *zedba)
 {
   assert_or_dump(listp(zedba), zedba, "expected list");
 
@@ -1003,7 +1050,8 @@ void assert_zedbap(struct Object_s *zedba)
    case this proves useful (e.g. a limit on the # of recursive
    invocations could be implemented this way), so this is allowed.  */
 
-struct Object_s *apply(TRACEPARAMS(char const *what) struct Object_s *func, struct Object_s *me, struct Object_s *forms, struct Object_s *env)
+struct Object_s *
+apply(TRACEPARAMS(char const *what) struct Object_s *func, struct Object_s *me, struct Object_s *forms, struct Object_s *env)
 {
   struct Object_s *meparamname;
   struct Object_s *formlistparamname;
@@ -1036,7 +1084,8 @@ struct Object_s *apply(TRACEPARAMS(char const *what) struct Object_s *func, stru
 }
 
 /* (quote form) => form */
-struct Object_s *f_quote(TRACEPARAMS(char const *what __UNUSED__) struct Object_s *args, struct Object_s *env __UNUSED__)
+struct Object_s *
+f_quote(TRACEPARAMS(char const *what __UNUSED__) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
   assert_or_dump(finalp(args), args, "expected 1-element list");
 
@@ -1044,7 +1093,8 @@ struct Object_s *f_quote(TRACEPARAMS(char const *what __UNUSED__) struct Object_
 }
 
 /* (atom atom) => t if atom is an atom (including nil), nil otherwise */
-struct Object_s *f_atom(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
+struct Object_s *
+f_atom(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
   assert_or_dump(finalp(args), args, "expected 1-element list");
 
@@ -1056,7 +1106,8 @@ struct Object_s *f_atom(TRACEPARAMS(char const *what) struct Object_s *args, str
 }
 
 /* (eq left-atom right-atom) => t if args are equal, nil otherwise */
-struct Object_s *f_eq(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
+struct Object_s *
+f_eq(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
   assert_or_dump(listp(args), args, "expected 1-element list");
   assert_or_dump(finalp(list_cdr(args)), args, "expected 1-element list");
@@ -1079,7 +1130,8 @@ struct Object_s *f_eq(TRACEPARAMS(char const *what) struct Object_s *args, struc
 }
 
 /* (cons car-arg cdr-arg) => (car-arg cdr-arg) */
-struct Object_s *f_cons(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
+struct Object_s *
+f_cons(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
   assert_or_dump(listp(args), args, "expected arglist for cons");
   assert_or_dump(finalp(list_cdr(args)), args, "expected 2 arguments for cons");
@@ -1093,7 +1145,8 @@ struct Object_s *f_cons(TRACEPARAMS(char const *what) struct Object_s *args, str
 }
 
 /* (car cons-arg) : cons-arg is a list => car of cons-arg */
-struct Object_s *f_car(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
+struct Object_s *
+f_car(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
   assert_or_dump(finalp(args), args, "expected a single argument for car");
 
@@ -1107,7 +1160,8 @@ struct Object_s *f_car(TRACEPARAMS(char const *what) struct Object_s *args, stru
 }
 
 /* (cdr cons-arg) : cons-arg is a list => cdr of cons-arg */
-struct Object_s *f_cdr(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
+struct Object_s *
+f_cdr(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
   assert_or_dump(finalp(args), args, "expected a single argument for cdr");
 
@@ -1124,7 +1178,8 @@ struct Object_s *f_cdr(TRACEPARAMS(char const *what) struct Object_s *args, stru
    ifthen-pair is a list of form (if-arg then-form) => eval(then-form)
    for the first if-arg in the list that is not nil (true), otherwise
    nil. */
-struct Object_s *f_cond(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
+struct Object_s *
+f_cond(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
   if (nilp(args))
     return p_nil;
@@ -1154,7 +1209,8 @@ struct Object_s *f_cond(TRACEPARAMS(char const *what) struct Object_s *args, str
    (defglobal key value) => '() with new global environment prepended (via cons)
    			    with (key . value) (SIDE EFFECT)
  */
-struct Object_s *f_defglobal(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
+struct Object_s *
+f_defglobal(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
   if (nilp(args))
     return p_environment;
@@ -1185,7 +1241,8 @@ struct Object_s *f_defglobal(TRACEPARAMS(char const *what) struct Object_s *args
 }
 
 /* (eval arg [env]) => arg evaluated with respect to environment env (default is current env) */
-struct Object_s *f_eval(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
+struct Object_s *
+f_eval(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
   assert_or_dump(listp(args), args, "expected WHAT??");
   assert_or_dump(nilp(list_cdr(args)) || finalp(list_cdr(args)), args, "expected WHAT??");
@@ -1201,7 +1258,8 @@ struct Object_s *f_eval(TRACEPARAMS(char const *what) struct Object_s *args, str
 /* (apply zedba me forms [env]) => zedba invoked with reference to
    (presumably) itself, forms to be bound to zedba's arguments, and
    environment for such bindings (default is current env) */
-struct Object_s *f_apply(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
+struct Object_s *
+f_apply(TRACEPARAMS(char const *what) struct Object_s *args, struct Object_s *env)
 {
   assert_or_dump(listp(args), args, "expected WHAT??");
 
@@ -1237,7 +1295,8 @@ struct Object_s *f_apply(TRACEPARAMS(char const *what) struct Object_s *args, st
 }
 
 /* (.symbol_dump) : dump symbol names along with their struct Symbol_s * objects */
-struct Object_s *f_dot_symbol_dump(TRACEPARAMS(char const *what __UNUSED__) struct Object_s *args, struct Object_s *env __UNUSED__)
+struct Object_s *
+f_dot_symbol_dump(TRACEPARAMS(char const *what __UNUSED__) struct Object_s *args, struct Object_s *env __UNUSED__)
 {
   assert_or_dump(!args, args, "expected WHAT??");
 
@@ -1246,7 +1305,8 @@ struct Object_s *f_dot_symbol_dump(TRACEPARAMS(char const *what __UNUSED__) stru
   return p_nil;
 }
 
-static struct Object_s *initialize_builtin(char const *sym, compiled_fn fn)
+static struct Object_s *
+initialize_builtin(char const *sym, compiled_fn fn)
 {
   struct Object_s *tmp;
 
@@ -1257,7 +1317,8 @@ static struct Object_s *initialize_builtin(char const *sym, compiled_fn fn)
   return tmp;
 }
 
-void initialize()
+void
+initialize(void)
 {
   p_sym_t = symbol_sym("t");
   p_sym_quote = symbol_sym("quote");
@@ -1342,7 +1403,8 @@ main(int argc, char **argv)
   return 0;
 }
 
-void debug_output(struct Object_s *obj)
+void
+debug_output(struct Object_s *obj)
 {
   object_write(stdout, obj);
   fprintf(stdout, "\n");
