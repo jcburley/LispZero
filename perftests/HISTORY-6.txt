@@ -1,0 +1,1000 @@
+ 1408  gitdown
+ 1409  git push
+ 1410  ./LispZeroGo -t < zero-test.lisp > BAD.out
+ 1411  ./LispZeroGo -t < zero-test.lisp > BAD.out 2>&1
+ 1412  ./LispZeroGo -t Z.lisp > BAD.out 2>&1
+ 1413  rm Z.lisp
+ 1414  cp -aiv ../lisp-zero-go/Z.lisp .
+ 1415  gitstat
+ 1416  history | grep lisp-zero-single
+ 1417  history | grep small
+ 1418  head Z.lisp
+ 1419  ./LispZeroGo -t Z.lisp > BAD.out 2>&1
+ 1420  gitdiff
+ 1421  ll
+ 1422  lt
+ 1423  gitstat
+ 1424  git add Z.lisp
+ 1425  git commit -a -m "Use same Z.lisp file as used to generate 'good' version"
+ 1426  go install
+ 1427  dirs
+ 1428  pushd +2
+ 1429  cd perftests/
+ 1430  ps u
+ 1431  ./MEM.sh 
+ 1432  ps u
+ 1433  ./MEM.sh 16248
+ 1434  pushd
+ 1435  gitdiff
+ 1436  dlv debug -- Z.lisp
+ 1437  make -k
+ 1438  make -k LispZeroGo 
+ 1439  ./LispZeroGo 
+ 1440  ./LispZeroGo Z.lisp
+ 1441  make -k
+ 1442  diff -u zero-test.out zero-test.gold | less
+ 1443  ps u
+ 1444  pushd
+ 1445  ./MEM.sh 21046
+ 1446  pushd
+ 1447  ./LispZeroGo 
+ 1448  ./LispZeroGo <<< "(cons 'a 'b)"
+ 1449  ./LispZero
+ 1450  ./LispZeroGo
+ 1451  dlv debug LispZeroGo.go -t Z.lisp
+ 1452  dlv debug LispZeroGo.go -- -t Z.lisp
+ 1453  make -k LispZeroGo
+ 1454  dlv debug LispZeroGo.go -- -t Z.lisp
+ 1455  ./LispZeroGo
+ 1456  dlv debug LispZeroGo.go -- -t Z.lisp
+ 1457  ./LispZeroGo
+ 1458  make -k
+ 1459  diff -u zero-test.out zero-test.gold | less
+ 1460  pushd
+ 1461  ps u
+ 1462  ./MEM.sh 27631
+ 1463  make -k
+ 1464  pushd
+ 1465  make -k
+ 1466  dlv debug LispZeroGo.go -- -t Z.lisp
+ 1467  make -k
+ 1468  diff -u zero-test.out zero-test.gold | less
+ 1469  lt | head
+ 1470  cat zero-test.out
+ 1471  ./LispZeroGo 
+ 1472  ./LispZeroGo -t <<< "(cons 'a 'b)"
+ 1473  alias smoke="./LispZeroGo -t <<< \"(cons 'a 'b)\""
+ 1474  smoke
+ 1475  pushd
+ 1476  ps u
+ 1477  ./MEM.sh 28603
+ 1478  gitstat
+ 1479  sudo -i
+ 1480  which not_in_path
+ 1481  cat ~/.profile
+ 1482  cat etc/functions
+ 1483  path
+ 1484  not_in_path xyz
+ 1485  echo $?
+ 1486  not_in_path ~/bin
+ 1487  echo $?
+ 1488  not_in_path ~/bin "$PATH"
+ 1489  echo $?
+ 1490  not_in_path xyzzy "$PATH"
+ 1491  echo $?
+ 1492  cd github/UnixHome/
+ 1493  gitstat
+ 1494  gitfo
+ 1495  git fetch origin
+ 1496  gitstat
+ 1497  gitdown
+ 1498  cat ~/.profile
+ 1499  gitdown
+ 1500  cat /etc/shells
+ 1501  cat /etc/passwd
+ 1502  which bash
+ 1503  ll tmp
+ 1504  emacs &
+ 1505  popd
+ 1506  cd github/UnixHome/
+ 1507  gitstat
+ 1508  gitfo
+ 1509  gitstat
+ 1510  cat .profile
+ 1511  echo $UNIXHOME
+ 1512  ll $UNIXhome/etc/fun
+ 1513  ll /home/craig/github/UnixHome/etc/functions
+ 1514  cat /home/craig/github/UnixHome/etc/functions
+ 1515  emacs &
+ 1516  cd tmp
+ 1517  cat STAT.out 
+ 1518  cd ..
+ 1519  emacs &
+ 1520  cd github/UnixHome/.Setup/
+ 1521  cd ..
+ 1522  git mv .Setup Setup
+ 1523  cd Setup
+ 1524  ll
+ 1525  gitstat
+ 1526  . bash
+ 1527  cat bash
+ 1528  . ./bash
+ 1529  cd ../
+ 1530  lt
+ 1531  cat unixhome 
+ 1532  rm unixhome 
+ 1533  ll ~/.unixhome
+ 1534  ll
+ 1535  ll etc
+ 1536  gitstat
+ 1537  rm unixhome 
+ 1538  cd Setup/
+ 1539  . bash
+ 1540  . ./bash
+ 1541  gitstat
+ 1542  echo $UNIXHOME
+ 1543  alias
+ 1544  path
+ 1545  echo $UNIXHOME
+ 1546  cd .unixhome
+ 1547  ll
+ 1548  cd Setup/
+ 1549  ./bash
+ 1550  emacs &
+ 1551  ./bash
+ 1552  cd ~/github/UnixHome/Setup/
+ 1553  ./bash
+ 1554  alias
+ 1555  env
+ 1556  alias
+ 1557  grrrrr
+ 1558  env
+ 1559  path
+ 1560  echo $UNIXHOME
+ 1561  alias
+ 1562  . ./bash
+ 1563  ssh craig@dove
+ 1564  ssh craig@doe
+ 1565  ssh craig@doe ll
+ 1566  ssh craig@doe path
+ 1567  ssh craig@doe env
+ 1568  ssh craig@doe
+ 1569  ssh craig@doe env
+ 1570  ssh craig@doe
+ 1571  ssh craig@doe env
+ 1572  ssh craig@doe path
+ 1573  ssh craig@doe alias
+ 1574  ssh craig@doe ls -l '$PSP/profile'
+ 1575  ssh craig@doe sh -c 'ls -l $PSP/profile'
+ 1576  ssh craig@doe ls -l '$PSP/profile'
+ 1577  ssh craig@doe alias
+ 1578  ssh craig@doe env
+ 1579  ssh craig@doe alias
+ 1580  ssh craig@doe ls
+ 1581  ssh craig@doe env
+ 1582  ssh craig@doe path
+ 1583  ssh craig@doe env
+ 1584  ssh craig@doe alias
+ 1585  ssh craig@doe path
+ 1586  ssh craig@doe env
+ 1587  ssh craig@doe lias
+ 1588  ssh craig@doe alias
+ 1589  dash
+ 1590  ssh craig@doe alias
+ 1591  which sh
+ 1592  file /bin/sh
+ 1593  ssh craig@doe dash alias
+ 1594  ssh craig@doe dash
+ 1595  ssh craig@doe alias
+ 1596  ssh craig@doe alias path
+ 1597  ssh craig@doe dash
+ 1598  ssh craig@doe alias
+ 1599  ssh craig@doe path
+ 1600  ssh craig@doe env
+ 1601  ssh craig@doe not_in_path xyz xyz
+ 1602  ssh craig@doe path
+ 1603  ssh craig@doe env
+ 1604  ssh craig@doe env | grep -i bash
+ 1605  ssh craig@doe grrrr
+ 1606  ssh craig@doe alias
+ 1607  ssh craig@doe path
+ 1608  ssh craig@doe env
+ 1609  ssh craig@doe env | grep -i 
+ 1610  ssh craig@doe env | grep -i bash
+ 1611  ssh craig@doe env
+ 1612  ssh craig@doe env | grep -i bash
+ 1613  ssh craig@doe path
+ 1614  ssh craig@doe env
+ 1615  ssh craig@doe
+ 1616  ssh craig@doe grrrrxxx
+ 1617  bash ~/.ssh/rc 
+ 1618  echo $UNIXHOME
+ 1619  ll .unixhome
+ 1620  ll .unixhome/
+ 1621  cd .unixhomeetc
+ 1622  cd .unixhome/Setup/
+ 1623  . ./bash
+ 1624  cd
+ 1625  ll .unixhome 
+ 1626  rm .unixhome
+ 1627  ln -s ~/github/UnixHome .unixhome
+ 1628  cd github/UnixHome/Setup/
+ 1629  . ./bash
+ 1630  lt ~/.unixhome
+ 1631  lt ~/.unixhome.~1~
+ 1632  rm ~/.unixhome.~1~
+ 1633  lt ~/.bash_profile*
+ 1634  rm ~/.bash_profile*
+ 1635  . ./bash
+ 1636  cd
+ 1637  readlink .unixhome
+ 1638  readlink .profile
+ 1639  echo $?
+ 1640  cd github/UnixHome/Setup/
+ 1641  . ./bash
+ 1642  lt
+ 1643  lta ~ | head -20
+ 1644  rm ~/.unixhome.*
+ 1645  lta ~ | head -20
+ 1646  env
+ 1647  echo $UNIXHOME
+ 1648  lta | head
+ 1649  lta | head -20
+ 1650  cat .profile
+ 1651  cd .unixhome/Setup/
+ 1652  . bash
+ 1653  . ./bash
+ 1654  cd
+ 1655  cd .unixhome
+ 1656  ll
+ 1657  rm unixhome
+ 1658  cd ..
+ 1659  ll .unixhome
+ 1660  ll .unixhome/
+ 1661  emacs &
+ 1662  echo $UNIXHOME
+ 1663  ll
+ 1664  cd .unixhome
+ 1665  ll
+ 1666  cd
+ 1667  cat .profile
+ 1668  cat .bash_profile
+ 1669  ll .bash_profile
+ 1670  alias cat
+ 1671  ssh craig@doe
+ 1672  ssh craig@doe foo
+ 1673  ssh craig@doe path
+ 1674  sudo emacs &(
+ 1675  sudo emacs &
+ 1676  fg
+ 1677  bg
+ 1678  ssh craig@doe path
+ 1679  fg
+ 1680  ssh craig@doe path
+ 1681  bg
+ 1682  echo $UNIXHOME
+ 1683  path
+ 1684  ssh craig@doe path
+ 1685  ssh craig@doe ps
+ 1686  ssh craig@doe ps -aef
+ 1687  ssh craig@doe ps -aetf
+ 1688  ssh craig@doe ps -utf
+ 1689  man ps
+ 1690  ssh craig@doe ps ux
+ 1691  ssh craig@doe ps uxf
+ 1692  ssh craig@doe echo \$PATH
+ 1693  sudo systemctl restart sshd
+ 1694  ssh craig@doe echo \$PATH
+ 1695  pwd
+ 1696  ll bin
+ 1697  ssh craig@doe genpw
+ 1698  genpw
+ 1699  ssh craig@doe echo \$PATH
+ 1700  ssh craig@doe lein
+ 1701  ssh craig@doe cp x y
+ 1702  ssh craig@doe echo \$PATH
+ 1703  ssh craig@doe sh -c echo \$PATH'
+ 1704  ssh craig@doe sh -c 'echo \$PATH'
+ 1705  ssh craig@doe sh -c 'echo $PATH'
+ 1706  ssh craig@doe sh -c 'env'
+ 1707  ssh craig@doe sh -c genpw
+ 1708  ssh craig@doe sh -c 'genpw'
+ 1709  ssh craig@doe sh -c 'path'
+ 1710  ssh craig@doe which genpw
+ 1711  ssh craig@doe which -a genpw
+ 1712  ssh craig@doe sh -c 'which -a genpw'
+ 1713  genpw
+ 1714  which genpw
+ 1715  which -a genpw
+ 1716  ssh craig@doe bash
+ 1717  cd github/UnixHome/
+ 1718  gitstat
+ 1719  git rm -f ssh/rc
+ 1720  gitstat
+ 1721  rmdir ssh
+ 1722  ll .unixhome
+ 1723  rm .unixhome
+ 1724  gitdiff
+ 1725  gitfo
+ 1726  gitstat
+ 1727  cd Setup/
+ 1728  ./bash
+ 1729  cd ..
+ 1730  cd bin
+ 1731  ll
+ 1732  cat download-leiningen 
+ 1733  cat git-set-org 
+ 1734  echo $GITBASE
+ 1735  ssh craig@dove
+ 1736  echo $PATH
+ 1737  path
+ 1738  path $MANPATH
+ 1739  path
+ 1740  path $MANPATH
+ 1741  path $MANPATH --has /var/qmail/bin
+ 1742  echo $?
+ 1743  path $MANPATH --has /var/qmail/man
+ 1744  echo $?
+ 1745  path --has /var/qmail/man
+ 1746  echo $?
+ 1747  path --has /usr/local/src
+ 1748  echo $?
+ 1749  path
+ 1750  env
+ 1751  alias
+ 1752  path
+ 1753  cd github/UnixHome/
+ 1754  gitstat
+ 1755  gitfo
+ 1756  gitdiff
+ 1757  ssh craig@doe echo \$PATH
+ 1758  git commit -a -m "Simply UNIXHOME stuff"
+ 1759  gitstat
+ 1760  git push
+ 1761  ll
+ 1762  emacs &
+ 1763  cd ~/gitdove/wan-utils/
+ 1764  gitstat
+ 1765  gitfo
+ 1766  gitstat
+ 1767  cat bin/new-git-repo 
+ 1768  gitdown
+ 1769  gitstat
+ 1770  git commit -a -m "Add 'new-git-repo' script"
+ 1771  git commit -m "Add 'new-git-repo' script" bin/new-git-repo 
+ 1772  git add bin/new-git-repo 
+ 1773  ll bin/new-git-repo 
+ 1774  git commit -a -m "Add 'new-git-repo' script"
+ 1775  git push
+ 1776  gitup
+ 1777  gitrem
+ 1778  new-git-repo
+ 1779  hash -r
+ 1780  new-git-repo
+ 1781  cd bin
+ 1782  make -k install
+ 1783  cd ..
+ 1784  new-git-repo
+ 1785  alias
+ 1786  gitstat
+ 1787  echo ${PATH/:/\/}
+ 1788  echo ${PATH/:/ /}
+ 1789  echo ${PATH/:/ /}
+ 1790  echo ${PATH:-hey}
+ 1791  echo ${PATX:-hey}
+ 1792  echo ${PATH/:/;/}
+ 1793  echo ${PATH}
+ 1794  echo ${PATH/:/\/}
+ 1795  echo ${PATH/:/\n}
+ 1796  echo "${PATH/:/\n}"
+ 1797  echo ${PATH//:/\n}
+ 1798  echo ${PATH//:/\}
+ 1799  echo ${PATH//:/\/}
+ 1800  echo ${PATH//:/\ /}
+ 1801  echo ${PATH//:/\ }
+ 1802  echo ${PATH//:/ }
+ 1803  man find
+ 1804  find /bin -type f -executable
+ 1805  find /bin -type f -executable | wc -l
+ 1806  find /usr/local/bin -type f -executable | wc -l
+ 1807  find /usr/bin -type f -executable | wc -l
+ 1808  fg
+ 1809  bg
+ 1810  gitstat
+ 1811  path
+ 1812  ./path
+ 1813  cd bin
+ 1814  ./path
+ 1815  ./path --help
+ 1816  ./path
+ 1817  ./path $MANPATH
+ 1818  ./path $PATH
+ 1819  ./path
+ 1820  ./path --has xyzzy
+ 1821  ./path
+ 1822  ./path $MANPATH
+ 1823  ./path --has xyzzy
+ 1824  ./path $MANPATH
+ 1825  ./path $X
+ 1826  echo $X
+ 1827  echo $XYZZY
+ 1828  ./path $XYZYY
+ 1829  ./path XYZZY
+ 1830  ./path --help
+ 1831  ./path --has xyzzy
+ 1832  echo $?
+ 1833  ./path
+ 1834  ./path $MANPATH
+ 1835  ./path --has ~/bin
+ 1836  echo $?
+ 1837  ./path $MANPATH --has /var/qmail/man
+ 1838  echo $?
+ 1839  ./path "$MANPATH" --has /var/qmail/man
+ 1840  ./path "$PATH" --has /var/qmail/man
+ 1841  ./path --has /var/qmail/man
+ 1842  echo $?
+ 1843  ./path --has /usr/local/bin
+ 1844  echo $?
+ 1845  ./path "$PATH" --has /var/qmail/man
+ 1846  echo $?
+ 1847  ./path "$MANPATH" --has /var/qmail/man
+ 1848  echo $?
+ 1849  ./path
+ 1850  ./path $MANPATH
+ 1851  echo ./path $MANPATH
+ 1852  ./path $MANPATH
+ 1853  ./path
+ 1854  ./path $MANPATH
+ 1855  ./path -x
+ 1856  ./path --y
+ 1857  ./path $MANPATH
+ 1858  ./path
+ 1859  ./path $MANPATH
+ 1860  ./path
+ 1861  ./path --has xyzzy
+ 1862  ./path $MANPATH --has xyzzy
+ 1863  ./path $MANPATH
+ 1864  ./path
+ 1865  ./path $MANPATH
+ 1866  ./path $MANPATH --has xyzzy
+ 1867  ./path --has xyzzy
+ 1868  echo $?
+ 1869  ./path $MANPATH --has xyzzy
+ 1870  echo $?
+ 1871  ./path $MANPATH --has /var/qmail/man
+ 1872  echo $?
+ 1873  ./path $MANPATH --has /var/qmail/manx
+ 1874  echo $?
+ 1875  ./path --has /var/qmail/manx
+ 1876  echo $?
+ 1877  ./path --has /usr/local/bin
+ 1878  echo $? x
+ 1879  ./path --has /usr/local/bin xxx
+ 1880  ./path --has /usr/local/bin
+ 1881  ./path
+ 1882  ./path $MANPATH
+ 1883  ./path $MANPATH --has xyzzy
+ 1884  which -a grep
+ 1885  ./path $MANPATH --has xyzzy
+ 1886  ./path $MANPATH
+ 1887  ./path
+ 1888  ./path --has xyzzy
+ 1889  echo $?
+ 1890  ./path --has /usr/local/bin
+ 1891  echo $
+ 1892  echo $?
+ 1893  ./path --has /usr/local/bin
+ 1894  echo $?
+ 1895  ./path
+ 1896  ./path $MANPATH
+ 1897  ./path $MANPATH --has xyzzy
+ 1898  echo $?
+ 1899  ./path $MANPATH --has /var/qmail/man
+ 1900  echo $?
+ 1901  ./path --has /var/qmail/man
+ 1902  echo $?
+ 1903  ./path --has /usr/local/bin
+ 1904  echo $?
+ 1905  ./path xyzzy
+ 1906  ./path xyzzy hey
+ 1907  ./path xyzzy --has hey there
+ 1908  gitstat
+ 1909  sudo make -k sys-install
+ 1910  ssh craig@doe path
+ 1911  ssh roto@doe path
+ 1912  ssh root@doe path
+ 1913  gitstat
+ 1914  gitdiff
+ 1915  git commit -a -m "New 'path' command to replace alias"
+ 1916  git push
+ 1917  ll
+ 1918  gitstat
+ 1919  cat new-git-repo
+ 1920  git mv new-git-repo git-new-repo
+ 1921  gitstat
+ 1922  git commit -a -m "Rename to make more easily discoverable"
+ 1923  git push
+ 1924  git mv path ~/github/UnixHome/bin
+ 1925  mv -iv path ~/github/UnixHome/bin
+ 1926  git rm -f path
+ 1927  gitstat
+ 1928  sudo rm /usr/local/bin/path
+ 1929  sudo make -k install
+ 1930  pwd
+ 1931  sudo make -k install
+ 1932  path
+ 1933  which -a path
+ 1934  alias path
+ 1935  unalias path
+ 1936  alias path
+ 1937  path
+ 1938  gitstat
+ 1939  gitdiff
+ 1940  git commit -a -m "Move 'path' tool to public UnixHome repo"
+ 1941  dirs
+ 1942  pushd ~/github/UnixHome/
+ 1943  gitstat
+ 1944  gitdiff
+ 1945  gitstat
+ 1946  make -k install
+ 1947  cd bin
+ 1948  make -k install
+ 1949  cd ..
+ 1950  path
+ 1951  ssh craig@doe path
+ 1952  ssh craig@doe env
+ 1953  rm ~/bin/path
+ 1954  make -k install
+ 1955  cd bin
+ 1956  make -k install
+ 1957  sudo make -k install
+ 1958  ssh craig@doe env
+ 1959  ssh craig@doe path
+ 1960  new-ip --status
+ 1961  cat ~/.ssh/id_rsa.pub
+ 1962  new-ip --status
+ 1963  gitstat
+ 1964  fg
+ 1965  bg
+ 1966  gitstat
+ 1967  gitfo
+ 1968  gitstat
+ 1969  gitup
+ 1970  gitdown
+ 1971  gitstat
+ 1972  gitdiff
+ 1973  gitnbr path
+ 1974  git commit -a -m "Moved new 'path' tool over from private repo"
+ 1975  gitup
+ 1976  gitstat
+ 1977  dirs
+ 1978  pushd
+ 1979  gitstat
+ 1980  gitup
+ 1981  pushd
+ 1982  gitstat
+ 1983  gitfo
+ 1984  gitstat
+ 1985  gitdown
+ 1986  history 50
+ 1987  echo $MANPATH
+ 1988  ll /etc/man.conf
+ 1989  llt /etc/man*
+ 1990  ltd /et/man*
+ 1991  ltdd /etc/man*
+ 1992  ltd /etc/man*
+ 1993  cat /etc/manpath.config
+ 1994  man man
+ 1995  man which
+ 1996  which whatever
+ 1997  which -s whatever
+ 1998  dirs
+ 1999  cd ~/github/LispZero/
+ 2000  ./lisp-zero-single
+ 2001  LispZeroGo
+ 2002  dirs
+ 2003  lzg
+ 2004  LispZeroGo
+ 2005  env | grep -i GO
+ 2006  LispZeroGo
+ 2007  gitstat
+ 2008  LispZeroGo
+ 2009  gitfo
+ 2010  gitstat
+ 2011  gitdiff
+ 2012  git commit -m "Use same var naming as LispZeroGo.go now uses" lisp-zero-single.c 
+ 2013  gitstat
+ 2014  gitdiff
+ 2015  git commit -a -m "Have program open input file instead of shell, per LispZeroGo/Makefile"
+ 2016  git push
+ 2017  cd perftests/
+ 2018  ps u
+ 2019  ./MEM.sh 11776
+ 2020  dirs
+ 2021  history | grep time
+ 2022  pushd
+ 2023  pushd ~/github/LispZero/perftests/
+ 2024  ps u
+ 2025  ./MEM.sh 9682
+ 2026  ../lisp-zero-single D-1.out
+ 2027  cat D-1.out
+ 2028  ../lisp-zero-single 
+ 2029  history | grep MAKE
+ 2030  lt
+ 2031  rm D*.out
+ 2032  ./MAKE-DEAD.sh 1.out D-1.out
+ 2033  cat D-1.out
+ 2034  ../lisp-zero-single D-1.out
+ 2035  ./MAKE-DEAD.sh 1.out D-1.out
+ 2036  rm -f D-1.out
+ 2037  ./MAKE-DEAD.sh 1.out D-1.out
+ 2038  cat D-1.out
+ 2039  ../lisp-zero-single D-1.out
+ 2040  rm -f D-1.out
+ 2041  LispZeroGo
+ 2042  for f in *.out; do ./MAKE-DEAD $f D-$f; done
+ 2043  for f in *.out; do ./MAKE-DEAD.sh $f D-$f; done
+ 2044  gitstat
+ 2045  gitdiff
+ 2046  git commit -m "Fix script to generate correct dead-code cases" MAKE-DEAD.sh 
+ 2047  git log -n 2 --pretty-format='%B'
+ 2048  git log -n 2 --pretty=format='%B'
+ 2049  gitstat
+ 2050  git push
+ 2051  ../lisp-zero-single -q 1.out
+ 2052  time ../lisp-zero-single -q 10M.out
+ 2053  LispZeroGo -q 1.out
+ 2054  LispZeroGo 1.out
+ 2055  time LispZeroGo -q 10M.out
+ 2056  LispZeroGo -q 2.out
+ 2057  LispZeroGo -q 100K.out
+ 2058  ../lisp-zero-single -q 100K.out
+ 2059  ../lisp-zero-single 100K.out | less
+ 2060  LispZeroGo 100K.out | less
+ 2061  LispZeroGo 100K.out | less 2>&1
+ 2062  LispZeroGo -q 100K.out
+ 2063  LispZeroGo -q 10K.out
+ 2064  cat GEN-10K.joke 
+ 2065  lt
+ 2066  ./GEN-10K.joke > 10K.out
+ 2067  bg
+ 2068  history | grep lumo
+ 2069  grep 'lumo.* 100K' HISTORY*
+ 2070  time lumo -e '(load-file "gen-big-list.clj") (gen-big-list 10000)' > 10K-lumo.out
+ 2071  lt
+ 2072  fg
+ 2073  rm 10K.out
+ 2074  mv 10K-lumo.out 10K.out
+ 2075  ./MAKE-DEAD.sh 10K.out D-10K.out
+ 2076  LispZeroGo -q 10K.out
+ 2077  time lumo -e '(load-file "gen-big-list.clj") (gen-big-list 1000)' > 1K.out
+ 2078  LispZeroGo -q 1K.out
+ 2079  lt
+ 2080  wc -l 10M-joke.out 
+ 2081  wc -l 10M.out 
+ 2082  ps u
+ 2083  kill 7050
+ 2084  ps u
+ 2085  gitstat
+ 2086  gitof
+ 2087  gitfo
+ 2088  pushd
+ 2089  . ~/.unixhome/etc/bash_profile 
+ 2090  cd LispZeroGo/
+ 2091  gitfo
+ 2092  gitstat
+ 2093  rm -fr CONS ZERO-TEST*
+ 2094  gitstat
+ 2095  gitfo
+ 2096  gitstat
+ 2097  gitdown
+ 2098  git co struct
+ 2099  gitdown
+ 2100  gitfo
+ 2101  gitstat
+ 2102  pushd
+ 2103  ps u
+ 2104  ./MEM.sh 1241
+ 2105  pushd ~/wan-utils
+ 2106  path $CDPATH
+ 2107  pushd ~/gitdove
+ 2108  ll
+ 2109  cd wan-utils/
+ 2110  gitstat
+ 2111  gitfo
+ 2112  gitstat
+ 2113  gitdiff -R origin/master
+ 2114  gitdown
+ 2115  make -k install
+ 2116  cd bin
+ 2117  make -k install
+ 2118  which gtime
+ 2119  . ~/.unixhome/etc/aliases 
+ 2120  which gtime
+ 2121  alias gtime
+ 2122  unalias gtime
+ 2123  man time
+ 2124  which time
+ 2125  time --help
+ 2126  time -h
+ 2127  time
+ 2128  man time
+ 2129  which gtime
+ 2130  which xtime
+ 2131  time --help
+ 2132  gtime --help
+ 2133  gtime
+ 2134  which gtime
+ 2135  cat xtime
+ 2136  time --help
+ 2137  gtime --help
+ 2138  man gtime
+ 2139  man time
+ 2140  pushd
+ 2141  pushd -0
+ 2142  gitstat
+ 2143  gitfo
+ 2144  gitmast
+ 2145  gitstat
+ 2146  gitdiff
+ 2147  git commit -a -m "Fix up Makefile"
+ 2148  git push
+ 2149  git branch -D struct
+ 2150  git fetch -p
+ 2151  git branch -a
+ 2152  git push :struct
+ 2153  git push origin :struct
+ 2154  git branch -a
+ 2155  gitfo
+ 2156  git fetch -p origin
+ 2157  gitstat
+ 2158  gitbr
+ 2159  gitbr -D iterate
+ 2160  git branch -D iterate
+ 2161  git branch -a
+ 2162  pushd
+ 2163  LispZeroGo -q 10K.out
+ 2164  LispZeroGo -q 100K.out
+ 2165  time LispZeroGo -q 100K.out
+ 2166  xtime LispZeroGo -q 100K.out
+ 2167  cat .gitig
+ 2168  cat ../.gitignore 
+ 2169  xtime LispZeroGo -cpuprofile PROF-DFLT.prog -q 100K.out
+ 2170  xtime LispZeroGo -cpuprofile PROF-DFLT.prog -q 1M.out
+ 2171  ps u
+ 2172  ./MEM.sh 2956
+ 2173  bg
+ 2174  xtime ../lisp-zero-single -cpuprofile PROF-DFLT.prog -q 1M.out
+ 2175  xtime ../lisp-zero-single -q 1M.out
+ 2176  xtime LispZeroSingle -q 1M.out
+ 2177  xtime LispZeroGo -q 1M.out
+ 2178  go tools pprof PROF-DFLT.prog 
+ 2179  go tool pprof PROF-DFLT.prog 
+ 2180  lt
+ 2181  . ~/.bash_profile
+ 2182  echo $GOBIN
+ 2183  LispZeroGo -q 1K.out
+ 2184  LispZeroGo -q 10K.out
+ 2185  LispZeroGo -q 100K.out
+ 2186  xtime LispZeroGo -q 1M.out
+ 2187  history | grep cpupro
+ 2188  xtime ../lisp-zero-single -cpuprofile PROF-DFLT.prog -q 100K.out
+ 2189  time LispZeroGo -cpuprofile PROF-DFLT.prog -q 100K.out
+ 2190  xtime LispZeroGo -cpuprofile PROF-DFLT.prog -q 100K.out
+ 2191  lt
+ 2192  xtime LispZeroGo -profiler runtime/pprof -cpuprofile PROF-DFLT.prog -q 100K.out
+ 2193  xtime LispZeroGo -profiler pkg/profile -cpuprofile PROF-DFLT.prog -q 100K.out
+ 2194  xtime LispZeroGo -profiler pkg/profile -cpuprofile PROF-PKG.prog -q 100K.out
+ 2195  lt
+ 2196  lt PROF-PKG.prog/
+ 2197  dirs
+ 2198  pushd -0
+ 2199  pushd
+ 2200  xtime ../lisp-zero-single -q 10K.out
+ 2201  xtime LispZeroGo -profiler pkg/profile -cpuprofile PROF-PKG.prog -q 100K.out
+ 2202  xtime LispZeroGo -cpuprofile PROF-RUNTIME.prog -q 100K.out
+ 2203  lt
+ 2204  lt PROF-PKG.prog/
+ 2205  go tool pprof PROF-RUNTIME.prog 
+ 2206  history | grep xtime
+ 2207  xtime ../lisp-zero-single -q 10K.out
+ 2208  xtime ../lisp-zero-single -q 100K.out
+ 2209  xtime ../lisp-zero-single -q 1M.out
+ 2210  xtime LispZeroGo -q 10K.out
+ 2211  xtime LispZeroGo -q 100K.out
+ 2212  xtime LispZeroGo -q 1M.out
+ 2213  xtime LispZeroGo -q 10K.out
+ 2214  xtime LispZeroGo 10K.out | less
+ 2215  xtime LispZeroGo -q 100K.out
+ 2216  xtime LispZeroGo -q 1M.out
+ 2217  xtime LispZeroGo -q 10M.out
+ 2218  xtime ../lisp-zero-single -q 10M.out
+ 2219  cd ..
+ 2220  time ./lisp-zero-single -q zero-test.lisp
+ 2221  time LispZeroGo -q zero-test.lisp
+ 2222  cd perftests/
+ 2223  xtime LispZeroGo -q D-10M.out
+ 2224  xtime ../lisp-zero-single -q D-10M.out
+ 2225  xtime LispZeroGo -cpuprofile CPU.prof -q D-10M.out
+ 2226  xtime LispZeroGo -profiler pkg/pprof -cpuprofile CPU.prof -q D-10M.out
+ 2227  xtime LispZeroGo -profiler pkg/profile -cpuprofile CPU.prof -q D-10M.out
+ 2228  xtime LispZeroGo -profiler pkg/profile -cpuprofile CPU-pkg.prof -q D-10M.out
+ 2229  lt
+ 2230  lt CPU-pkg.prof/
+ 2231  cd ..
+ 2232  c2go
+ 2233  lt lisp*
+ 2234  c2go
+ 2235  c2go ast lisp-zero-single.c
+ 2236  lt
+ 2237  c2go ast lisp-zero-single.c > lisp-zero-single.ast
+ 2238  gitstat
+ 2239  gitdiff
+ 2240  make -k lisp-zero-single
+ 2241  make -k zero-single-test
+ 2242  git commit -a -m "Improve diagnostics"
+ 2243  git push
+ 2244  c2go transpile lisp-zero-single.c
+ 2245  lt
+ 2246  go build c2go
+ 2247  go build github.com/elliotchance/c2go
+ 2248  go install github.com/elliotchance/c2go
+ 2249  mv -fv --backup=t lisp-zero-single.go . && c2go transpile lisp-zero-single.c
+ 2250  echo $?
+ 2251  lt | head
+ 2252  man mv
+ 2253  man cp
+ 2254  cp -fv --backup=t lisp-zero-single.go . && c2go transpile lisp-zero-single.c
+ 2255  cp -fv --remove-existing --backup=t lisp-zero-single.go . && c2go transpile lisp-zero-single.c
+ 2256  man cp
+ 2257  cp -fv --remove-destination --backup=t lisp-zero-single.go . && c2go transpile lisp-zero-single.c
+ 2258  cp -fv --preserve-all --backup=t lisp-zero-single.go . && c2go transpile lisp-zero-single.c
+ 2259  cp -fv --preserve=all --backup=t lisp-zero-single.go . && c2go transpile lisp-zero-single.c
+ 2260  which cp
+ 2261  alias cp
+ 2262  /bin/cp -fv --preserve=all --backup=t lisp-zero-single.go . && c2go transpile lisp-zero-single.c
+ 2263  lt | head
+ 2264  lt *.go*
+ 2265  /bin/cp --help
+ 2266  /bin/cp -fv --preserve=all --backup=t lisp-zero-single.go lisp-zero-single.go && c2go transpile lisp-zero-single.c
+ 2267  lt *.go*
+ 2268  diff -u lisp-zero-single.go.~4~ lisp-zero-single.go
+ 2269  alias
+ 2270  which backup
+ 2271  alias backup
+ 2272  pushd cast
+ 2273  lt
+ 2274  go build
+ 2275  ./cast
+ 2276  go build
+ 2277  ./cast 
+ 2278  time ./cast
+ 2279  cd c2go
+ 2280  cd elliotchance/c2go
+ 2281  go test
+ 2282  get github.com/bradleyjkemp/cupaloy
+ 2283  go get github.com/bradleyjkemp/cupaloy
+ 2284  go test
+ 2285  go test -tags=integration
+ 2286  go build
+ 2287  go test -tags=integration
+ 2288  go build
+ 2289  go test -tags=integration
+ 2290  go test -tags=integration -run tests/assert.c
+ 2291  go test -tags=integration -run assert.c
+ 2292  go test -tags=integration -run TestIntegrationScripts/tests/assert.c
+ 2293  go build
+ 2294  go test -tags=integration -run TestIntegrationScripts/tests/assert.c
+ 2295  go build
+ 2296  go test -tags=integration -run TestIntegrationScripts/tests/assert.c
+ 2297  go clean
+ 2298  go build
+ 2299  go test -tags=integration -run TestIntegrationScripts/tests/assert.c
+ 2300  go build
+ 2301  go test -tags=integration -run TestIntegrationScripts/tests/assert.c
+ 2302  go build
+ 2303  go test -tags=integration -run TestIntegrationScripts/tests/assert.c
+ 2304  cd tests
+ 2305  ll
+ 2306  c2go transpile assert.c 
+ 2307  lt
+ 2308  mkdir ~/.go/src/github.com/jcburley/assert
+ 2309  mv -iv assert.go ~/.go/src/github.com/jcburley/assert
+ 2310  pushd ~/.go/src/github.com/jcburley/assert
+ 2311  go build
+ 2312  ./assert 
+ 2313  echo $?
+ 2314  pushd
+ 2315  cd ..
+ 2316  go build
+ 2317  cd assert/
+ 2318  c2go transpile assert.c 
+ 2319  pushd
+ 2320  popd
+ 2321  pushd
+ 2322  history 50
+ 2323  dirs
+ 2324  cd elliotchance/c2go
+ 2325  cd tests
+ 2326  lt
+ 2327  c2go transpile assert.c
+ 2328  ../c2go transpile assert.c
+ 2329  go build
+ 2330  cd ..
+ 2331  go build
+ 2332  cd tests
+ 2333  ../c2go transpile assert.c
+ 2334  cd ..
+ 2335  go install
+ 2336  pushd
+ 2337  lt
+ 2338  cat assert.go
+ 2339  dirs
+ 2340  cd ..
+ 2341  ll
+ 2342  cd cast
+ 2343  ll
+ 2344  rm cast.go.~1~
+ 2345  cd ../assert
+ 2346  lt
+ 2347  pushd
+ 2348  cd tests
+ 2349  mv -fv assert.go --backup=t ~/.go/src/github.com/jcburley/assert/
+ 2350  pushd
+ 2351  lt
+ 2352  diff -u assert.go.~1~ assert.go
+ 2353  ll
+ 2354  go build
+ 2355  diff -u assert.go.~1~ assert.go
+ 2356  pushd
+ 2357  cd ..
+ 2358  go build
+ 2359  cd tests
+ 2360  ../c2go transpile assert.c
+ 2361  export ASSERT=~/.go/src/github.com/jcburley/assert
+ 2362  diff -u $ASSERT/assert.c .
+ 2363  diff -u $ASSERT/assert.go .
+ 2364  mv -fv assert.go --backup=t ~/.go/src/github.com/jcburley/assert/
+ 2365  pushd
+ 2366  go build
+ 2367  pushd
+ 2368  cd ..
+ 2369  history | grep integ
+ 2370  go test -tags=integration
+ 2371  gitdiff
+ 2372  gitnbr faster-bool-to-int
+ 2373  gitrem
+ 2374  git remote remove origin
+ 2375  git remote add origin git@github.com:elliotchance/c2go
+ 2376  gitfo
+ 2377  alias gitnbr
+ 2378  function gitnbr
+ 2379  grep gitnbr ~/.unixhome/etc/aliases 
+ 2380  git push -u origin faster-bool-to-int 
+ 2381  gitdown
+ 2382  gitmast
+ 2383  gitstat
+ 2384  git branch --set-upstream-to=origin/master
+ 2385  gitdown
+ 2386  git co faster-bool-to-int 
+ 2387  git push -u origin faster-bool-to-int 
+ 2388  pushd
+ 2389  pushd ../cast/
+ 2390  go build
+ 2391  ./cast
+ 2392  time ./cast
+ 2393  time ./cast -implementation bool
+ 2394  time ./cast -implementation int_as_map
+ 2395  time ./cast --help
+ 2396  time ./cast -implementation int_via_map
+ 2397  time ./cast -implementation int_via_func
+ 2398  time ./cast -implementation bool
+ 2399  time ./cast -implementation bool -iterations $((10 * 1000 * 1000))
+ 2400  time ./cast -implementation int_via_func -iterations $((10 * 1000 * 1000))
+ 2401  time ./cast -implementation int_via_map -iterations $((10 * 1000 * 1000))
+ 2402  history | grep integr
+ 2403  dirs
+ 2404  cd LispZero
+ 2405  cd perftests/
+ 2406  lt
+ 2407  history > HISTORY-6.txt
