@@ -2,13 +2,16 @@ SOURCEFILES=lisp-zero.c zero.lisp zero-test.lisp zero-test.gold
 BUILDFILES=Makefile .gdbinit
 RESULTFILES=zero-test.out
 
-all: lisp-zero lisp-zero-single zero-test zero-single-test
+all: lisp-zero-single zero-single-test
 
 lisp-zero: lisp-zero.c map.c
 	gcc -g -O0 -Wall -W -I/usr/share/gnulib/lib -o lisp-zero lisp-zero.c map.c
 
 lisp-zero-single: lisp-zero-single.c
 	gcc -g -O0 -Wall -W -I/usr/share/gnulib/lib -o lisp-zero-single lisp-zero-single.c
+
+lisp-zero-single-opt: lisp-zero-single.c
+	gcc -O3 -Wall -W -I/usr/share/gnulib/lib -o lisp-zero-single-opt lisp-zero-single.c
 
 zero-test: zero-test.gold zero-test.out
 	diff -u zero-test.gold zero-test.out
@@ -21,6 +24,12 @@ zero-single-test: zero-test.gold zero-single-test.out
 
 zero-single-test.out: lisp-zero-single zero-test.lisp
 	./lisp-zero-single zero-test.lisp > zero-single-test.out
+
+zero-single-opt-test: zero-test.gold zero-single-opt-test.out
+	diff -u zero-test.gold zero-single-opt-test.out
+
+zero-single-opt-test.out: lisp-zero-single-opt zero-test.lisp
+	./lisp-zero-single-opt zero-test.lisp > zero-single-opt-test.out
 
 zero-new-gold: zero-test.out
 	rm -f zero-test.gold
@@ -43,6 +52,6 @@ snap:
 	cp -a $(SOURCEFILES) $(BUILDFILES) $(RESULTFILES) $($@_TMP)
 
 clean:
-	rm -f lisp-zero lisp-zero-single zero-test.out zero-single-test.out
+	rm -f lisp-zero lisp-zero-single lisp-zero-single-opt zero-test.out zero-single-test.out zero-single-opt-test.out
 
 .PHONY: all clean zero-test zero-single-test zero-new-gold snap go

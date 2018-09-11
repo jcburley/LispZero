@@ -8,3 +8,4 @@ lisp-zero-single
 *.stamp
 *.prof
 *.dSYM
+lisp-zero-single-opt
